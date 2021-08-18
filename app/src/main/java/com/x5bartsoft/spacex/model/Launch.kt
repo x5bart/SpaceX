@@ -4,58 +4,50 @@ package com.x5bartsoft.spacex.model
 import com.google.gson.annotations.SerializedName
 
 data class Launch(
-    @SerializedName("auto_update")
-    val autoUpdate: Boolean,
-    @SerializedName("capsules")
-    val capsules: List<Any>,
-    @SerializedName("cores")
-    val cores: List<Core>,
-    @SerializedName("crew")
-    val crew: List<Any>,
-    @SerializedName("date_local")
-    val dateLocal: String,
-    @SerializedName("date_precision")
-    val datePrecision: String,
-    @SerializedName("date_unix")
-    val dateUnix: Int,
-    @SerializedName("date_utc")
-    val dateUtc: String,
     @SerializedName("details")
     val details: String,
-    @SerializedName("failures")
-    val failures: List<Any>,
-    @SerializedName("fairings")
-    val fairings: Fairings,
     @SerializedName("flight_number")
     val flightNumber: Int,
-    @SerializedName("id")
-    val id: String,
-    @SerializedName("launch_library_id")
-    val launchLibraryId: String,
-    @SerializedName("launchpad")
-    val launchpad: String,
+    @SerializedName("is_tentative")
+    val isTentative: Boolean,
+    @SerializedName("launch_date_local")
+    val launchDateLocal: String,
+    @SerializedName("launch_date_unix")
+    val launchDateUnix: Int,
+    @SerializedName("launch_date_utc")
+    val launchDateUtc: String,
+    @SerializedName("launch_failure_details")
+    val launchFailureDetails: LaunchFailureDetails,
+    @SerializedName("launch_site")
+    val launchSite: LaunchSite,
+    @SerializedName("launch_success")
+    val launchSuccess: Boolean,
+    @SerializedName("launch_window")
+    val launchWindow: Int,
+    @SerializedName("launch_year")
+    val launchYear: String,
     @SerializedName("links")
     val links: Links,
-    @SerializedName("name")
-    val name: String,
-    @SerializedName("net")
-    val net: Boolean,
-    @SerializedName("payloads")
-    val payloads: List<String>,
+    @SerializedName("mission_id")
+    val missionId: List<Any>,
+    @SerializedName("mission_name")
+    val missionName: String,
     @SerializedName("rocket")
-    val rocket: String,
+    val rocket: Rocket,
     @SerializedName("ships")
-    val ships: List<String>,
+    val ships: List<Any>,
     @SerializedName("static_fire_date_unix")
-    val staticFireDateUnix: Any,
+    val staticFireDateUnix: Int,
     @SerializedName("static_fire_date_utc")
-    val staticFireDateUtc: Any,
-    @SerializedName("success")
-    val success: Boolean,
+    val staticFireDateUtc: String,
     @SerializedName("tbd")
     val tbd: Boolean,
+    @SerializedName("telemetry")
+    val telemetry: Telemetry,
+    @SerializedName("tentative_max_precision")
+    val tentativeMaxPrecision: String,
+    @SerializedName("timeline")
+    val timeline: Timeline,
     @SerializedName("upcoming")
-    val upcoming: Boolean,
-    @SerializedName("window")
-    val window: Any
+    val upcoming: Boolean
 )

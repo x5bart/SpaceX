@@ -4,20 +4,22 @@ package com.x5bartsoft.spacex.model
 import com.google.gson.annotations.SerializedName
 
 data class Core(
-    @SerializedName("core")
-    val core: String,
+    @SerializedName("block")
+    val block: Any,
+    @SerializedName("core_serial")
+    val coreSerial: String,
     @SerializedName("flight")
     val flight: Int,
     @SerializedName("gridfins")
     val gridfins: Boolean,
-    @SerializedName("landing_attempt")
-    val landingAttempt: Boolean,
-    @SerializedName("landing_success")
-    val landingSuccess: Boolean,
+    @SerializedName("land_success")
+    val landSuccess: Any,
+    @SerializedName("landing_intent")
+    val landingIntent: Boolean,
     @SerializedName("landing_type")
-    val landingType: String,
-    @SerializedName("landpad")
-    val landpad: String,
+    val landingType: Any,
+    @SerializedName("landing_vehicle")
+    val landingVehicle: Any,
     @SerializedName("legs")
     val legs: Boolean,
     @SerializedName("reused")

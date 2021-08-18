@@ -10,6 +10,6 @@ data class Fairings(
     val recoveryAttempt: Boolean,
     @SerializedName("reused")
     val reused: Boolean,
-    @SerializedName("ships")
-    val ships: List<String>
+    @SerializedName("ship")
+    val ship: Any
 )
