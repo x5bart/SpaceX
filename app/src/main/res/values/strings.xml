@@ -4,4 +4,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="launch">Launch</string>
     <string name="favorite">Favorite</string>
+    <string name="filter">Filter</string>
+    <string name="error_image">error image</string>
+    <string name="error_text">No Internet Connection</string>
 </resources>
