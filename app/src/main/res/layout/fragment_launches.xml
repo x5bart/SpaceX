@@ -37,14 +37,15 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:alpha="0.5"
+        android:contentDescription="@string/error_image"
         android:src="@drawable/ic_wifi_off"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.30"
-        android:contentDescription="@string/error_image" />
+        app:layout_constraintVertical_bias="0.30" />
 
     <TextView
         android:id="@+id/f_launches_error_textView"
@@ -52,6 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/error_text"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="@+id/f_launches_error_imageView"
         app:layout_constraintStart_toStartOf="@+id/f_launches_error_imageView"
         app:layout_constraintTop_toBottomOf="@+id/f_launches_error_imageView" />
