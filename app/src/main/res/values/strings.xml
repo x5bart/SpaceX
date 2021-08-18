@@ -7,4 +7,5 @@
     <string name="filter">Filter</string>
     <string name="error_image">error image</string>
     <string name="error_text">No Internet Connection</string>
+    <string name="success">Success</string>
 </resources>

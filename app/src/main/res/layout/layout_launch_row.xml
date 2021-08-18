@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_marginTop="8dp"
+    android:layout_height="wrap_content">
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/l_launch_cardView"
+        style="@style/MyCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <ImageView
+                android:id="@+id/l_launch_main_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:srcCompat="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/l_launch_title_textView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="FalconSat"
+                android:textColor="@color/darker"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/l_launch_main_imageView"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/l_launch_flight_number_textView"
+                style="@style/CardText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Flight number: 1"
+                app:layout_constraintEnd_toEndOf="@+id/l_launch_title_textView"
+                app:layout_constraintStart_toStartOf="@+id/l_launch_title_textView"
+                app:layout_constraintTop_toBottomOf="@+id/l_launch_title_textView" />
+
+            <TextView
+                android:id="@+id/l_launch_date_textView"
+                style="@style/CardText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="Date: 2006.03.24"
+                app:layout_constraintEnd_toEndOf="@+id/l_launch_flight_number_textView"
+                app:layout_constraintStart_toStartOf="@+id/l_launch_flight_number_textView"
+                app:layout_constraintTop_toBottomOf="@+id/l_launch_flight_number_textView" />
+
+            <TextView
+                android:id="@+id/l_launch_detail_textView"
+                style="@style/CardText"
+                android:layout_width="0dp"
+                android:layout_height="52dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:ellipsize="end"
+                android:maxLines="3"
+                android:text="Successful first stage burn and transition to second stage, maximum altitude 289 km, Premature engine shutdown at T+7 min 30 s, Failed to reach orbit, Failed to recover first stage"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/l_launch_date_textView"
+                app:layout_constraintStart_toStartOf="@+id/l_launch_date_textView"
+                app:layout_constraintTop_toBottomOf="@+id/l_launch_date_textView" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
