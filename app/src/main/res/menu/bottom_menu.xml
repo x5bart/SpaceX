@@ -4,12 +4,16 @@
     <item
         android:id="@+id/launchesFragment"
         android:icon="@drawable/ic_rocket"
-        android:iconTint="@color/white"
         android:title="@string/launch"/>
 
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_favorite"
-        android:title="@string/favorite"/>
+        android:title="@string/favorite" />
+
+    <item
+        android:id="@+id/roadsterFragment"
+        android:icon="@drawable/ic_car"
+        android:title="@string/roadster" />
 
 </menu>

@@ -15,4 +15,9 @@
         android:name="com.x5bartsoft.spacex.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" />
+    <fragment
+        android:id="@+id/roadsterFragment"
+        android:name="com.x5bartsoft.spacex.RoadsterFragment"
+        android:label="@string/roadster"
+        tools:layout="@layout/fragment_roadster" />
 </navigation>
