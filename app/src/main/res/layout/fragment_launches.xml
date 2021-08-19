@@ -4,7 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/lightMediumGray"
     tools:context=".LaunchesFragment">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/f_launches_shimmer_layout"
+        android:layout_width="0dp"
+        android:visibility="invisible"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_launch_row_placeholder" />
+
+            <include layout="@layout/layout_launch_row_placeholder" />
+
+            <include layout="@layout/layout_launch_row_placeholder" />
+
+            <include layout="@layout/layout_launch_row_placeholder" />
+
+            <include layout="@layout/layout_launch_row_placeholder" />
+
+            <include layout="@layout/layout_launch_row_placeholder" />
+
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
 
 
     <androidx.recyclerview.widget.RecyclerView
@@ -13,12 +47,13 @@
         android:layout_height="0dp"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
-        tools:listitem="@layout/layout_launch_row"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:listitem="@layout/layout_launch_row" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/f_launches_floatingActionButton"
@@ -28,10 +63,10 @@
         android:layout_marginBottom="32dp"
         android:clickable="true"
         android:contentDescription="@string/filter"
+        android:focusable="true"
         android:src="@drawable/ic_filter"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:focusable="true" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <ImageView
         android:id="@+id/f_launches_error_imageView"

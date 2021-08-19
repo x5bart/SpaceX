@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_marginTop="8dp"
-    android:layout_height="wrap_content">
+    android:layout_height="154dp">
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/l_launch_cardView"
@@ -27,19 +27,18 @@
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginStart="32dp"
+                android:contentDescription="@string/mission_logo"
                 app:layout_constraintBottom_toBottomOf="@+id/l_launch_date_textView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars"
-                android:contentDescription="@string/mission_logo" />
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/l_launch_title_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="32dp"
-                android:layout_marginEnd="8dp"
-                android:text="FalconSat"
+                android:text="FalconSatq"
                 android:textColor="@color/darker"
                 android:textSize="20sp"
                 android:textStyle="bold"
@@ -72,7 +71,7 @@
                 android:id="@+id/l_launch_detail_textView"
                 style="@style/CardText"
                 android:layout_width="0dp"
-                android:layout_height="52dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:ellipsize="end"
                 android:maxLines="3"
