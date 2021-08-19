@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightMediumGray"
-    tools:context=".LaunchesFragment">
+    tools:context=".ui.fragments.LaunchesFragment">
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/f_launches_shimmer_layout"

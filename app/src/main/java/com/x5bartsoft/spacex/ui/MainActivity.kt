@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex
+package com.x5bartsoft.spacex.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,6 +7,7 @@ import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

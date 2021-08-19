@@ -7,17 +7,17 @@
 
     <fragment
         android:id="@+id/launchesFragment"
-        android:name="com.x5bartsoft.spacex.LaunchesFragment"
+        android:name="com.x5bartsoft.spacex.ui.fragments.LaunchesFragment"
         android:label="@string/launch"
         tools:layout="@layout/fragment_launches" />
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.x5bartsoft.spacex.FavoriteFragment"
+        android:name="com.x5bartsoft.spacex.ui.fragments.FavoriteFragment"
         android:label="@string/favorite"
         tools:layout="@layout/fragment_favorite" />
     <fragment
         android:id="@+id/roadsterFragment"
-        android:name="com.x5bartsoft.spacex.RoadsterFragment"
+        android:name="com.x5bartsoft.spacex.ui.fragments.RoadsterFragment"
         android:label="@string/roadster"
         tools:layout="@layout/fragment_roadster" />
 </navigation>

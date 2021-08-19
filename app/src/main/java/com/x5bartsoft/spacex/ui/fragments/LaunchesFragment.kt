@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex
+package com.x5bartsoft.spacex.ui.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
