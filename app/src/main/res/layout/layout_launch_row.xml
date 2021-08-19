@@ -24,9 +24,10 @@
 
             <ImageView
                 android:id="@+id/l_launch_main_imageView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginStart="32dp"
+                app:layout_constraintBottom_toBottomOf="@+id/l_launch_date_textView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 tools:srcCompat="@tools:sample/avatars" />
@@ -35,8 +36,7 @@
                 android:id="@+id/l_launch_title_textView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
+                android:layout_marginStart="32dp"
                 android:layout_marginEnd="8dp"
                 android:text="FalconSat"
                 android:textColor="@color/darker"
@@ -73,7 +73,6 @@
                 android:layout_width="0dp"
                 android:layout_height="52dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginBottom="8dp"
                 android:ellipsize="end"
                 android:maxLines="3"
                 android:text="Successful first stage burn and transition to second stage, maximum altitude 289 km, Premature engine shutdown at T+7 min 30 s, Failed to reach orbit, Failed to recover first stage"
@@ -81,6 +80,56 @@
                 app:layout_constraintEnd_toEndOf="@+id/l_launch_date_textView"
                 app:layout_constraintStart_toStartOf="@+id/l_launch_date_textView"
                 app:layout_constraintTop_toBottomOf="@+id/l_launch_date_textView" />
+
+            <ImageView
+                android:id="@+id/l_launch_rocked_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/l_launch_success_imageView"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/l_launch_main_imageView"
+                app:srcCompat="@drawable/ic_rocket"
+                app:tint="@color/black" />
+
+            <ImageView
+                android:id="@+id/l_launch_success_imageView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/l_launch_detail_textView"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toEndOf="@+id/l_launch_rocked_imageView"
+                app:layout_constraintTop_toTopOf="@+id/l_launch_rocked_imageView"
+                app:srcCompat="@drawable/ic_success"
+                app:tint="@color/green" />
+
+            <TextView
+                android:id="@+id/l_launch_rocked_textView"
+                android:layout_width="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:textColor="@color/darker"
+                android:textSize="11sp"
+                android:text="Falcon Heavy"
+                app:layout_constraintEnd_toEndOf="@+id/l_launch_rocked_imageView"
+                app:layout_constraintStart_toStartOf="@+id/l_launch_rocked_imageView"
+                app:layout_constraintTop_toBottomOf="@+id/l_launch_rocked_imageView" />
+
+            <TextView
+                android:id="@+id/l_launch_success_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="success"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:textColor="@color/green"
+                app:layout_constraintEnd_toEndOf="@+id/l_launch_success_imageView"
+                app:layout_constraintStart_toStartOf="@+id/l_launch_success_imageView"
+                app:layout_constraintTop_toBottomOf="@+id/l_launch_success_imageView" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
