@@ -1,6 +1,6 @@
 package com.x5bartsoft.spacex.di
 
-import com.x5bartsoft.spacex.LaunchesApi
+import com.x5bartsoft.spacex.data.network.LaunchesApi
 import com.x5bartsoft.spacex.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides

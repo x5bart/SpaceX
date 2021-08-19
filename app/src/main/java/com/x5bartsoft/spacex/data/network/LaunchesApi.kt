@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex
+package com.x5bartsoft.spacex.data.network
 
 import com.x5bartsoft.spacex.model.Launch
 import retrofit2.Response
