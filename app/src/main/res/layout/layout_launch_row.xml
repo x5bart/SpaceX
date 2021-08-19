@@ -30,7 +30,8 @@
                 app:layout_constraintBottom_toBottomOf="@+id/l_launch_date_textView"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:srcCompat="@tools:sample/avatars" />
+                tools:srcCompat="@tools:sample/avatars"
+                android:contentDescription="@string/mission_logo" />
 
             <TextView
                 android:id="@+id/l_launch_title_textView"
@@ -92,7 +93,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/l_launch_main_imageView"
                 app:srcCompat="@drawable/ic_rocket"
-                app:tint="@color/black" />
+                app:tint="@color/black"
+                android:contentDescription="@string/rocket_image" />
 
             <ImageView
                 android:id="@+id/l_launch_success_imageView"
@@ -104,7 +106,8 @@
                 app:layout_constraintStart_toEndOf="@+id/l_launch_rocked_imageView"
                 app:layout_constraintTop_toTopOf="@+id/l_launch_rocked_imageView"
                 app:srcCompat="@drawable/ic_success"
-                app:tint="@color/green" />
+                app:tint="@color/green"
+                android:contentDescription="@string/success_image" />
 
             <TextView
                 android:id="@+id/l_launch_rocked_textView"

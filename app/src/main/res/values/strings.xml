@@ -8,4 +8,7 @@
     <string name="error_image">error image</string>
     <string name="error_text">No Internet Connection</string>
     <string name="success">Success</string>
+    <string name="rocket_image">rocket image</string>
+    <string name="success_image">success image</string>
+    <string name="mission_logo">mission logo</string>
 </resources>
