@@ -13,7 +13,7 @@ android {
     defaultConfig {
         applicationId "com.x5bartsoft.spacex"
         minSdk 24
-        targetSdk 31
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -112,4 +112,6 @@ dependencies {
     // Jsoup
     implementation 'org.jsoup:jsoup:1.13.1'
 
+    //kotlinx-datetime
+    implementation("org.jetbrains.kotlinx:kotlinx-datetime:0.2.0")
 }

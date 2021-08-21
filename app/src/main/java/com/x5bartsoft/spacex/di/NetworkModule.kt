@@ -1,6 +1,6 @@
 package com.x5bartsoft.spacex.di
 
-import com.x5bartsoft.spacex.data.network.LaunchesApi
+import com.x5bartsoft.spacex.data.network.SpaceXApi
 import com.x5bartsoft.spacex.util.Constants.Companion.BASE_URL
 import dagger.Module
 import dagger.Provides
@@ -47,7 +47,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideApiService(retrofit: Retrofit): LaunchesApi {
-        return retrofit.create(LaunchesApi::class.java)
+    fun provideApiService(retrofit: Retrofit): SpaceXApi {
+        return retrofit.create(SpaceXApi::class.java)
     }
 }
