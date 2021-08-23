@@ -10,10 +10,14 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
+import coil.transform.BlurTransformation
+import coil.transform.CircleCropTransformation
+import coil.transform.GrayscaleTransformation
 import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.data.Lib
 import com.x5bartsoft.spacex.util.formatTo
 import com.x5bartsoft.spacex.util.toDate
+import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -22,15 +26,31 @@ import java.time.LocalDate
 class LaunchesBinding {
 
     companion object {
-        @BindingAdapter("loadImageFromUrl")
+        @BindingAdapter("loadPatchImageFromUrl")
         @JvmStatic
-        fun loadImageFromUrl(imageView: ImageView, imageUrl: String?) {
+        fun loadPatchImageFromUrl(imageView: ImageView, imageUrl: String?) {
             Log.d("LaunchesBinding", "imageUrl:$imageUrl")
             if (imageUrl != null) {
                 imageView.load(imageUrl) {
                     crossfade(600)
                     placeholder(R.drawable.ic_placeholder_error)
                     error(R.drawable.ic_placeholder_error)
+                    transformations(CircleCropTransformation())
+                }
+            } else {
+                imageView.load(R.drawable.ic_placeholder_error)
+            }
+        }
+
+        @BindingAdapter("loadMainImageFromUrl")
+        @JvmStatic
+        fun loadMainImageFromUrl(imageView: ImageView, imageUrl: List<String>?) {
+            Log.d("LaunchesBinding", "imageUrl:$imageUrl")
+            if (imageUrl!!.isNotEmpty()) {
+                    imageView.load(imageUrl[0]) {
+                        crossfade(600)
+                        placeholder(R.drawable.ic_placeholder_error)
+                        error(R.drawable.ic_placeholder_error)
                 }
             } else {
                 imageView.load(R.drawable.ic_placeholder_error)
@@ -41,7 +61,8 @@ class LaunchesBinding {
         @JvmStatic
         fun getFlightDate(view: TextView, date: String) {
             val dateConvert = Instant.parse(date).toLocalDateTime(TimeZone.UTC)
-            view.text = "$dateConvert"
+            val date = dateConvert.toString().substringBeforeLast("T")
+            view.text = date
 
         }
 
@@ -57,8 +78,8 @@ class LaunchesBinding {
         @BindingAdapter("getLaunchpadName")
         @JvmStatic
         fun getLaunchpadsName(view: TextView, id: String?) {
-                if (id != null) view.text = Lib.launchpadsName[id]
-                else view.text = "No data"
+            if (id != null) view.text = Lib.launchpadsName[id]
+            else view.text = "No data"
         }
 
         @BindingAdapter("getDetail")

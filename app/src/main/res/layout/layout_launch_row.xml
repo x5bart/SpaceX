@@ -32,14 +32,16 @@
 
 
                 <ImageView
-                    android:id="@+id/l_launch_main_imageView"
-                    loadImageFromUrl="@{result.links.patch.small}"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:id="@+id/l_launch_patch_imageView"
+                    loadPatchImageFromUrl="@{result.links.patch.small}"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
+                    android:background="@drawable/image_background"
                     android:contentDescription="@string/mission_logo"
-                    app:layout_constraintEnd_toEndOf="@+id/l_launch_rocked_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/l_launch_rocked_imageView"
+                    android:padding="5dp"
+                    app:layout_constraintStart_toEndOf="@+id/l_launch_main_imageView"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:srcCompat="@tools:sample/avatars" />
 
@@ -56,10 +58,10 @@
                     android:textColor="@color/darker"
                     android:textSize="24sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@+id/l_launch_main_imageView"
+                    app:layout_constraintBottom_toBottomOf="@+id/l_launch_patch_imageView"
                     app:layout_constraintEnd_toEndOf="@+id/l_launch_detail_textView"
-                    app:layout_constraintStart_toEndOf="@+id/l_launch_main_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_launch_main_imageView"
+                    app:layout_constraintStart_toEndOf="@+id/l_launch_patch_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/l_launch_patch_imageView"
                     tools:text="FalconSat" />
 
                 <TextView
@@ -76,20 +78,21 @@
                     android:gravity="center_vertical"
                     android:maxLines="3"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/l_launch_main_imageView"
+                    app:layout_constraintStart_toEndOf="@+id/l_launch_main_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/l_launch_patch_imageView"
                     tools:text="Successful first stage burn and transition to second stage, maximum altitude 289 km, Premature engine shutdown at T+7 min 30 s, Failed to reach orbit, Failed to recover first stage" />
 
                 <ImageView
                     android:id="@+id/l_launch_rocked_imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
                     android:contentDescription="@string/rocket_image"
                     app:layout_constraintEnd_toStartOf="@+id/l_launch_pad_imageView"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/l_launch_main_imageView"
                     app:layout_constraintTop_toBottomOf="@+id/l_launch_detail_textView"
                     app:srcCompat="@drawable/ic_rocket"
                     app:tint="@color/black" />
@@ -124,6 +127,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/f_launch_flight_number_imageView"
@@ -177,6 +181,27 @@
                     app:layout_constraintStart_toStartOf="@+id/l_launch_pad_imageView"
                     app:layout_constraintTop_toTopOf="@+id/l_launch_rocked_textView"
                     tools:text="VAFB SLC 3W" />
+
+                <ImageView
+                    android:id="@+id/l_launch_main_imageView"
+                    loadMainImageFromUrl="@{result.links.flickr.original}"
+                    android:layout_width="130dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <View
+                    android:id="@+id/f_overview_gradient_overlay"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:background="@drawable/gradient"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="@+id/l_launch_main_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/l_launch_main_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/l_launch_main_imageView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
