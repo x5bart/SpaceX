@@ -1,21 +1,20 @@
-package com.x5bartsoft.spacex
+package com.x5bartsoft.spacex.viewmodels
 
 import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
-import android.util.Log
-import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.x5bartsoft.spacex.data.Lib
 import com.x5bartsoft.spacex.data.Lib.rocketsName
 import com.x5bartsoft.spacex.data.Repository
+import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
 import com.x5bartsoft.spacex.model.launches.Launch
 import com.x5bartsoft.spacex.model.launchpad.Launchpads
 import com.x5bartsoft.spacex.model.rockets.Rockets
 import com.x5bartsoft.spacex.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import retrofit2.Response
 import java.lang.Exception
@@ -27,6 +26,14 @@ class MainViewModel @Inject constructor(
     application: Application,
 ) : AndroidViewModel(application) {
 
+    /** ROOM DATABASE */
+
+    val readLaunches: LiveData<List<LaunchesEntity>> = repository.local.readLaunches().asLiveData()
+
+    private fun insertLaunches(launchesEntity: LaunchesEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertLaunches(launchesEntity)
+        }
 
     /** RETROFIT */
     var launchesResponse: MutableLiveData<NetworkResult<List<Launch>>> = MutableLiveData()
@@ -47,7 +54,6 @@ class MainViewModel @Inject constructor(
     }
 
 
-
     private suspend fun getSafeLaunches() {
         launchesResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
@@ -55,8 +61,8 @@ class MainViewModel @Inject constructor(
                 val response = repository.remote.getAllLaunches()
                 launchesResponse.value = handleLaunchesResponse(response)
 
-//                val launches = launchesResponse.value!!.data
-//                if (launches !=null) offLineCache(launches)
+                val launches = launchesResponse.value!!.data
+                if (launches != null) offLineCache(launches)
             } catch (e: Exception) {
                 launchesResponse.value = NetworkResult.Error("Launch not found")
             }
@@ -64,6 +70,7 @@ class MainViewModel @Inject constructor(
             launchesResponse.value = NetworkResult.Error("No Internet Connection")
         }
     }
+
 
     private suspend fun getSafeRockets() {
         rocketsResponse.value = NetworkResult.Loading()
@@ -102,6 +109,11 @@ class MainViewModel @Inject constructor(
     }
 
 
+    private fun offLineCache(launches: List<Launch>) {
+        val launchesEntity = LaunchesEntity(launches)
+        insertLaunches(launchesEntity)
+
+    }
 
 
     private fun handleLaunchesResponse(response: Response<List<Launch>>): NetworkResult<List<Launch>>? {
@@ -159,6 +171,7 @@ class MainViewModel @Inject constructor(
             else -> NetworkResult.Error(response.message())
         }
     }
+
 
     private fun hasInternetConnection(): Boolean {
         val connectivityManager = getApplication<Application>().getSystemService(

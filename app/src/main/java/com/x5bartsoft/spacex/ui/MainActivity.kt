@@ -2,18 +2,15 @@ package com.x5bartsoft.spacex.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import com.x5bartsoft.spacex.MainViewModel
+import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.databinding.ActivityMainBinding
-import com.x5bartsoft.spacex.util.NetworkResult
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
