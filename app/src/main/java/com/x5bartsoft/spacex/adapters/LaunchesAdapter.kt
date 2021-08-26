@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.x5bartsoft.spacex.data.Lib
 import com.x5bartsoft.spacex.databinding.LayoutLaunchRowBinding
 import com.x5bartsoft.spacex.model.launches.Launch
 import com.x5bartsoft.spacex.model.rockets.Rockets
@@ -13,7 +12,6 @@ import com.x5bartsoft.spacex.util.LaunchDiffUtil
 class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.MyViewHolder>() {
 
     var launches = emptyList<Launch>()
-    var rocketsList = Rockets()
 
 
     class MyViewHolder(private var binding: LayoutLaunchRowBinding) :

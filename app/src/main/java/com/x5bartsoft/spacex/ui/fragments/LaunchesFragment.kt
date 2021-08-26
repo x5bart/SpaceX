@@ -41,10 +41,11 @@ class LaunchesFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentLaunchesBinding.inflate(inflater, container, false)
+        binding.lifecycleOwner = this
+        binding.mainViewModel  = mainViewModel
 
         setupRecyclerView()
-        requestApiRockets()
-
+        readDatabase()
 
         return binding.root
     }
@@ -88,40 +89,6 @@ class LaunchesFragment : Fragment() {
                         Toast.LENGTH_SHORT).show()
                 }
                 is NetworkResult.Loading -> showShimmerEffect()
-            }
-        })
-    }
-
-    private fun requestApiRockets() {
-        mainViewModel.getRockets()
-        mainViewModel.rocketsResponse.observe(viewLifecycleOwner, { response ->
-            when (response) {
-                is NetworkResult.Success -> {
-                    requestApiLaunchpads()
-                }
-                is NetworkResult.Error -> {
-                    Toast.makeText(requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT).show()
-                }
-                is NetworkResult.Loading -> Log.d("MainActivity", "loading")
-            }
-        })
-    }
-
-    private fun requestApiLaunchpads() {
-        mainViewModel.getLaunchpads()
-        mainViewModel.launchpadsResponse.observe(viewLifecycleOwner, { response ->
-            when (response) {
-                is NetworkResult.Success -> {
-                    readDatabase()
-                }
-                is NetworkResult.Error -> {
-                    Toast.makeText(requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT).show()
-                }
-                is NetworkResult.Loading -> Log.d("MainActivity", "loading")
             }
         })
     }
