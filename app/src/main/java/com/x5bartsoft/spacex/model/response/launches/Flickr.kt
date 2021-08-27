@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex.model.launches
+package com.x5bartsoft.spacex.model.response.launches
 
 
 import com.google.gson.annotations.SerializedName

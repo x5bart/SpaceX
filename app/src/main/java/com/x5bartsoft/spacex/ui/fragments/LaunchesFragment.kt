@@ -15,6 +15,7 @@ import com.x5bartsoft.spacex.adapters.LaunchesAdapter
 import com.x5bartsoft.spacex.databinding.FragmentLaunchesBinding
 import com.x5bartsoft.spacex.util.NetworkResult
 import com.x5bartsoft.spacex.util.observeOnce
+import com.x5bartsoft.spacex.viewmodels.LaunchesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
@@ -28,11 +29,13 @@ class LaunchesFragment : Fragment() {
 
     private val mAdapter by lazy { LaunchesAdapter() }
     private lateinit var mainViewModel: MainViewModel
+    private lateinit var launchViewModel:LaunchesViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
+        launchViewModel = ViewModelProvider(requireActivity()).get(LaunchesViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -74,7 +77,7 @@ class LaunchesFragment : Fragment() {
 
     private fun requestApiData() {
         Log.d("LaunchesFragment", "requestApiData called!")
-        mainViewModel.getLaunches()
+        mainViewModel.getLaunches(launchViewModel.applyQueries())
         mainViewModel.launchesResponse.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is NetworkResult.Success -> {

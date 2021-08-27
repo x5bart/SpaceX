@@ -1,11 +1,11 @@
-package com.x5bartsoft.spacex.model.launches
+package com.x5bartsoft.spacex.model.response.launches
 
 
 import com.google.gson.annotations.SerializedName
 
 data class Links(
     @SerializedName("article")
-    val article: String,
+    val article: Any,
     @SerializedName("flickr")
     val flickr: Flickr,
     @SerializedName("patch")
@@ -17,7 +17,7 @@ data class Links(
     @SerializedName("webcast")
     val webcast: String,
     @SerializedName("wikipedia")
-    val wikipedia: String,
+    val wikipedia: Any,
     @SerializedName("youtube_id")
     val youtubeId: String
 )

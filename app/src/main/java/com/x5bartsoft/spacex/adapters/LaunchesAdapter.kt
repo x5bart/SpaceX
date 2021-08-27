@@ -5,20 +5,20 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.x5bartsoft.spacex.databinding.LayoutLaunchRowBinding
-import com.x5bartsoft.spacex.model.launches.Launch
-import com.x5bartsoft.spacex.model.rockets.Rockets
+import com.x5bartsoft.spacex.model.response.launches.Doc
+import com.x5bartsoft.spacex.model.response.launches.Launches
 import com.x5bartsoft.spacex.util.LaunchDiffUtil
 
 class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.MyViewHolder>() {
 
-    var launches = emptyList<Launch>()
+   private var docs = emptyList<Doc>()
 
 
     class MyViewHolder(private var binding: LayoutLaunchRowBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        fun bind(launch: Launch) {
-            binding.result = launch
+        fun bind(docs: Doc) {
+            binding.result = docs
             binding.executePendingBindings()
 //            binding.notifyChange()
         }
@@ -38,18 +38,18 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.MyViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        val currentLaunch = launches[position]
+        val currentLaunch = docs[position]
         holder.bind(currentLaunch)
     }
 
     override fun getItemCount(): Int {
-        return launches.size
+        return docs.size
     }
 
-    fun setData(newData: List<Launch>) {
-        val launchDiffUtil = LaunchDiffUtil(launches, newData)
+    fun setData(newData: Launches) {
+        val launchDiffUtil = LaunchDiffUtil(docs, newData.docs)
         val diffUtilResult = DiffUtil.calculateDiff(launchDiffUtil)
-        launches = newData
+        docs = newData.docs
         diffUtilResult.dispatchUpdatesTo(this)
     }
 

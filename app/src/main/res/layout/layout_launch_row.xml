@@ -7,7 +7,7 @@
 
         <variable
             name="result"
-            type="com.x5bartsoft.spacex.model.launches.Launch" />
+            type="com.x5bartsoft.spacex.model.response.launches.Doc" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -106,10 +106,10 @@
                 <TextView
                     android:id="@+id/l_launch_rocked_textView"
                     style="@style/IconTextStyle"
-                    getRocketName="@{result.rocket}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
+                    android:text="@{result.rocket.name}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/l_launch_rocked_imageView"
                     app:layout_constraintStart_toStartOf="@+id/l_launch_rocked_imageView"
@@ -155,7 +155,7 @@
                 <TextView
                     android:id="@+id/l_launch_date_textView"
                     style="@style/IconTextStyle"
-                    getFlightDate="@{result.dateUtc}"
+                    getFlightDate="@{result.dateLocal}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="@+id/f_launch_flight_number_textView"
@@ -179,9 +179,9 @@
                 <TextView
                     android:id="@+id/l_launch_pad_textView"
                     style="@style/IconTextStyle"
-                    getLaunchpadName="@{result.launchpad}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{result.launchpad.name}"
                     app:layout_constraintBottom_toBottomOf="@+id/l_launch_rocked_textView"
                     app:layout_constraintEnd_toEndOf="@+id/l_launch_pad_imageView"
                     app:layout_constraintStart_toStartOf="@+id/l_launch_pad_imageView"
@@ -193,7 +193,7 @@
                     loadMainImageFromUrl="@{result.links.flickr.original}"
                     android:layout_width="130dp"
                     android:layout_height="0dp"
-                   android:padding="1dp"
+                    android:padding="1dp"
                     android:scaleType="centerCrop"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"

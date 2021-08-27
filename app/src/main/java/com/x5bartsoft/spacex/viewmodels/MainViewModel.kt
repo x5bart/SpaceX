@@ -7,7 +7,9 @@ import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.x5bartsoft.spacex.data.Repository
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
-import com.x5bartsoft.spacex.model.launches.Launch
+import com.x5bartsoft.spacex.model.request.Query
+import com.x5bartsoft.spacex.model.request.QueryLaunches
+import com.x5bartsoft.spacex.model.response.launches.Launches
 import com.x5bartsoft.spacex.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -32,19 +34,19 @@ class MainViewModel @Inject constructor(
         }
 
     /** RETROFIT */
-    var launchesResponse: MutableLiveData<NetworkResult<List<Launch>>> = MutableLiveData()
+    var launchesResponse: MutableLiveData<NetworkResult<Launches>> = MutableLiveData()
 
 
-    fun getLaunches() = viewModelScope.launch {
-        getSafeLaunches()
+    fun getLaunches(query: QueryLaunches) = viewModelScope.launch {
+        getSafeLaunches(query)
     }
 
 
-    private suspend fun getSafeLaunches() {
+    private suspend fun getSafeLaunches(query: QueryLaunches) {
         launchesResponse.value = NetworkResult.Loading()
         if (hasInternetConnection()) {
             try {
-                val response = repository.remote.getAllLaunches()
+                val response = repository.remote.getAllLaunches(query)
                 launchesResponse.value = handleLaunchesResponse(response)
 
                 val launches = launchesResponse.value!!.data
@@ -59,19 +61,19 @@ class MainViewModel @Inject constructor(
 
 
 
-    private fun offLineCache(launches: List<Launch>) {
+    private fun offLineCache(launches: Launches) {
         val launchesEntity = LaunchesEntity(launches)
         insertLaunches(launchesEntity)
 
     }
 
 
-    private fun handleLaunchesResponse(response: Response<List<Launch>>): NetworkResult<List<Launch>> {
+    private fun handleLaunchesResponse(response: Response<Launches>): NetworkResult<Launches> {
         return when {
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout")
             }
-            response.body()!!.isNullOrEmpty() -> {
+            response.body()!!.docs.isNullOrEmpty() -> {
                 NetworkResult.Error("No launch found")
             }
             response.isSuccessful -> {

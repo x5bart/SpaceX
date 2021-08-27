@@ -6,8 +6,7 @@ import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.databinding.BindingAdapter
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
-import com.x5bartsoft.spacex.model.launches.Launch
-import com.x5bartsoft.spacex.model.rockets.Rockets
+import com.x5bartsoft.spacex.model.response.launches.Launches
 import com.x5bartsoft.spacex.util.NetworkResult
 
 class LaunchesBinding {
@@ -19,7 +18,7 @@ class LaunchesBinding {
         @JvmStatic
         fun handleReadDataErrors(
             view: View,
-            apiResponse: NetworkResult<List<Launch>>?,
+            apiResponse: NetworkResult<Launches>?,
             database: List<LaunchesEntity>?,
         ) {
             when (view) {
