@@ -8,8 +8,6 @@ import androidx.databinding.BindingAdapter
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.x5bartsoft.spacex.R
-import com.x5bartsoft.spacex.data.nameid.LaunchpadsId
-import com.x5bartsoft.spacex.data.nameid.RocketsId
 import kotlinx.datetime.Instant
 import kotlinx.datetime.TimeZone
 import kotlinx.datetime.toLocalDateTime
@@ -55,22 +53,6 @@ class LaunchesRowBinding {
             val date = dateConvert.toString().substringBeforeLast("T")
             view.text = date
 
-        }
-
-        @SuppressLint("SetTextI18n")
-        @BindingAdapter("getRocketName")
-        @JvmStatic
-        fun getRocketName(view: TextView, id: String?) {
-            if (id != null) view.text = RocketsId.rocketsName[id]
-            else view.text = "No data"
-        }
-
-        @SuppressLint("SetTextI18n")
-        @BindingAdapter("getLaunchpadName")
-        @JvmStatic
-        fun getLaunchpadsName(view: TextView, id: String?) {
-            if (id != null) view.text = LaunchpadsId.launchpadsName[id]
-            else view.text = "No data"
         }
 
         @BindingAdapter("getDetail")

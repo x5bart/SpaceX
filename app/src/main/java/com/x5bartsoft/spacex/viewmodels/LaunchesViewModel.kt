@@ -3,6 +3,9 @@ package com.x5bartsoft.spacex.viewmodels
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import com.x5bartsoft.spacex.model.request.*
+import com.x5bartsoft.spacex.util.Constants.Companion.DESC
+import com.x5bartsoft.spacex.util.Constants.Companion.QUERY_LAUNCHPAD
+import com.x5bartsoft.spacex.util.Constants.Companion.QUERY_ROCKET
 import javax.inject.Inject
 
 class LaunchesViewModel @Inject constructor(
@@ -26,13 +29,13 @@ class LaunchesViewModel @Inject constructor(
             "5e9d0d96eda699382d09d1ee"
         )
         val select = Select()
-        val populateLaunchpad = Populate("launchpad", select)
-        val populateRocket = Populate("rocket", select)
+        val populateLaunchpad = Populate(QUERY_LAUNCHPAD, select)
+        val populateRocket = Populate(QUERY_ROCKET, select)
         val listPopulate = listOf(populateLaunchpad, populateRocket)
         val selectX = SelectX()
-        val sort = Sort("desc")
+        val sort = Sort(DESC)
         val options = Options(1000, listPopulate, selectX, sort)
-        val query = Query(launchpads, rockets, true, false)
+        val query = Query(launchpads, rockets, success = true, upcoming = false)
 
 
 

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    tools:context=".ui.fragments.LaunchesBottomSheet">
+
+
+    <TextView
+        android:id="@+id/bs_launches_rockets_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/rockets"
+        android:textColor="@color/darker"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/bs_launches_rockets_scrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_rockets_textView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/bs_launches_rockets_chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_falcon_1_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/falcon_1" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_falcon_9_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/falcon_9" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_falcon_heavy_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/falcon_heavy" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_starsheep_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/starsheep" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/bs_launches_launchpad_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/launchpads"
+        android:textColor="@color/darker"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="@+id/bs_launches_rockets_textView"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_rockets_scrollView" />
+
+    <HorizontalScrollView
+        android:id="@+id/bs_launches_launchpads_scrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_launchpad_textView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/bs_launches_launchpads_chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_landing_zone_1_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vafb_slc_3w" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_landing_zone_2_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ccsfs_slc_40" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_landing_zone_4_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/stls" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_ocisly_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kwajalein_atoll" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_jrti_1_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/vafb_slc_4e" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_jrti_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/ksc_lc_39a" />
+
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <Switch
+        android:id="@+id/bs_launches_success_switch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/only_success"
+        app:layout_constraintEnd_toEndOf="@+id/bs_launches_launchpads_scrollView"
+        app:layout_constraintStart_toStartOf="@+id/bs_launches_launchpad_textView"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_launchpads_scrollView"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
+
+    <Button
+        android:id="@+id/bs_launches_apply_button"
+        style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/apply"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/bs_launches_success_switch"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/bs_launches_success_switch"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_success_switch" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,4 +12,18 @@
     <string name="success_image">success image</string>
     <string name="mission_logo">mission logo</string>
     <string name="roadster">Roadster</string>
+    <string name="rockets">Rockets</string>
+    <string name="falcon_1">Falcon 1</string>
+    <string name="falcon_9">Falcon 9</string>
+    <string name="falcon_heavy">Falcon Heavy</string>
+    <string name="starsheep">Starsheep</string>
+    <string name="launchpads">Launchpads</string>
+    <string name="vafb_slc_3w">VAFB SLC 3W</string>
+    <string name="ccsfs_slc_40">CCSFS SLC 40</string>
+    <string name="stls">STLS</string>
+    <string name="kwajalein_atoll">Kwajalein Atoll</string>
+    <string name="vafb_slc_4e">VAFB SLC 4E</string>
+    <string name="ksc_lc_39a">KSC LC 39A</string>
+    <string name="only_success">Only success</string>
+    <string name="apply">Apply</string>
 </resources>

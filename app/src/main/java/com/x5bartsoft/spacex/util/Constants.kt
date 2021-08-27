@@ -4,6 +4,9 @@ class Constants {
 
     companion object {
         const val BASE_URL = "https://api.spacexdata.com"
+        const val DESC = "desc"
+
+
 
 
         //ROOM Database
@@ -11,6 +14,7 @@ class Constants {
         const val LAUNCHES_TABLE = "launches_table"
 
         //Query
-        const val QUERY_LAUNCH_YEAR = "launch_year"
+        const val QUERY_LAUNCHPAD = "launchpad"
+        const val QUERY_ROCKET = "rocket"
     }
 }

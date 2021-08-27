@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import com.x5bartsoft.spacex.adapters.LaunchesAdapter
 import com.x5bartsoft.spacex.databinding.FragmentLaunchesBinding
@@ -49,6 +51,10 @@ class LaunchesFragment : Fragment() {
 
         setupRecyclerView()
         readDatabase()
+
+        binding.fLaunchesFloatingActionButton.setOnClickListener {
+            findNavController().navigate(R.id.action_launchesFragment_to_launchesBottomSheet)
+        }
 
         return binding.root
     }

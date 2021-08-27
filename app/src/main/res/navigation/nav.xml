@@ -9,7 +9,11 @@
         android:id="@+id/launchesFragment"
         android:name="com.x5bartsoft.spacex.ui.fragments.LaunchesFragment"
         android:label="@string/launch"
-        tools:layout="@layout/fragment_launches" />
+        tools:layout="@layout/fragment_launches" >
+        <action
+            android:id="@+id/action_launchesFragment_to_launchesBottomSheet"
+            app:destination="@id/launchesBottomSheet" />
+    </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.x5bartsoft.spacex.ui.fragments.FavoriteFragment"
@@ -20,4 +24,13 @@
         android:name="com.x5bartsoft.spacex.ui.fragments.RoadsterFragment"
         android:label="@string/roadster"
         tools:layout="@layout/fragment_roadster" />
+    <dialog
+        android:id="@+id/launchesBottomSheet"
+        android:name="com.x5bartsoft.spacex.ui.fragments.LaunchesBottomSheet"
+        android:label="bottom_sheet_launches"
+        tools:layout="@layout/bottom_sheet_launches" >
+        <action
+            android:id="@+id/action_launchesBottomSheet_to_launchesFragment"
+            app:destination="@id/launchesFragment" />
+    </dialog>
 </navigation>
