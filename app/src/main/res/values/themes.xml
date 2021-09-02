@@ -14,14 +14,16 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="ShapeAppearance.App.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+
+    <!-- CARDVIEW -->
+    <style name="ShapeAppearance.CardView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSize">7dp</item>
     </style>
 
     <style name="MyCardView" parent="Widget.MaterialComponents.CardView">
         <item name="cardBackgroundColor">@color/white</item>
-        <item name="shapeAppearance">@style/ShapeAppearance.App.MediumComponent</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.CardView</item>
     </style>
 
     <style name="CardText" parent="Widget.MaterialComponents.TextView">
@@ -29,6 +31,7 @@
         <item name="android:textColor">@color/darker</item>
     </style>
 
+    <!-- Chip -->
     <style name="IconTextStyle" parent="Widget.MaterialComponents.TextView">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/darker</item>
@@ -37,9 +40,13 @@
     </style>
 
     <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
-        <item name="chipBackgroundColor">@color/chip_background_color</item>
+        <item name="chipBackgroundColor">@color/white</item>
         <item name="android:textColor">@color/chip_text_color</item>
         <item name="checkedIconTint">@color/chip_text_color</item>
+        <item name="chipStrokeColor">@color/chip_stroke_color</item>
+        <item name="chipStrokeWidth">1dp</item>
+        <item name="chipCornerRadius">5dp</item>
+
     </style>
 
 </resources>

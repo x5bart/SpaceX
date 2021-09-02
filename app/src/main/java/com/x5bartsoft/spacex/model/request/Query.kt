@@ -5,11 +5,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Query(
     @SerializedName("launchpad")
-    val launchpad: List<String>,
+    var launchpad: List<String>?,
     @SerializedName("rocket")
-    val rocket: List<String>,
+    var rocket: List<String>?,
     @SerializedName("success")
-    val success: Boolean,
+    val success: Boolean?,
     @SerializedName("upcoming")
-    val upcoming: Boolean
+    var upcoming: Boolean
 )

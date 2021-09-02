@@ -26,4 +26,6 @@
     <string name="ksc_lc_39a">KSC LC 39A</string>
     <string name="only_success">Only success</string>
     <string name="apply">Apply</string>
+    <string name="all">All</string>
+    <string name="only_failure">Only failure</string>
 </resources>

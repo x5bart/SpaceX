@@ -66,6 +66,7 @@ class LaunchesFragment : Fragment() {
                     if (database.isNotEmpty()) {
                         Log.d("LaunchesFragment", "readDatabase called!")
                         mAdapter.setData(database[0].launches)
+                        requestApiData()
                         hideShimmerEffect()
                     } else {
                         requestApiData()

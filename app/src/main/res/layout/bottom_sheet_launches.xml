@@ -21,16 +21,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bs_launches_rockets_recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_rockets_textView"
+        tools:listitem="@layout/chip_item" />
+
     <HorizontalScrollView
         android:id="@+id/bs_launches_rockets_scrollView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/bs_launches_rockets_textView">
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_rockets_recyclerView">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -151,23 +163,12 @@
                     android:text="@string/ksc_lc_39a" />
 
 
-
             </com.google.android.material.chip.ChipGroup>
 
 
         </LinearLayout>
     </HorizontalScrollView>
 
-    <Switch
-        android:id="@+id/bs_launches_success_switch"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="@string/only_success"
-        app:layout_constraintEnd_toEndOf="@+id/bs_launches_launchpads_scrollView"
-        app:layout_constraintStart_toStartOf="@+id/bs_launches_launchpad_textView"
-        app:layout_constraintTop_toBottomOf="@+id/bs_launches_launchpads_scrollView"
-        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/bs_launches_apply_button"
@@ -178,9 +179,71 @@
         android:layout_marginBottom="16dp"
         android:text="@string/apply"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/bs_launches_success_switch"
+        app:layout_constraintEnd_toEndOf="@+id/bs_launches_launchpads_scrollView"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/bs_launches_success_switch"
-        app:layout_constraintTop_toBottomOf="@+id/bs_launches_success_switch" />
+        app:layout_constraintStart_toStartOf="@+id/bs_launches_launchpads_scrollView"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_success_scrollView" />
+
+    <TextView
+        android:id="@+id/bs_launches_success_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/darker"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:text="@string/success"
+        app:layout_constraintStart_toStartOf="@+id/bs_launches_launchpads_scrollView"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_launchpads_scrollView" />
+
+    <HorizontalScrollView
+        android:id="@+id/bs_launches_success_scrollView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bs_launches_success_textView">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/bs_launches_success_chipGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_all_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/all" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_success_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/only_success" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/bs_launches_failure_chip"
+                    style="@style/MyChipStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/only_failure" />
+
+
+            </com.google.android.material.chip.ChipGroup>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
