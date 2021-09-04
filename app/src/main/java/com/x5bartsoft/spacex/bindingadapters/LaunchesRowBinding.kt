@@ -22,12 +22,8 @@ class LaunchesRowBinding {
             if (imageUrl != null) {
                 imageView.load(imageUrl) {
                     crossfade(600)
-                    placeholder(R.drawable.ic_placeholder_error)
-                    error(R.drawable.ic_placeholder_error)
                     transformations(CircleCropTransformation())
                 }
-            } else {
-                imageView.load(R.drawable.ic_placeholder_error)
             }
         }
 

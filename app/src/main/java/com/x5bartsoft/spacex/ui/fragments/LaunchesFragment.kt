@@ -1,43 +1,49 @@
 package com.x5bartsoft.spacex.ui.fragments
 
+
 import android.os.Bundle
 import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.x5bartsoft.spacex.R
-import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import com.x5bartsoft.spacex.adapters.LaunchesAdapter
 import com.x5bartsoft.spacex.databinding.FragmentLaunchesBinding
 import com.x5bartsoft.spacex.util.NetworkResult
 import com.x5bartsoft.spacex.util.observeOnce
 import com.x5bartsoft.spacex.viewmodels.LaunchesViewModel
+import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.launch
 
+
 @ExperimentalCoroutinesApi
 @AndroidEntryPoint
 class LaunchesFragment : Fragment() {
+
+    private val args by navArgs<LaunchesFragmentArgs>()
 
     private var _binding: FragmentLaunchesBinding? = null
     private val binding get() = _binding!!
 
     private val mAdapter by lazy { LaunchesAdapter() }
     private lateinit var mainViewModel: MainViewModel
-    private lateinit var launchViewModel:LaunchesViewModel
+    private lateinit var launchViewModel: LaunchesViewModel
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
+
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
         launchViewModel = ViewModelProvider(requireActivity()).get(LaunchesViewModel::class.java)
+        super.onCreate(savedInstanceState)
     }
 
     override fun onCreateView(
@@ -47,7 +53,7 @@ class LaunchesFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentLaunchesBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
-        binding.mainViewModel  = mainViewModel
+        binding.mainViewModel = mainViewModel
 
         setupRecyclerView()
         readDatabase()
@@ -61,20 +67,20 @@ class LaunchesFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readLaunches.observeOnce(
-                viewLifecycleOwner, { database ->
-                    if (database.isNotEmpty()) {
-                        Log.d("LaunchesFragment", "readDatabase called!")
-                        mAdapter.setData(database[0].launches)
-                        requestApiData()
-                        hideShimmerEffect()
-                    } else {
-                        requestApiData()
-                    }
+            mainViewModel.readLaunches.observeOnce(viewLifecycleOwner, { database ->
+                if (database.isNotEmpty() && !args.backFromBottomSheet) {
+                    Log.d("LaunchesFragment", "readDatabase called!")
+                    mAdapter.setData(database[0].launches)
+                    hideShimmerEffect()
+                } else {
+                    requestApiData()
                 }
+            }
             )
         }
     }
+
+
 
     override fun onDestroy() {
         _binding = null

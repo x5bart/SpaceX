@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_launchesFragment_to_launchesBottomSheet"
             app:destination="@id/launchesBottomSheet" />
+        <argument
+            android:name="backFromBottomSheet"
+            app:argType="boolean"
+            android:defaultValue="false" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -31,6 +35,8 @@
         tools:layout="@layout/bottom_sheet_launches" >
         <action
             android:id="@+id/action_launchesBottomSheet_to_launchesFragment"
-            app:destination="@id/launchesFragment" />
+            app:destination="@id/launchesFragment"
+            app:popUpTo="@id/launchesFragment"
+            app:popUpToInclusive="true" />
     </dialog>
 </navigation>

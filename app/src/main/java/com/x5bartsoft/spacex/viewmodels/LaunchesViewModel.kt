@@ -1,34 +1,64 @@
 package com.x5bartsoft.spacex.viewmodels
 
 import android.app.Application
+import android.util.Log
+import androidx.datastore.dataStore
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.viewModelScope
+import com.x5bartsoft.spacex.data.DataStoreRepository
 import com.x5bartsoft.spacex.model.request.*
+import com.x5bartsoft.spacex.util.Constants.Companion.DEFAULT_LAUNCHPAD
+import com.x5bartsoft.spacex.util.Constants.Companion.DEFAULT_LIMIT
+import com.x5bartsoft.spacex.util.Constants.Companion.DEFAULT_ROCKETS
+import com.x5bartsoft.spacex.util.Constants.Companion.DEFAULT_SUCCESS
+import com.x5bartsoft.spacex.util.Constants.Companion.DEFAULT_UPCOMING
 import com.x5bartsoft.spacex.util.Constants.Companion.DESC
 import com.x5bartsoft.spacex.util.Constants.Companion.QUERY_LAUNCHPAD
 import com.x5bartsoft.spacex.util.Constants.Companion.QUERY_ROCKET
+import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.collect
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class LaunchesViewModel @Inject constructor(
     application: Application,
+    private val dataStoreRepository: DataStoreRepository,
 ) : AndroidViewModel(application) {
 
+    val readQueryFilter = dataStoreRepository.readQueryFilter
+
+    fun saveQueryFilter(
+        rockets: Set<String>,
+        rocketsId: Set<String>,
+        launchpads: Set<String>,
+        launchpadsId: Set<String>,
+        success: String,
+        successId: Int,
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        dataStoreRepository.saveQueryFilter(rockets,
+            rocketsId,
+            launchpads,
+            launchpadsId,
+            success,
+            successId)
+    }
+
+    private var rockets: MutableSet<String>? = DEFAULT_ROCKETS
+    private var launchpad: MutableSet<String>? = DEFAULT_LAUNCHPAD
+    private var success: String? = DEFAULT_SUCCESS
+
     fun applyQueries(): QueryLaunches {
-
-        val launchpads = listOf(
-            "5e9e4501f5090910d4566f83",
-            "5e9e4501f509094ba4566f84",
-            "5e9e4502f5090927f8566f85",
-            "5e9e4502f5090995de566f86",
-            "5e9e4502f509092b78566f87",
-            "5e9e4502f509094188566f88"
-        )
-
-        val rockets = listOf(
-            "5e9d0d95eda69955f709d1eb",
-            "5e9d0d95eda69973a809d1ec",
-            "5e9d0d95eda69974db09d1ed",
-            "5e9d0d96eda699382d09d1ee"
-        )
+        viewModelScope.launch {
+            readQueryFilter.collect { value ->
+                rockets =
+                    if (!value.selectedRockets.isNullOrEmpty()) value.selectedRockets.toMutableSet() else null
+                launchpad =
+                    if (!value.selectedLaunchpads.isNullOrEmpty()) value.selectedLaunchpads.toMutableSet() else null
+                success = value.selectedSuccess
+            }
+        }
 
         val select = Select()
         val populateLaunchpad = Populate(QUERY_LAUNCHPAD, select)
@@ -36,8 +66,12 @@ class LaunchesViewModel @Inject constructor(
         val listPopulate = listOf(populateLaunchpad, populateRocket)
         val selectX = SelectX()
         val sort = Sort(DESC)
-        val options = Options(1000, listPopulate, selectX, sort)
-        val query = Query(null, null, null, false)
+        val options = Options(DEFAULT_LIMIT, listPopulate, selectX, sort)
+        val l = if (launchpad != null && launchpad!!.size == 0) null else launchpad
+        val r = if (rockets != null && rockets!!.size == 0) null else rockets
+        val s = if (success == "null") null else success
+        val query = Query(l, r, s, DEFAULT_UPCOMING)
+        Log.d("LaunchesViewModel", "launchpad:$l,rockets:$r,success:$s")
 
         return QueryLaunches(options, query)
     }

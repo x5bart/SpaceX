@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/rockets"
         android:textColor="@color/darker"
         android:textSize="18sp"
@@ -27,6 +27,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
+        android:visibility="gone"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,6 +40,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +54,9 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/bs_launches_rockets_chipGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:singleLine="true"
+                app:singleSelection="false">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/bs_launches_falcon_1_chip"
@@ -80,7 +84,7 @@
                     style="@style/MyChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/starsheep" />
+                    android:text="@string/starship" />
 
 
             </com.google.android.material.chip.ChipGroup>
@@ -91,7 +95,7 @@
         android:id="@+id/bs_launches_launchpad_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:text="@string/launchpads"
         android:textColor="@color/darker"
         android:textSize="18sp"
@@ -104,7 +108,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -118,14 +122,16 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/bs_launches_launchpads_chipGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:singleLine="true"
+                app:singleSelection="false">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/bs_launches_landing_zone_1_chip"
-                    style="@style/MyChipStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/vafb_slc_3w" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/bs_launches_landing_zone_1_chip"-->
+<!--                    style="@style/MyChipStyle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/vafb_slc_3w" />-->
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/bs_launches_landing_zone_2_chip"
@@ -134,12 +140,12 @@
                     android:layout_height="wrap_content"
                     android:text="@string/ccsfs_slc_40" />
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/bs_launches_landing_zone_4_chip"
-                    style="@style/MyChipStyle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/stls" />
+<!--                <com.google.android.material.chip.Chip-->
+<!--                    android:id="@+id/bs_launches_landing_zone_4_chip"-->
+<!--                    style="@style/MyChipStyle"-->
+<!--                    android:layout_width="wrap_content"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:text="@string/stls" />-->
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/bs_launches_ocisly_chip"
@@ -175,8 +181,9 @@
         style="@style/Widget.MaterialComponents.ExtendedFloatingActionButton"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="@color/mediumGray"
         android:text="@string/apply"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/bs_launches_launchpads_scrollView"
@@ -188,11 +195,11 @@
         android:id="@+id/bs_launches_success_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
+        android:text="@string/success"
         android:textColor="@color/darker"
         android:textSize="18sp"
         android:textStyle="bold"
-        android:text="@string/success"
         app:layout_constraintStart_toStartOf="@+id/bs_launches_launchpads_scrollView"
         app:layout_constraintTop_toBottomOf="@+id/bs_launches_launchpads_scrollView" />
 
@@ -201,7 +208,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -215,13 +222,16 @@
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/bs_launches_success_chipGroup"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:singleLine="true"
+                app:singleSelection="true">
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/bs_launches_all_chip"
                     style="@style/MyChipStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:checked="true"
                     android:text="@string/all" />
 
                 <com.google.android.material.chip.Chip
