@@ -16,12 +16,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.adapters.LaunchesAdapter
 import com.x5bartsoft.spacex.databinding.FragmentLaunchesBinding
+import com.x5bartsoft.spacex.util.NetworkListener
 import com.x5bartsoft.spacex.util.NetworkResult
 import com.x5bartsoft.spacex.util.observeOnce
 import com.x5bartsoft.spacex.viewmodels.LaunchesViewModel
 import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
 
@@ -37,6 +39,7 @@ class LaunchesFragment : Fragment() {
     private val mAdapter by lazy { LaunchesAdapter() }
     private lateinit var mainViewModel: MainViewModel
     private lateinit var launchViewModel: LaunchesViewModel
+    private lateinit var networkListener: NetworkListener
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,11 +59,28 @@ class LaunchesFragment : Fragment() {
         binding.mainViewModel = mainViewModel
 
         setupRecyclerView()
-        readDatabase()
+//        readDatabase()
+
+        launchViewModel.readBeckOnline.observe(viewLifecycleOwner, {
+            launchViewModel.backOnline = it
+        })
 
         binding.fLaunchesFloatingActionButton.setOnClickListener {
             findNavController().navigate(R.id.action_launchesFragment_to_launchesBottomSheet)
         }
+
+        lifecycleScope.launchWhenCreated {
+            networkListener = NetworkListener()
+            networkListener.checkNetworkAvailability(requireContext())
+                .collect { status ->
+                    Log.d("NetworkListener", status.toString())
+                    launchViewModel.networkStatus = status
+                    launchViewModel.showNetworkStatus()
+                    readDatabase()
+                }
+        }
+
+
 
         return binding.root
     }

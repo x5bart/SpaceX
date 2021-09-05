@@ -210,6 +210,7 @@
                     app:layout_constraintStart_toStartOf="@+id/l_launch_main_imageView"
                     app:layout_constraintTop_toTopOf="@+id/l_launch_main_imageView" />
 
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
         </com.google.android.material.card.MaterialCardView>

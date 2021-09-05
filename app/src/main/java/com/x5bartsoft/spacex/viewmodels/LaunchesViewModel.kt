@@ -2,8 +2,10 @@ package com.x5bartsoft.spacex.viewmodels
 
 import android.app.Application
 import android.util.Log
+import android.widget.Toast
 import androidx.datastore.dataStore
 import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
 import com.x5bartsoft.spacex.data.DataStoreRepository
 import com.x5bartsoft.spacex.model.request.*
@@ -28,6 +30,10 @@ class LaunchesViewModel @Inject constructor(
 ) : AndroidViewModel(application) {
 
     val readQueryFilter = dataStoreRepository.readQueryFilter
+    val readBeckOnline = dataStoreRepository.readBeckOnline.asLiveData()
+
+    var networkStatus = false
+    var backOnline = false
 
     fun saveQueryFilter(
         rockets: Set<String>,
@@ -44,6 +50,11 @@ class LaunchesViewModel @Inject constructor(
             success,
             successId)
     }
+
+    private fun saveBackOnline(backOnline: Boolean) =
+        viewModelScope.launch(Dispatchers.IO) {
+            dataStoreRepository.saveBackOnline(backOnline)
+        }
 
     private var rockets: MutableSet<String>? = DEFAULT_ROCKETS
     private var launchpad: MutableSet<String>? = DEFAULT_LAUNCHPAD
@@ -74,5 +85,17 @@ class LaunchesViewModel @Inject constructor(
         Log.d("LaunchesViewModel", "launchpad:$l,rockets:$r,success:$s")
 
         return QueryLaunches(options, query)
+    }
+
+    fun showNetworkStatus() {
+        if (!networkStatus) {
+            Toast.makeText(getApplication(), "No Internet Connection", Toast.LENGTH_SHORT).show()
+            saveBackOnline(true)
+        } else if (networkStatus) {
+            if (backOnline) {
+                Toast.makeText(getApplication(), "We're back online.", Toast.LENGTH_SHORT).show()
+                saveBackOnline(false)
+            }
+        }
     }
 }
