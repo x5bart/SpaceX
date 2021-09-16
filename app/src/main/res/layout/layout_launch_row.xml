@@ -12,6 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
+        onRecipeClickListener="@{result}"
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
@@ -58,7 +59,7 @@
                     android:layout_marginStart="8dp"
                     android:ellipsize="end"
                     android:fontFamily="sans-serif-condensed"
-                    android:gravity="left"
+                    android:gravity="start"
                     android:maxLines="1"
                     android:text="@{result.name}"
                     android:textColor="@color/darker"
@@ -204,7 +205,7 @@
                     android:id="@+id/f_overview_gradient_overlay"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:background="@drawable/gradient"
+                    android:background="@drawable/gradient_launch_row"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/l_launch_main_imageView"
                     app:layout_constraintStart_toStartOf="@+id/l_launch_main_imageView"

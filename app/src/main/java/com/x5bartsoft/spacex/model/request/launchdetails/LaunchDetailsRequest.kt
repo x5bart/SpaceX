@@ -1,9 +1,9 @@
-package com.x5bartsoft.spacex.model.request
+package com.x5bartsoft.spacex.model.request.launchdetails
 
 
 import com.google.gson.annotations.SerializedName
 
-data class QueryLaunches(
+data class LaunchDetailsRequest(
     @SerializedName("options")
     val options: Options,
     @SerializedName("query")

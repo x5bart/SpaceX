@@ -1,23 +1,15 @@
 package com.x5bartsoft.spacex.model.response.launches
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
+import kotlinx.parcelize.RawValue
 
+@Parcelize
 data class Links(
-    @SerializedName("article")
-    val article: Any,
     @SerializedName("flickr")
-    val flickr: Flickr,
+    val flickr: @RawValue Flickr?,
     @SerializedName("patch")
-    val patch: Patch,
-    @SerializedName("presskit")
-    val presskit: Any,
-    @SerializedName("reddit")
-    val reddit: Reddit,
-    @SerializedName("webcast")
-    val webcast: String,
-    @SerializedName("wikipedia")
-    val wikipedia: Any,
-    @SerializedName("youtube_id")
-    val youtubeId: String
-)
+    val patch: @RawValue Patch?,
+):Parcelable

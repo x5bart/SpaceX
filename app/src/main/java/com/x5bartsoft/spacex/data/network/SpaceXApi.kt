@@ -1,7 +1,8 @@
 package com.x5bartsoft.spacex.data.network
 
-import com.x5bartsoft.spacex.model.request.Query
-import com.x5bartsoft.spacex.model.request.QueryLaunches
+import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
+import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
 import com.x5bartsoft.spacex.model.response.launchpad.Launchpads
 import com.x5bartsoft.spacex.model.rockets.Rockets
@@ -13,7 +14,10 @@ import retrofit2.http.POST
 interface SpaceXApi {
 
     @POST("/v4/launches/query")
-    suspend fun getAllLaunches(@Body query: QueryLaunches?): Response<Launches>
+    suspend fun getAllLaunches(@Body request: LaunchesRequest?): Response<Launches>
+
+    @POST("/v4/launches/query")
+    suspend fun getLaunchDetails(@Body detailsRequest: LaunchDetailsRequest?): Response<LaunchDetail>
 
     @GET("/v4/rockets")
     suspend fun getAllRockets(): Response<Rockets>

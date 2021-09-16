@@ -17,6 +17,9 @@
             android:name="backFromBottomSheet"
             app:argType="boolean"
             android:defaultValue="false" />
+        <action
+            android:id="@+id/action_launchesFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
@@ -39,4 +42,13 @@
             app:popUpTo="@id/launchesFragment"
             app:popUpToInclusive="true" />
     </dialog>
+    <activity
+        android:id="@+id/detailActivity"
+        android:name="com.x5bartsoft.spacex.ui.DetailActivity"
+        android:label="Details"
+        tools:layout="@layout/activity_detail" >
+        <argument
+            android:name="result"
+            app:argType="com.x5bartsoft.spacex.model.response.launches.Doc" />
+    </activity>
 </navigation>

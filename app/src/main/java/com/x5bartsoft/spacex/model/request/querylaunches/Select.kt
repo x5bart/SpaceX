@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex.model.request
+package com.x5bartsoft.spacex.model.request.querylaunches
 
 
 import com.google.gson.annotations.SerializedName

@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex.model.request
+package com.x5bartsoft.spacex.model.request.querylaunches
 
 
 import com.google.gson.annotations.SerializedName
@@ -10,10 +10,8 @@ data class SelectX(
     val details: Int = 1,
     @SerializedName("flight_number")
     val flightNumber: Int = 1,
-    @SerializedName("id")
-    val id: Int = 1,
     @SerializedName("links")
-    val links: Int = 1,
+    val links: Links = Links(Flickr(1), Patch()),
     @SerializedName("name")
     val name: Int = 1,
 )

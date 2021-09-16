@@ -4,6 +4,9 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="app/src/main/res/drawable/gradient.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/gradient_launch_row.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/gradient_main_owerview.xml" value="0.3807291666666667" />
+        <entry key="app/src/main/res/drawable/ic_article.xml" value="0.30885416666666665" />
         <entry key="app/src/main/res/drawable/ic_car.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/ic_date.xml" value="0.309375" />
         <entry key="app/src/main/res/drawable/ic_group_5.xml" value="0.3748717948717949" />
@@ -11,12 +14,16 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.2760416666666667" />
         <entry key="app/src/main/res/drawable/ic_launchpad1.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/ic_placeholder_error.xml" value="0.3748717948717949" />
+        <entry key="app/src/main/res/drawable/ic_presskit.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/image_background.xml" value="0.4640625" />
+        <entry key="app/src/main/res/layout/activity_detail.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.43385416666666665" />
         <entry key="app/src/main/res/layout/bottom_sheet_launches.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/chip_item.xml" value="1.0" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/fragment_launches.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/fragment_launchpad.xml" value="0.20416666666666666" />
+        <entry key="app/src/main/res/layout/fragment_overview.xml" value="0.35052083333333334" />
         <entry key="app/src/main/res/layout/fragment_roadster.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/layout_launch_row.xml" value="0.375" />
         <entry key="app/src/main/res/layout/layout_launch_row_placeholder.xml" value="0.375" />

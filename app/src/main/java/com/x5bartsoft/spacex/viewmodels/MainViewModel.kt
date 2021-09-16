@@ -1,15 +1,14 @@
 package com.x5bartsoft.spacex.viewmodels
 
 import android.app.Application
-import android.content.Context
-import android.net.ConnectivityManager
-import android.net.NetworkCapabilities
 import androidx.lifecycle.*
 import com.x5bartsoft.spacex.data.Repository
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
-import com.x5bartsoft.spacex.model.request.Query
-import com.x5bartsoft.spacex.model.request.QueryLaunches
+import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
+import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
+import com.x5bartsoft.spacex.util.InternetConnection
 import com.x5bartsoft.spacex.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers
@@ -35,18 +34,23 @@ class MainViewModel @Inject constructor(
 
     /** RETROFIT */
     var launchesResponse: MutableLiveData<NetworkResult<Launches>> = MutableLiveData()
+    var launchesDetailsResponse: MutableLiveData<NetworkResult<LaunchDetail>> = MutableLiveData()
 
+    fun getLaunches(request: LaunchesRequest) = viewModelScope.launch {
+        getSafeLaunches(request)
+    }
 
-    fun getLaunches(query: QueryLaunches) = viewModelScope.launch {
-        getSafeLaunches(query)
+    fun getLaunchesDetails(request: LaunchDetailsRequest) = viewModelScope.launch {
+        getSafeLaunchesDetails(request)
     }
 
 
-    private suspend fun getSafeLaunches(query: QueryLaunches) {
+    private suspend fun getSafeLaunches(request: LaunchesRequest) {
         launchesResponse.value = NetworkResult.Loading()
-        if (hasInternetConnection()) {
+        val internetConnection = InternetConnection(getApplication())
+        if (internetConnection.hasInternetConnection()) {
             try {
-                val response = repository.remote.getAllLaunches(query)
+                val response = repository.remote.getAllLaunches(request)
                 launchesResponse.value = handleLaunchesResponse(response)
 
                 val launches = launchesResponse.value!!.data
@@ -57,6 +61,22 @@ class MainViewModel @Inject constructor(
         } else {
             launchesResponse.value = NetworkResult.Error("No Internet Connection")
         }
+    }
+
+    private suspend fun getSafeLaunchesDetails(request: LaunchDetailsRequest) {
+        launchesDetailsResponse.value = NetworkResult.Loading()
+        val internetConnection = InternetConnection(getApplication())
+        if (internetConnection.hasInternetConnection()) {
+            try {
+                val response = repository.remote.getLaunchesDetail(request)
+                launchesDetailsResponse.value = handleLaunchDetailsResponse(response)
+            } catch (e: Exception) {
+                launchesDetailsResponse.value = NetworkResult.Error("Launch detail not found.")
+            }
+        } else {
+            launchesDetailsResponse.value = NetworkResult.Error("No Internet Connection")
+        }
+
     }
 
 
@@ -84,18 +104,23 @@ class MainViewModel @Inject constructor(
         }
     }
 
-
-    private fun hasInternetConnection(): Boolean {
-        val connectivityManager = getApplication<Application>().getSystemService(
-            Context.CONNECTIVITY_SERVICE
-        ) as ConnectivityManager
-        val activeNetwork = connectivityManager.activeNetwork ?: return false
-        val capabilities = connectivityManager.getNetworkCapabilities(activeNetwork) ?: return false
+    private fun handleLaunchDetailsResponse(response: Response<LaunchDetail>): NetworkResult<LaunchDetail>? {
         return when {
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
-            capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET) -> true
-            else -> false
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout")
+            }
+            response.body()!!.docs.isNullOrEmpty() -> {
+                NetworkResult.Error("No launch details found")
+            }
+            response.isSuccessful -> {
+                val launchDetail = response.body()
+                NetworkResult.Success(launchDetail!!)
+            }
+            else -> NetworkResult.Error(response.message())
         }
     }
+
+
+
+
 }

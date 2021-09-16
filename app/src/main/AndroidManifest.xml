@@ -14,8 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceX">
         <activity
-            android:name=".ui.fragments.DetailActivity"
-            android:exported="true" />
+            android:name=".ui.DetailActivity"
+            android:exported="true"
+            android:label="Details"
+            android:theme="@style/DetailActivityStyle"/>
         <activity
             android:name=".ui.MainActivity"
             android:exported="true">

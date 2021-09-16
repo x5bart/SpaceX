@@ -6,6 +6,9 @@ class Constants {
         const val BASE_URL = "https://api.spacexdata.com"
         const val DESC = "desc"
 
+        const val BUNDLE_LAUNCHES_KEY ="launchesBundle"
+        const val BUNDLE_DETAILS_KEY ="detailsBundle"
+
         val ROCKETS_NAME = mapOf<String, String>(
             "5e9d0d95eda69955f709d1eb" to "Falcon 1",
             "5e9d0d95eda69973a809d1ec" to "Falcon 9",
@@ -34,7 +37,15 @@ class Constants {
 
         //Query
         const val QUERY_LAUNCHPAD = "launchpad"
+        const val QUERY_LAUNCHES = "launches"
         const val QUERY_ROCKET = "rocket"
+        const val QUERY_ROCKETS = "rockets"
+        const val QUERY_PAYLOADS = "payloads"
+        const val QUERY_CORES = "cores"
+        const val QUERY_CORE = "core"
+        const val QUERY_LANDPAD = "landpad"
+        const val QUERY_SHIPS = "ships"
+        const val QUERY_CAPSULES = "capsules"
 
         //Bottom Sheet and Preferences
         val DEFAULT_ROCKETS:MutableSet<String> = mutableSetOf()

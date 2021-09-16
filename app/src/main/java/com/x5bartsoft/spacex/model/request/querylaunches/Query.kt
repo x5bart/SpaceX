@@ -1,4 +1,4 @@
-package com.x5bartsoft.spacex.model.request
+package com.x5bartsoft.spacex.model.request.querylaunches
 
 
 import com.google.gson.annotations.SerializedName
@@ -11,5 +11,5 @@ data class Query(
     @SerializedName("success")
     val success: String?,
     @SerializedName("upcoming")
-    var upcoming: Boolean
+    var upcoming: Boolean = false
 )

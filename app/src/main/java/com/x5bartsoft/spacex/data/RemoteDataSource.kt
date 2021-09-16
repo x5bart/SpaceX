@@ -1,8 +1,9 @@
 package com.x5bartsoft.spacex.data
 
 import com.x5bartsoft.spacex.data.network.SpaceXApi
-import com.x5bartsoft.spacex.model.request.Query
-import com.x5bartsoft.spacex.model.request.QueryLaunches
+import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
+import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
 import com.x5bartsoft.spacex.model.response.launchpad.Launchpads
 import com.x5bartsoft.spacex.model.rockets.Rockets
@@ -11,8 +12,12 @@ import javax.inject.Inject
 
 class RemoteDataSource @Inject constructor(private val spaceXApi: SpaceXApi) {
 
-    suspend fun getAllLaunches(query: QueryLaunches?): Response<Launches> {
-        return spaceXApi.getAllLaunches(query)
+    suspend fun getAllLaunches(request: LaunchesRequest?): Response<Launches> {
+        return spaceXApi.getAllLaunches(request)
+    }
+
+    suspend fun getLaunchesDetail(detailsRequest: LaunchDetailsRequest?): Response<LaunchDetail> {
+        return spaceXApi.getLaunchDetails(detailsRequest)
     }
 
     suspend fun getAllRockets(): Response<Rockets> {
