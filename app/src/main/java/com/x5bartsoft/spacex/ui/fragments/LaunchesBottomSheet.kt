@@ -97,14 +97,23 @@ class LaunchesBottomSheet : BottomSheetDialogFragment() {
         }
 
         binding.bsLaunchesSuccessChipGroup.setOnCheckedChangeListener { group, checkedId ->
+            Log.d("LaunchesBottomSheet", "successId saved: $successId successId clicked:$checkedId")
             val chip = group.findViewById<Chip>(checkedId)
-            val selectedSuccess = when (chip.text.toString()) {
-                "Only success" -> "true"
-                "Only failure" -> "false"
-                else -> "null"
+            if (checkedId != -1) {
+                val selectedSuccess = when (chip.text.toString()) {
+                    "Only success" -> "true"
+                    "Only failure" -> "false"
+                    else -> "null"
+                }
+                success = selectedSuccess
+                successId = checkedId
+                Log.d("LaunchesBottomSheet", "successId saved: $successId")
+            } else {
+                success = "null"
+                successId = 1
+                binding.bsLaunchesAllChip.isChecked = true
             }
-            success = selectedSuccess
-            successId = checkedId
+
         }
 
         binding.bsLaunchesApplyButton.setOnClickListener {
@@ -128,6 +137,7 @@ class LaunchesBottomSheet : BottomSheetDialogFragment() {
 
     private fun updateChip(chipId: Int, chipGroup: ChipGroup) {
         if (chipId != 0) {
+            Log.d("LaunchesBottomSheet", "updateChip: $chipId")
             try {
                 chipGroup.findViewById<Chip>(chipId).isChecked = true
             } catch (e: Exception) {

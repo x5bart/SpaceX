@@ -35,6 +35,12 @@ data class Select(
     @SerializedName("type")
     val type: Int? = -1,
     @SerializedName("year_built")
-    val yearBuilt: Int? = -1
+    val yearBuilt: Int? = -1,
+    @SerializedName("success")
+    val success: Int? = -1,
+    @SerializedName("first_flight")
+    val firstFlight: Int? = -1,
+    @SerializedName("reuse_count")
+    val reuse_count: Int? = -1,
 
-)
+    )

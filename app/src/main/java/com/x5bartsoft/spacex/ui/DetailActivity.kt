@@ -33,9 +33,7 @@ class DetailActivity : AppCompatActivity() {
     private val args by navArgs<DetailActivityArgs>()
 
     private lateinit var mainViewModel: MainViewModel
-    private var detailBundle:Parcelable? = null
-
-
+    private var detailBundle: Parcelable? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,11 +50,9 @@ class DetailActivity : AppCompatActivity() {
         requestApiData()
 
 
-
-
     }
 
-    private fun setupTab(){
+    private fun setupTab() {
         val fragments = ArrayList<Fragment>()
         fragments.add(OverviewFragment())
         fragments.add(LaunchpadFragment())
@@ -100,13 +96,13 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun requestApiData() {
-        Log.d("OverviewFragment", "requestApiData called!")
+        Log.d("DetailActivity", "requestApiData called!")
         mainViewModel.getLaunchesDetails(applyRequest())
         mainViewModel.launchesDetailsResponse.observe(this, { response ->
             when (response) {
                 is NetworkResult.Success -> {
 
-                    response.data?.let { Log.d("OverviewFragment", "result: $it") }
+                    response.data?.let { Log.d("DetailActivity", "result: $it") }
 
                     detailBundle = response.data!!.docs[0]
                     setupTab()
@@ -117,7 +113,7 @@ class DetailActivity : AppCompatActivity() {
                         response.message.toString(),
                         Toast.LENGTH_SHORT).show()
                 }
-                is NetworkResult.Loading -> Log.d("OverviewFragment", "Loading")
+                is NetworkResult.Loading -> Log.d("DetailActivity", "Loading")
             }
         })
     }
@@ -139,7 +135,7 @@ class DetailActivity : AppCompatActivity() {
             Select(image = 1, name = 1, id = 1, fullName = 1, locality = 1, region = 1, details = 1)
         val landpad =
             Populate(path = Constants.QUERY_LANDPAD, select = selectLandpad, populate = emptyList())
-        val selectCore = Select(serial = 1, id = 1)
+        val selectCore = Select(serial = 1, id = 1, reuse_count = 1)
         val core =
             Populate(path = Constants.QUERY_CORE, select = selectCore, populate = emptyList())
         val populateCores = listOf(core, landpad)
@@ -147,7 +143,7 @@ class DetailActivity : AppCompatActivity() {
         //PAYLOADS
         val payloads = Populate(path = Constants.QUERY_PAYLOADS, populate = emptyList(), Select())
         //ROCKET
-        val rocket = Populate(path = Constants.QUERY_ROCKET, emptyList(), Select())
+        val rocket = Populate(path = Constants.QUERY_ROCKET, emptyList(), Select(firstFlight = 1))
         //LAUNCHPAD
         val selectRockets = Select(name = 1)
         val rockets =
@@ -162,16 +158,19 @@ class DetailActivity : AppCompatActivity() {
         val listPopulate = listOf(launchpad, rocket, payloads, cores, ships, capsules)
 
         val selectLaunch =
-            Select(name = 1, id = 1, dateLocal = 1, flightNumber = 1, details = 1, links = 1)
+            Select(name = 1,
+                id = 1,
+                dateLocal = 1,
+                flightNumber = 1,
+                details = 1,
+                links = 1,
+                success = 1)
         val options = Options(listPopulate, selectLaunch)
         val query = Query(args.result.name)
 
-        Log.d("LaunchesFragment", "request :${LaunchDetailsRequest(options, query)}")
+        Log.d("DetailActivity", "request :${LaunchDetailsRequest(options, query)}")
         return LaunchDetailsRequest(options, query)
     }
-
-
-
 
 
 }

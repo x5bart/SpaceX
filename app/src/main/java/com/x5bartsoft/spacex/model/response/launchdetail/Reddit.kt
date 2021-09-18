@@ -13,7 +13,7 @@ data class Reddit(
     @SerializedName("launch")
     val launch: String,
     @SerializedName("media")
-    val media:@RawValue Any,
+    val media:@RawValue String,
     @SerializedName("recovery")
     val recovery: String
 ) : Parcelable

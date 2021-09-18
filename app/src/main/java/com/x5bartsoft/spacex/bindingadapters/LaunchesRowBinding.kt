@@ -40,7 +40,6 @@ class LaunchesRowBinding {
         @BindingAdapter("loadPatchImageFromUrl")
         @JvmStatic
         fun loadPatchImageFromUrl(imageView: ImageView, imageUrl: String?) {
-            Log.d("LaunchesBindingPatch", "imageUrl:$imageUrl")
             if (imageUrl != null) {
                 imageView.load(imageUrl) {
                     crossfade(600)
@@ -52,7 +51,6 @@ class LaunchesRowBinding {
         @BindingAdapter("loadMainImageFromUrl")
         @JvmStatic
         fun loadMainImageFromUrl(imageView: ImageView, imageUrl: List<String>?) {
-            Log.d("LaunchesBindingMain", "imageUrl:$imageUrl")
             if (imageUrl!!.isNotEmpty()) {
                     imageView.load(imageUrl[0]) {
                         crossfade(600)

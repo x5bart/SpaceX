@@ -31,7 +31,25 @@
         <item name="android:textColor">@color/darker</item>
     </style>
 
-    <!-- Chip -->
+    <!-- DETAIL CARDVIEW -->
+    <style name="ShapeAppearance.DetailCardView" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">7dp</item>
+    </style>
+
+    <style name="DetailCardView" parent="Widget.MaterialComponents.CardView">
+        <item name="cardBackgroundColor">@color/white</item>
+        <item name="shapeAppearance">@style/ShapeAppearance.DetailCardView</item>
+    </style>
+
+    <style name="DetailCardText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:textColor">@color/darker</item>
+        <item name="android:textSize">9sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <!-- ICON -->
     <style name="IconTextStyle" parent="Widget.MaterialComponents.TextView">
         <item name="android:gravity">center_horizontal</item>
         <item name="android:textColor">@color/darker</item>
@@ -39,6 +57,7 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <!-- Chip -->
     <style name="MyChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
         <item name="chipBackgroundColor">@color/white</item>
         <item name="android:textColor">@color/chip_text_color</item>
