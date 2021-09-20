@@ -37,31 +37,6 @@ class LaunchesRowBinding {
         }
 
 
-        @BindingAdapter("loadPatchImageFromUrl")
-        @JvmStatic
-        fun loadPatchImageFromUrl(imageView: ImageView, imageUrl: String?) {
-            if (imageUrl != null) {
-                imageView.load(imageUrl) {
-                    crossfade(600)
-                    transformations(CircleCropTransformation())
-                }
-            }
-        }
-
-        @BindingAdapter("loadMainImageFromUrl")
-        @JvmStatic
-        fun loadMainImageFromUrl(imageView: ImageView, imageUrl: List<String>?) {
-            if (imageUrl!!.isNotEmpty()) {
-                    imageView.load(imageUrl[0]) {
-                        crossfade(600)
-                        placeholder(R.drawable.ic_placeholder_error)
-                        error(R.drawable.ic_placeholder_error)
-                }
-            } else {
-                imageView.load(R.drawable.ic_placeholder_error)
-            }
-        }
-
         @BindingAdapter("getFlightDate")
         @JvmStatic
         fun getFlightDate(view: TextView, date: String) {

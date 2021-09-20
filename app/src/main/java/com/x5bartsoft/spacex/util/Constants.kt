@@ -63,5 +63,8 @@ class Constants {
         const val PREFERENCES_SUCCESS_ID = "successId"
         const val PREFERENCES_BACK_ONLINE = "backOnline"
 
+        //ZoomOutPageTransformer
+        const val MIN_SCALE = 0.95f
+        const val MIN_ALPHA = 0.8f
     }
 }

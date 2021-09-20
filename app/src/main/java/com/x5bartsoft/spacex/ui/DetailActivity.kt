@@ -55,17 +55,18 @@ class DetailActivity : AppCompatActivity() {
     private fun setupTab() {
         val fragments = ArrayList<Fragment>()
         fragments.add(OverviewFragment())
-        fragments.add(LaunchpadFragment())
         fragments.add(RocketFragment())
+        fragments.add(LaunchpadFragment())
 
         val titles = ArrayList<String>()
         titles.add("Overview")
-        titles.add("Launchpad")
         titles.add("Rocket")
+        titles.add("Launchpad")
 
-        val resultBundle = Bundle()
-        resultBundle.putParcelable(BUNDLE_LAUNCHES_KEY, args.result)
-        resultBundle.putParcelable(BUNDLE_DETAILS_KEY, detailBundle)
+        val resultBundle = Bundle().apply {
+            putParcelable(BUNDLE_LAUNCHES_KEY, args.result)
+            putParcelable(BUNDLE_DETAILS_KEY, detailBundle)
+        }
 
         val pagerAdapter = PagerAdapter(
             resultBundle,
@@ -75,6 +76,7 @@ class DetailActivity : AppCompatActivity() {
 
         binding.aDetailViewPager.apply {
             adapter = pagerAdapter
+            isUserInputEnabled = false
         }
 
         TabLayoutMediator(binding.aDetailsTabLayout, binding.aDetailViewPager) { tab, position ->

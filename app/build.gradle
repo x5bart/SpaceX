@@ -115,4 +115,7 @@ dependencies {
 
     //CircleImageView
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+
+    //ViewPager dots
+    implementation 'com.tbuonomo:dotsindicator:4.2'
 }

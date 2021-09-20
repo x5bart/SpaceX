@@ -8,21 +8,23 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
 import coil.load
 import com.x5bartsoft.spacex.databinding.LayoutGalleryItemBinding
+import com.x5bartsoft.spacex.model.ImageLaunch
+import com.x5bartsoft.spacex.model.response.launchdetail.Doc
+import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.util.LaunchDiffUtil
 
-class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.MyViewHolder>() {
+class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.MyViewHolder>() {
 
-    private var imageList = arrayListOf<String>()
+    private var imageList = arrayListOf<ImageLaunch>()
     private lateinit var viewPager: ViewPager2
 
     class MyViewHolder(private var binding: LayoutGalleryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val imageView = binding.lGalleryItemImageView
+        val imageView = binding.lGalleryItemGalleryImageView
 
-        fun bind(url: String) {
-            binding.lGalleryItemImageView.load(url)
-
+        fun bind(currentImage: ImageLaunch) {
+            binding.detail = currentImage
         }
 
         companion object {
@@ -44,25 +46,18 @@ class GalleryAdapter: RecyclerView.Adapter<GalleryAdapter.MyViewHolder>() {
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val currentImage = imageList[position]
         holder.bind(currentImage)
-        if (position == imageList.size - 2) {
-            viewPager.post(run)
-        }
+
     }
 
     override fun getItemCount(): Int {
         return imageList.size
     }
 
-    @SuppressLint("NotifyDataSetChanged")
-    private val run = Runnable {
-        imageList.addAll(imageList)
-        notifyDataSetChanged()
-    }
 
-    fun setData(newData: ArrayList<String>, viewPager2: ViewPager2) {
+    fun setData(newData: ArrayList<ImageLaunch>, viewPager2: ViewPager2) {
         viewPager = viewPager2
-        val gallaryDiffUtil = LaunchDiffUtil(imageList, newData)
-        val diffUtilResult = DiffUtil.calculateDiff(gallaryDiffUtil)
+        val galleryDiffUtil = LaunchDiffUtil(imageList, newData)
+        val diffUtilResult = DiffUtil.calculateDiff(galleryDiffUtil)
         imageList = newData
         diffUtilResult.dispatchUpdatesTo(this)
 

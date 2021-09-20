@@ -15,11 +15,10 @@ import android.net.Uri
 import android.os.Handler
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.CompositePageTransformer
-import androidx.viewpager2.widget.MarginPageTransformer
-import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.tabs.TabLayoutMediator
 import com.x5bartsoft.spacex.adapters.GalleryAdapter
-import kotlin.math.abs
+import com.x5bartsoft.spacex.model.ImageLaunch
+import com.x5bartsoft.spacex.util.ZoomOutPageTransformer
 
 
 @AndroidEntryPoint
@@ -31,10 +30,8 @@ class OverviewFragment : Fragment() {
     private var launchBundle: Doc? = null
     private var detailBundle: com.x5bartsoft.spacex.model.response.launchdetail.Doc? = null
 
-    private lateinit var galleryItemList: ArrayList<String>
-    private lateinit var galleryAdapter: GalleryAdapter
-    private lateinit var galleryHandle: Handler
-    private lateinit var galleryRunnable: Runnable
+    private lateinit var galleryItemList: ArrayList<ImageLaunch>
+    private val galleryAdapter by lazy { GalleryAdapter() }
 
 
     override fun onCreateView(
@@ -53,7 +50,8 @@ class OverviewFragment : Fragment() {
 
         bindImageView()
 
-        sliderItem()
+        getImageList()
+        setupViewPager()
 
 
 
@@ -61,55 +59,23 @@ class OverviewFragment : Fragment() {
     }
 
 
-    private fun sliderItem() {
-        galleryItemList = ArrayList()
-        getImageList()
-        galleryAdapter = GalleryAdapter()
-        val viewPager = binding.fOverviewGalleryViewPager
+    private fun setupViewPager() {
+        val viewPager = binding.fOverviewGalleryViewPager.apply {
+            adapter = galleryAdapter
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 3
+            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            setPageTransformer(ZoomOutPageTransformer())
+        }
+        binding.fOverviewWormDotsIndicator.setViewPager2(viewPager)
         galleryAdapter.setData(galleryItemList, viewPager)
-
-        viewPager.adapter = galleryAdapter
-        viewPager.clipToPadding = false
-        viewPager.clipChildren = false
-        viewPager.offscreenPageLimit = 3
-        viewPager.getChildAt(0).overScrollMode =
-            RecyclerView.OVER_SCROLL_NEVER
-
-        val compositePageTransformer = CompositePageTransformer()
-        compositePageTransformer.addTransformer(MarginPageTransformer(40))
-        compositePageTransformer.addTransformer { page, position ->
-            val r: Float = 1 - abs(position)
-            page.scaleY = 0.85f + r * 0.15f
-        }
-
-        viewPager.setPageTransformer(compositePageTransformer)
-        galleryHandle = Handler()
-        galleryRunnable = Runnable {
-            viewPager.currentItem = viewPager.currentItem + 1
-        }
-        viewPager.registerOnPageChangeCallback(
-            object : ViewPager2.OnPageChangeCallback() {
-                override fun onPageSelected(position: Int) {
-                    super.onPageSelected(position)
-                    galleryHandle.removeCallbacks(galleryRunnable)
-                    galleryHandle.postDelayed(galleryRunnable, 1000)
-                }
-            }
-
-        )
-
+//        val tabLayout = binding.fOverviewTabLayout
+//
+//        TabLayoutMediator(tabLayout, viewPager) { tab, position ->
+//        }.attach()
     }
 
-    override fun onPause() {
-        super.onPause()
-        galleryHandle.removeCallbacks(galleryRunnable)
-
-    }
-
-    override fun onResume() {
-        super.onResume()
-        galleryHandle.postDelayed(galleryRunnable, 2000)
-    }
 
     override fun onDestroy() {
         _binding = null
@@ -118,15 +84,16 @@ class OverviewFragment : Fragment() {
 
     private fun bindImageView() {
         if (detailBundle != null) {
-            bind(binding.fOverviewArticleImageView, detailBundle!!.links.article)
-            bind(binding.fOverviewYoutubeImageView, detailBundle!!.links.webcast)
-            bind(binding.fOverviewPressKitImageView, detailBundle!!.links.presskit)
-            bind(binding.fOverviewRedditImageView, detailBundle!!.links.reddit.campaign)
-            bind(binding.fOverviewWikiImageView, detailBundle!!.links.wikipedia)
+            bindLinksForImage(binding.fOverviewArticleImageView, detailBundle!!.links.article)
+            bindLinksForImage(binding.fOverviewYoutubeImageView, detailBundle!!.links.webcast)
+            bindLinksForImage(binding.fOverviewPressKitImageView, detailBundle!!.links.presskit)
+            bindLinksForImage(binding.fOverviewRedditImageView,
+                detailBundle!!.links.reddit.campaign)
+            bindLinksForImage(binding.fOverviewWikiImageView, detailBundle!!.links.wikipedia)
         }
     }
 
-    private fun bind(view: ImageView, url: String) {
+    private fun bindLinksForImage(view: ImageView, url: String) {
         view.setOnClickListener {
             if (url.isNotEmpty()) {
                 val intent = Intent(Intent.ACTION_VIEW)
@@ -137,8 +104,15 @@ class OverviewFragment : Fragment() {
     }
 
     private fun getImageList() {
+        galleryItemList = ArrayList()
+        val args = detailBundle!!
+        val pathImage = args.links.patch.small
+        val name = args.name
+        val flightNumber = args.flightNumber
+        val date = args.dateLocal
+        val success = args.success
         for (i in detailBundle!!.links.flickr.original) {
-            galleryItemList.add(i)
+            galleryItemList.add(ImageLaunch(pathImage, name, i, flightNumber, date, success))
         }
     }
 

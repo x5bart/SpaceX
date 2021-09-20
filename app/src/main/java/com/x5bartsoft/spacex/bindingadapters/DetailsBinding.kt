@@ -49,19 +49,9 @@ class DetailsBinding {
             view.text = date
         }
 
-        @BindingAdapter("getFlightDateDetail")
-        @JvmStatic
-        fun getFlightDateDetails(view: TextView, date: String) {
-            val dateConvert = Instant.parse(date).toLocalDateTime(TimeZone.UTC)
-            val date = dateConvert.toString().substringBeforeLast("T")
-            view.text = date
-
-        }
-
         @BindingAdapter("getCapsulesName")
         @JvmStatic
         fun getCapsulesName(view: TextView, data: List<Capsule>?) {
-
             var capsulesName = ""
             if (data!!.isNotEmpty()) {
                 for (i in data) {
@@ -87,15 +77,6 @@ class DetailsBinding {
         }
 
         @SuppressLint("SetTextI18n")
-        @BindingAdapter("getSuccess")
-        @JvmStatic
-        fun getSuccess(view: TextView, data: Boolean) {
-            Log.d("DetailsBinding", "data $data")
-            if (data) view.text = "Success"
-            else view.text = "Failure"
-        }
-
-        @SuppressLint("SetTextI18n")
         @BindingAdapter("getCore")
         @JvmStatic
         fun getCore(view: TextView, data: List<Core>?) {
@@ -109,33 +90,6 @@ class DetailsBinding {
                     view.text = core
                 }
             } else view.text = "no data"
-        }
-
-        @BindingAdapter("loadPatchImageFromUrlDetail")
-        @JvmStatic
-        fun loadPatchImageFromUrlDetail(imageView: ImageView, imageUrl: String?) {
-            Log.d("LaunchesBindingPatch", "imageUrl:$imageUrl")
-            if (imageUrl != null) {
-                imageView.load(imageUrl) {
-                    crossfade(600)
-                    transformations(CircleCropTransformation())
-                }
-            }
-        }
-
-        @BindingAdapter("loadMainImageFromUrlDetail")
-        @JvmStatic
-        fun loadMainImageFromUrlDetail(imageView: ImageView, imageUrl: List<String>?) {
-            Log.d("LaunchesBindingMain", "imageUrl:$imageUrl")
-            if (imageUrl!!.isNotEmpty()) {
-                imageView.load(imageUrl[0]) {
-                    crossfade(600)
-//                    placeholder(R.drawable.ic_placeholder_error)
-                    error(R.drawable.ic_placeholder_error)
-                }
-            } else {
-                imageView.load(R.drawable.ic_placeholder_error)
-            }
         }
 
         @BindingAdapter("getDetails")
