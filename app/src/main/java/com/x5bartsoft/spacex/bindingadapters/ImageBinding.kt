@@ -52,5 +52,7 @@ class ImageBinding {
                 imageView.load(R.drawable.ic_placeholder_error)
             }
         }
+
+
     }
 }

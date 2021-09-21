@@ -6,8 +6,8 @@
     <data>
 
         <variable
-            name="detail"
-            type="com.x5bartsoft.spacex.model.ImageLaunch" />
+            name="rocket"
+            type="com.x5bartsoft.spacex.model.ImageViewPager" />
 
     </data>
 
@@ -30,18 +30,19 @@
 
 
                 <ImageView
-                    android:id="@+id/l_gallery_item_gallery_imageView"
+                    android:id="@+id/l_rocket_gallery_item_main_imageView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop"
-                    loadMainImageForViewPager="@{detail.url}"
+                    loadMainImageForViewPager="@{rocket.url}"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:contentDescription="@string/rocket_photo" />
 
                 <View
-                    android:id="@+id/l_gallery_item_main_gradient"
+                    android:id="@+id/l_rocket_gallery_item_main_gradient"
                     android:layout_width="0dp"
                     android:layout_height="250dp"
                     android:background="@drawable/gradient_main_owerview"
@@ -50,113 +51,115 @@
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
-                    android:id="@+id/l_gallery_item_patch_imageView"
-                    loadPatchImageFromUrl="@{detail.pathImage}"
+                    android:id="@+id/l_rocket_name_imageView"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:alpha="0.7"
-                    android:background="@drawable/image_background"
-                    android:contentDescription="@string/mission_logo"
+                    app:tint="@color/white"
                     android:padding="5dp"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    app:srcCompat="@drawable/ic_rocket"
+                    android:contentDescription="@string/rocket_image" />
 
                 <TextView
-                    android:id="@+id/l_gallery_item_title_textView"
+                    android:id="@+id/l_rocket_gallery_item_name_textView"
                     android:layout_width="0dp"
-                    android:text="@{detail.name}"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
+                    android:layout_marginStart="8dp"
                     android:layout_marginEnd="16dp"
                     android:alpha="0.7"
                     android:fontFamily="sans-serif-condensed"
                     android:gravity="start"
+                    android:text="@{rocket.name}"
                     android:textColor="@color/white"
                     android:textSize="24sp"
                     android:textStyle="bold|italic"
-                    app:layout_constraintBottom_toBottomOf="@+id/l_gallery_item_patch_imageView"
+                    app:layout_constraintBottom_toBottomOf="@+id/l_rocket_name_imageView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/l_gallery_item_patch_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_gallery_item_patch_imageView"
+                    app:layout_constraintStart_toEndOf="@+id/l_rocket_name_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/l_rocket_name_imageView"
                     tools:text="FalconSat" />
 
 
                 <ImageView
-                    android:id="@+id/l_gallery_item_date_imageView"
+                    android:id="@+id/l_rocket_gallery_item_diameter_imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:alpha="0.7"
-                    app:layout_constraintBottom_toTopOf="@+id/l_gallery_item_date_textView"
-                    app:layout_constraintEnd_toStartOf="@+id/l_gallery_item_success_imageView"
-                    app:srcCompat="@drawable/ic_date"
-                    app:tint="@color/white" />
+                    app:layout_constraintBottom_toTopOf="@+id/l_rocket_gallery_item_diameter_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/l_rocket_gallery_item_mass_imageView"
+                    app:srcCompat="@drawable/ic_diameter"
+                    app:tint="@color/white"
+                    android:contentDescription="@string/diameter_image" />
 
                 <TextView
-                    android:id="@+id/l_gallery_item_date_textView"
+                    android:id="@+id/l_rocket_gallery_item_diameter_textView"
                     style="@style/IconTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
-                    getFlightDateVP="@{detail.date}"
+                    getDiameterVP="@{rocket.diameter}"
                     android:alpha="0.7"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/l_gallery_item_date_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/l_gallery_item_date_imageView"
-                    tools:text="2006-03-24" />
+                    app:layout_constraintEnd_toEndOf="@+id/l_rocket_gallery_item_diameter_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/l_rocket_gallery_item_diameter_imageView"
+                    tools:text="1.68 m" />
 
                 <TextView
-                    android:id="@+id/l_gallery_item_success_textView"
+                    android:id="@+id/l_rocket_gallery_item_mass_textView"
                     style="@style/IconTextStyle"
-                    getSuccess="@{detail.success}"
+                    getMassVP="@{rocket.mass}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:alpha="0.7"
                     android:textColor="@color/white"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="@+id/l_gallery_item_success_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/l_gallery_item_success_imageView"
-                    tools:text="success" />
+                    app:layout_constraintEnd_toEndOf="@+id/l_rocket_gallery_item_mass_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/l_rocket_gallery_item_mass_imageView"
+                    tools:text="30146" />
 
                 <ImageView
-                    android:id="@+id/l_gallery_item_success_imageView"
+                    android:id="@+id/l_rocket_gallery_item_mass_imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="8dp"
                     android:alpha="0.7"
-                    app:layout_constraintBottom_toTopOf="@+id/l_gallery_item_success_textView"
+                    app:layout_constraintBottom_toTopOf="@+id/l_rocket_gallery_item_mass_textView"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_success"
-                    app:tint="@color/white" />
+                    app:srcCompat="@drawable/ic_weight"
+                    app:tint="@color/white"
+                    android:contentDescription="@string/mass_image" />
 
                 <ImageView
-                    android:id="@+id/l_gallery_item_flight_number_imageView"
+                    android:id="@+id/l_rocket_gallery_item_height_imageView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginEnd="16dp"
                     android:alpha="0.7"
-                    app:layout_constraintBottom_toTopOf="@+id/l_gallery_item_date_textView"
-                    app:layout_constraintEnd_toStartOf="@+id/l_gallery_item_date_imageView"
-                    app:srcCompat="@drawable/ic_flight_number"
-                    app:tint="@color/white" />
+                    app:layout_constraintBottom_toTopOf="@+id/l_rocket_gallery_item_diameter_textView"
+                    app:layout_constraintEnd_toStartOf="@+id/l_rocket_gallery_item_diameter_imageView"
+                    app:srcCompat="@drawable/ic_height"
+                    app:tint="@color/white"
+                    android:contentDescription="@string/height_image" />
 
                 <TextView
-                    android:id="@+id/l_gallery_item_flight_number_textView"
+                    android:id="@+id/l_rocket_gallery_item_height_textView"
                     style="@style/IconTextStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:alpha="0.7"
-                    android:text="@{String.valueOf(detail.flightNumber)}"
+                    getHeightVP="@{rocket.height}"
                     android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@+id/l_gallery_item_date_textView"
-                    app:layout_constraintEnd_toEndOf="@+id/l_gallery_item_flight_number_imageView"
-                    app:layout_constraintStart_toStartOf="@+id/l_gallery_item_flight_number_imageView"
-                    tools:text="9" />
+                    app:layout_constraintBottom_toBottomOf="@+id/l_rocket_gallery_item_diameter_textView"
+                    app:layout_constraintEnd_toEndOf="@+id/l_rocket_gallery_item_height_imageView"
+                    app:layout_constraintStart_toStartOf="@+id/l_rocket_gallery_item_height_imageView"
+                    tools:text="22.25 m" />
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>

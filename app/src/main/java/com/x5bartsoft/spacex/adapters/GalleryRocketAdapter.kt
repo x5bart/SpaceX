@@ -1,36 +1,33 @@
 package com.x5bartsoft.spacex.adapters
 
-import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
-import coil.load
-import com.x5bartsoft.spacex.databinding.LayoutGalleryItemBinding
-import com.x5bartsoft.spacex.model.ImageLaunch
-import com.x5bartsoft.spacex.model.response.launchdetail.Doc
-import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
+import com.x5bartsoft.spacex.databinding.LayoutOverviewGalleryItemBinding
+import com.x5bartsoft.spacex.databinding.LayoutRocketGalleryItemBinding
+import com.x5bartsoft.spacex.model.ImageViewPager
 import com.x5bartsoft.spacex.util.LaunchDiffUtil
 
-class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.MyViewHolder>() {
+class GalleryRocketAdapter : RecyclerView.Adapter<GalleryRocketAdapter.MyViewHolder>() {
 
-    private var imageList = arrayListOf<ImageLaunch>()
+    private var imageList = arrayListOf<ImageViewPager>()
     private lateinit var viewPager: ViewPager2
 
-    class MyViewHolder(private var binding: LayoutGalleryItemBinding) :
+    class MyViewHolder(private var binding: LayoutRocketGalleryItemBinding) :
         RecyclerView.ViewHolder(binding.root) {
 
-        val imageView = binding.lGalleryItemGalleryImageView
+        val imageView = binding.lRocketGalleryItemMainImageView
 
-        fun bind(currentImage: ImageLaunch) {
-            binding.detail = currentImage
+        fun bind(currentImage: ImageViewPager) {
+            binding.rocket = currentImage
         }
 
         companion object {
             fun from(parent: ViewGroup): MyViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context)
-                val binding = LayoutGalleryItemBinding.inflate(layoutInflater, parent, false)
+                val binding = LayoutRocketGalleryItemBinding.inflate(layoutInflater, parent, false)
                 return MyViewHolder(binding)
             }
         }
@@ -54,7 +51,7 @@ class GalleryAdapter : RecyclerView.Adapter<GalleryAdapter.MyViewHolder>() {
     }
 
 
-    fun setData(newData: ArrayList<ImageLaunch>, viewPager2: ViewPager2) {
+    fun setData(newData: ArrayList<ImageViewPager>, viewPager2: ViewPager2) {
         viewPager = viewPager2
         val galleryDiffUtil = LaunchDiffUtil(imageList, newData)
         val diffUtilResult = DiffUtil.calculateDiff(galleryDiffUtil)

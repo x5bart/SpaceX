@@ -8,13 +8,19 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
-import com.x5bartsoft.spacex.R
+import androidx.recyclerview.widget.RecyclerView
+import com.x5bartsoft.spacex.adapters.GalleryOverviewAdapter
+import com.x5bartsoft.spacex.adapters.GalleryRocketAdapter
 import com.x5bartsoft.spacex.databinding.FragmentRocketBinding
+import com.x5bartsoft.spacex.model.ImageViewPager
+import com.x5bartsoft.spacex.model.response.rockets.Rocket
 import com.x5bartsoft.spacex.util.Constants
 import com.x5bartsoft.spacex.util.NetworkResult
+import com.x5bartsoft.spacex.util.ZoomOutPageTransformer
 import com.x5bartsoft.spacex.viewmodels.MainViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class RocketFragment : Fragment() {
 
     private var _binding: FragmentRocketBinding? = null
@@ -22,6 +28,10 @@ class RocketFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
     private var detailBundle: com.x5bartsoft.spacex.model.response.launchdetail.Doc? = null
+
+    private lateinit var galleryItemList: ArrayList<ImageViewPager>
+    private val galleryAdapter by lazy { GalleryRocketAdapter() }
+    private lateinit var rocketDetail: Rocket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -47,7 +57,12 @@ class RocketFragment : Fragment() {
         mainViewModel.rocketResponse.observe(requireActivity(), { response ->
             when (response) {
                 is NetworkResult.Success -> {
-                    response.data?.let { Log.d("RocketFragment", "result: $it") }
+                    response.data?.let {
+                        rocketDetail = it
+                        setupViewPager()
+                        Log.d("RocketFragment", "result: $it")
+                        binding.detail = response.data
+                    }
                 }
                 is NetworkResult.Error -> {
                     Toast.makeText(requireContext(),
@@ -62,6 +77,38 @@ class RocketFragment : Fragment() {
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    private fun getImageList() {
+        val response = rocketDetail
+        galleryItemList = ArrayList()
+        val name = response.name
+        val height = response.height.meters
+        val diameter = response.diameter.meters
+        val mass = response.mass.kg
+        for (i in response.flickrImages) {
+            galleryItemList.add(ImageViewPager(
+                name = name,
+                url = i,
+                height = height,
+                diameter = diameter,
+                mass = mass
+            ))
+        }
+    }
+
+    private fun setupViewPager() {
+        getImageList()
+        val viewPager = binding.fRocketGalleryViewPager.apply {
+            adapter = galleryAdapter
+            clipToPadding = false
+            clipChildren = false
+            offscreenPageLimit = 3
+            getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
+            setPageTransformer(ZoomOutPageTransformer())
+        }
+        binding.fRocketWormDotsIndicator.setViewPager2(viewPager)
+        galleryAdapter.setData(galleryItemList, viewPager)
     }
 
 

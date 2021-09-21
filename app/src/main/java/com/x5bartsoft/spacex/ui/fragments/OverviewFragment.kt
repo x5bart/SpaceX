@@ -12,12 +12,10 @@ import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_LAUNCHES_KEY
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Intent
 import android.net.Uri
-import android.os.Handler
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.tabs.TabLayoutMediator
-import com.x5bartsoft.spacex.adapters.GalleryAdapter
-import com.x5bartsoft.spacex.model.ImageLaunch
+import com.x5bartsoft.spacex.adapters.GalleryOverviewAdapter
+import com.x5bartsoft.spacex.model.ImageViewPager
 import com.x5bartsoft.spacex.util.ZoomOutPageTransformer
 
 
@@ -30,8 +28,8 @@ class OverviewFragment : Fragment() {
     private var launchBundle: Doc? = null
     private var detailBundle: com.x5bartsoft.spacex.model.response.launchdetail.Doc? = null
 
-    private lateinit var galleryItemList: ArrayList<ImageLaunch>
-    private val galleryAdapter by lazy { GalleryAdapter() }
+    private lateinit var galleryItemList: ArrayList<ImageViewPager>
+    private val galleryAdapter by lazy { GalleryOverviewAdapter() }
 
 
     override fun onCreateView(
@@ -112,7 +110,14 @@ class OverviewFragment : Fragment() {
         val date = args.dateLocal
         val success = args.success
         for (i in detailBundle!!.links.flickr.original) {
-            galleryItemList.add(ImageLaunch(pathImage, name, i, flightNumber, date, success))
+            galleryItemList.add(ImageViewPager(
+                pathImage = pathImage,
+                name = name,
+                url = i,
+                flightNumber = flightNumber,
+                date = date,
+                success = success
+            ))
         }
     }
 

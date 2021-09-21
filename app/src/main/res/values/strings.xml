@@ -35,4 +35,8 @@
     <string name="reddit_logo">reddit logo</string>
     <string name="wikipedia_logo">wikipedia logo</string>
     <string name="image_preview">image preview</string>
+    <string name="diameter_image">diameter image</string>
+    <string name="mass_image">mass image</string>
+    <string name="height_image">height image</string>
+    <string name="rocket_photo">rocket photo</string>
 </resources>
