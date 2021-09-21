@@ -1,6 +1,7 @@
 package com.x5bartsoft.spacex.viewmodels
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.*
 import com.x5bartsoft.spacex.data.Repository
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
@@ -8,6 +9,7 @@ import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
 import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
+import com.x5bartsoft.spacex.model.response.rockets.Rocket
 import com.x5bartsoft.spacex.util.InternetConnection
 import com.x5bartsoft.spacex.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -35,6 +37,7 @@ class MainViewModel @Inject constructor(
     /** RETROFIT */
     var launchesResponse: MutableLiveData<NetworkResult<Launches>> = MutableLiveData()
     var launchesDetailsResponse: MutableLiveData<NetworkResult<LaunchDetail>> = MutableLiveData()
+    var rocketResponse: MutableLiveData<NetworkResult<Rocket>> = MutableLiveData()
 
     fun getLaunches(request: LaunchesRequest) = viewModelScope.launch {
         getSafeLaunches(request)
@@ -44,6 +47,11 @@ class MainViewModel @Inject constructor(
         getSafeLaunchesDetails(request)
     }
 
+    fun getRocket(id: String) = viewModelScope.launch {
+        getSafeRocket(id)
+    }
+
+
 
     private suspend fun getSafeLaunches(request: LaunchesRequest) {
         launchesResponse.value = NetworkResult.Loading()
@@ -52,11 +60,11 @@ class MainViewModel @Inject constructor(
             try {
                 val response = repository.remote.getAllLaunches(request)
                 launchesResponse.value = handleLaunchesResponse(response)
-
                 val launches = launchesResponse.value!!.data
                 if (launches != null) offLineCache(launches)
             } catch (e: Exception) {
-                launchesResponse.value = NetworkResult.Error("Launch not found")
+                launchesResponse.value = NetworkResult.Error("Launch not found ")
+
             }
         } else {
             launchesResponse.value = NetworkResult.Error("No Internet Connection")
@@ -75,6 +83,24 @@ class MainViewModel @Inject constructor(
             }
         } else {
             launchesDetailsResponse.value = NetworkResult.Error("No Internet Connection")
+        }
+
+    }
+
+    private suspend fun getSafeRocket(id: String) {
+        rocketResponse.value = NetworkResult.Loading()
+        val internetConnection = InternetConnection(getApplication())
+        if (internetConnection.hasInternetConnection()){
+            try {
+                val response = repository.remote.getRocket(id)
+                rocketResponse.value = handleRocketResponse(response)
+
+            }catch (e:Exception){
+                rocketResponse.value = NetworkResult.Error("Rocket not found")
+                Log.d("MainViewModel", "Exception:$e")
+            }
+        }else{
+            rocketResponse.value = NetworkResult.Error("No Internet connection")
         }
 
     }
@@ -120,6 +146,21 @@ class MainViewModel @Inject constructor(
         }
     }
 
+    private fun handleRocketResponse(response: Response<Rocket>): NetworkResult<Rocket>? {
+        return when {
+            response.message().toString().contains("timeout") -> {
+                NetworkResult.Error("Timeout")
+            }
+            response.body()!!.name.isEmpty() -> {
+                NetworkResult.Error("No rocket details found")
+            }
+            response.isSuccessful -> {
+                val rocket = response.body()
+                NetworkResult.Success(rocket!!)
+            }
+            else -> NetworkResult.Error(response.message())
+        }
+    }
 
 
 

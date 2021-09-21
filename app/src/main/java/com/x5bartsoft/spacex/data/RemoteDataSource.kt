@@ -5,8 +5,7 @@ import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
 import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
-import com.x5bartsoft.spacex.model.response.launchpad.Launchpads
-import com.x5bartsoft.spacex.model.rockets.Rockets
+import com.x5bartsoft.spacex.model.response.rockets.Rocket
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -20,13 +19,11 @@ class RemoteDataSource @Inject constructor(private val spaceXApi: SpaceXApi) {
         return spaceXApi.getLaunchDetails(detailsRequest)
     }
 
-    suspend fun getAllRockets(): Response<Rockets> {
-        return spaceXApi.getAllRockets()
+    suspend fun getRocket(id:String):Response<Rocket>{
+
+        return spaceXApi.getRocket(id)
     }
 
-    suspend fun getAllLaunchpad():Response<Launchpads>{
-        return spaceXApi.getAllLaunchpads()
-    }
 
 
 }
