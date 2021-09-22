@@ -80,6 +80,7 @@ class MainViewModel @Inject constructor(
                 launchesDetailsResponse.value = handleLaunchDetailsResponse(response)
             } catch (e: Exception) {
                 launchesDetailsResponse.value = NetworkResult.Error("Launch detail not found.")
+                Log.d("MainViewModel"," exception:$e")
             }
         } else {
             launchesDetailsResponse.value = NetworkResult.Error("No Internet Connection")

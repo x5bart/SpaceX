@@ -104,7 +104,7 @@ class DetailActivity : AppCompatActivity() {
             when (response) {
                 is NetworkResult.Success -> {
 
-                    response.data?.let { Log.d("DetailActivity", "result: $it") }
+                    response.data?.let { Log.d("DetailActivity", "result: ${it.docs[0].rocket}") }
 
                     detailBundle = response.data!!.docs[0]
                     setupTab()
@@ -123,52 +123,89 @@ class DetailActivity : AppCompatActivity() {
     private fun applyRequest(): LaunchDetailsRequest {
 
         //CAPSULES
+        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
+        val populateLaunches =
+            listOf(Populate(Constants.QUERY_LAUNCHES, emptyList(), selectLaunches))
+
         val selectCapsules = Select(serial = 1, type = 1, id = 1)
-        val capsules = Populate(path = Constants.QUERY_CAPSULES,
-            select = selectCapsules,
-            populate = emptyList())
+        val capsules = Populate(Constants.QUERY_CAPSULES, populateLaunches, selectCapsules)
+
         //SHIPS
         val selectShips =
             Select(type = 1, roles = 1, image = 1, name = 1, id = 1, link = 1, yearBuilt = 1)
-        val ships =
-            Populate(path = Constants.QUERY_SHIPS, select = selectShips, populate = emptyList())
+        val ships = Populate(Constants.QUERY_SHIPS, emptyList(), selectShips)
+
         //CORES
         val selectLandpad =
             Select(image = 1, name = 1, id = 1, fullName = 1, locality = 1, region = 1, details = 1)
-        val landpad =
-            Populate(path = Constants.QUERY_LANDPAD, select = selectLandpad, populate = emptyList())
-        val selectCore = Select(serial = 1, id = 1, reuse_count = 1)
-        val core =
-            Populate(path = Constants.QUERY_CORE, select = selectCore, populate = emptyList())
+        val landpad = Populate(Constants.QUERY_LANDPAD, emptyList(), selectLandpad)
+
+//        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
+//        val populateLaunches =
+//            listOf(Populate(Constants.QUERY_LAUNCHES, emptyList(), selectLaunches))
+
+        val selectCore = Select(serial = 1, id = 1, reuseCount = 1)
+        val core = Populate(Constants.QUERY_CORE, populateLaunches, selectCore)
+
         val populateCores = listOf(core, landpad)
-        val cores = Populate(path = Constants.QUERY_CORES, populate = populateCores, Select())
+        val cores = Populate(Constants.QUERY_CORES, populateCores, Select())
+
         //PAYLOADS
-        val payloads = Populate(path = Constants.QUERY_PAYLOADS, populate = emptyList(), Select())
+        val selectPayloads = Select(name = 1, type = 1, reused = 1, massKg = 1)
+        val payloads = Populate(Constants.QUERY_PAYLOADS, emptyList(), selectPayloads)
+
         //ROCKET
-        val rocket = Populate(path = Constants.QUERY_ROCKET, emptyList(), Select(firstFlight = 1))
+        val selectRocket = Select(height = 1,
+            diameter = 1,
+            mass = 1,
+            firstStage = 1,
+            secondStage = 1,
+            thrust = 1,
+            payloads = 1,
+            compositeFairing = 1,
+            option1 = 1,
+            reusable = 1,
+            engines = 1,
+            landingLegs = 1,
+            payloadWeights = 1,
+            flickrImages = 1,
+            name = 1,
+            active = 1,
+            stages = 1,
+            boosters = 1,
+            costPerLaunch = 1,
+            successRatePct = 1,
+            firstFlight = 1,
+            country = 1,
+            company = 2,
+            wikipedia = 1,
+            description = 1,
+            flightNumber = 1)
+        val rocket = Populate(Constants.QUERY_ROCKET, emptyList(), selectRocket)
+
+
         //LAUNCHPAD
         val selectRockets = Select(name = 1)
-        val rockets =
-            Populate(path = Constants.QUERY_ROCKETS, select = selectRockets, populate = emptyList())
-        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
-        val launches =
-            Populate(Constants.QUERY_LAUNCHES, select = selectLaunches, populate = emptyList())
+        val rockets = Populate(Constants.QUERY_ROCKETS, emptyList(), selectRockets)
+
+//        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
+        val launches = Populate(Constants.QUERY_LAUNCHES, emptyList(), selectLaunches)
+
         val populateLaunchpad = listOf(launches, rockets)
-        val launchpad =
-            Populate(path = Constants.QUERY_LAUNCHPAD, populate = populateLaunchpad, Select())
+        val launchpad = Populate(Constants.QUERY_LAUNCHPAD, populateLaunchpad, Select())
 
-        val listPopulate = listOf(launchpad, rocket, payloads, cores, ships, capsules)
+        //OPTIONS
+        val listPopulate = listOf(
+            launchpad,
+            rocket,
+            payloads,
+            cores,
+            ships,
+            capsules
+        )
 
-        val selectLaunch =
-            Select(name = 1,
-                id = 1,
-                dateLocal = 1,
-                flightNumber = 1,
-                details = 1,
-                links = 1,
-                success = 1)
-        val options = Options(listPopulate, selectLaunch)
-        val query = Query(args.result.name)
+        val options = Options(listPopulate)
+        val query = Query(args.result.flightNumber)
 
         Log.d("DetailActivity", "request :${LaunchDetailsRequest(options, query)}")
         return LaunchDetailsRequest(options, query)

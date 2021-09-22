@@ -6,16 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
-import com.x5bartsoft.spacex.adapters.GalleryOverviewAdapter
 import com.x5bartsoft.spacex.adapters.GalleryRocketAdapter
 import com.x5bartsoft.spacex.databinding.FragmentRocketBinding
 import com.x5bartsoft.spacex.model.ImageViewPager
-import com.x5bartsoft.spacex.model.response.rockets.Rocket
 import com.x5bartsoft.spacex.util.Constants
-import com.x5bartsoft.spacex.util.NetworkResult
 import com.x5bartsoft.spacex.util.ZoomOutPageTransformer
 import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +27,6 @@ class RocketFragment : Fragment() {
 
     private lateinit var galleryItemList: ArrayList<ImageViewPager>
     private val galleryAdapter by lazy { GalleryRocketAdapter() }
-    private lateinit var rocketDetail: Rocket
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -44,35 +39,18 @@ class RocketFragment : Fragment() {
     ): View {
         // Inflate the layout for this fragment
         _binding = FragmentRocketBinding.inflate(layoutInflater, container, false)
+
         val args = arguments
         detailBundle = args?.getParcelable(Constants.BUNDLE_DETAILS_KEY)
-        requestApiData(detailBundle!!.rocket.id)
+        binding.detail = detailBundle
+
+        setupViewPager()
+
         return binding.root
 
     }
 
-    private fun requestApiData(id: String) {
-        Log.d("RocketFragment", "requestApiData called! id:$id")
-        mainViewModel.getRocket(id)
-        mainViewModel.rocketResponse.observe(requireActivity(), { response ->
-            when (response) {
-                is NetworkResult.Success -> {
-                    response.data?.let {
-                        rocketDetail = it
-                        setupViewPager()
-                        Log.d("RocketFragment", "result: $it")
-                        binding.detail = response.data
-                    }
-                }
-                is NetworkResult.Error -> {
-                    Toast.makeText(requireContext(),
-                        response.message.toString(),
-                        Toast.LENGTH_SHORT).show()
-                }
-                is NetworkResult.Loading -> Log.d("RocketFragment", "Loading")
-            }
-        })
-    }
+
 
     override fun onDestroy() {
         _binding = null
@@ -80,7 +58,8 @@ class RocketFragment : Fragment() {
     }
 
     private fun getImageList() {
-        val response = rocketDetail
+        val response = detailBundle!!.rocket
+        Log.d("RocketFragment", "detailBundle!!.rocket : ${response.flickrImages}")
         galleryItemList = ArrayList()
         val name = response.name
         val height = response.height.meters

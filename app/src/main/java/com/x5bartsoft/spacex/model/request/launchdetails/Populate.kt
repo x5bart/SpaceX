@@ -9,5 +9,5 @@ data class Populate(
     @SerializedName("populate")
     val populate: List<Populate>?,
     @SerializedName("select")
-    val select: Select?
+    val select: Select
 )

@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Diameter(
     @SerializedName("feet")
-    val feet: Int,
+    val feet: Double,
     @SerializedName("meters")
     val meters: Double
 ) : Parcelable

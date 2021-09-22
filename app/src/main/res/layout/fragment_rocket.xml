@@ -5,9 +5,11 @@
 
     <data>
         <variable
-            name="detail"
+            name="rocket"
             type="com.x5bartsoft.spacex.model.response.rockets.Rocket" />
-
+<variable
+    name="detail"
+    type="com.x5bartsoft.spacex.model.response.launchdetail.Doc" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -60,7 +62,7 @@
 
                 <ImageView
                     android:id="@+id/f_rocket_wiki_imageView"
-                    getLink="@{detail.wikipedia}"
+                    getLink="@{rocket.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
@@ -102,6 +104,7 @@
                         <TextView
                             android:id="@+id/f_overview_rocket_textView"
                             style="@style/DetailCardText"
+                            getRocketInfo="@{detail.rocket}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="@+id/f_overview_rocket_imageView"
@@ -123,6 +126,7 @@
                         <TextView
                             android:id="@+id/f_overview_capsule_textView"
                             style="@style/DetailCardText"
+                            getCapsulesName="@{detail.capsules}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="@+id/f_overview_capsule_imageView"
@@ -145,6 +149,7 @@
                         <TextView
                             android:id="@+id/f_overview_core_textView"
                             style="@style/DetailCardText"
+                            getCore="@{detail.cores}"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             app:layout_constraintBottom_toBottomOf="@+id/f_overview_core_imageView"
@@ -249,6 +254,7 @@
                             android:id="@+id/f_overview_detail_textView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:text="@{detail.rocket.description}"
                             android:layout_margin="8dp"
                             android:textColor="@color/darker"
                             android:textSize="18sp"

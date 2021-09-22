@@ -10,5 +10,5 @@ data class Height(
     @SerializedName("feet")
     val feet: Double,
     @SerializedName("meters")
-    val meters: Int
+    val meters: Double
 ) : Parcelable

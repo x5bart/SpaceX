@@ -7,5 +7,5 @@ data class Options(
     @SerializedName("populate")
     val populate: List<Populate>,
     @SerializedName("select")
-    val select: Select
+    val select: SelectLaunch = SelectLaunch()
 )
