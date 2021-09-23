@@ -275,7 +275,7 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/f_overview_launchpad_title_textView"
                             app:layout_constraintVertical_chainStyle="spread"
-                            app:srcCompat="@drawable/ic_ic_launchpad" />
+                            app:srcCompat="@drawable/ic_launchpad" />
 
                         <TextView
                             android:id="@+id/f_overview_launchpad_textView"

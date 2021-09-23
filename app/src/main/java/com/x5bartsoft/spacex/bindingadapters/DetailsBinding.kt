@@ -10,11 +10,18 @@ class DetailsBinding {
 
 
     companion object {
-
-
-        @BindingAdapter("getSuccesRate")
+        @BindingAdapter("getSuccessLaunch")
         @JvmStatic
-        fun getSuccesRate(view: TextView, data: RocketX){
+        fun getSuccessLaunch(view: TextView,data: Launchpad){
+            val count = data.launchSuccesses
+            val text = "$count success launches"
+            view.text = text
+        }
+
+
+        @BindingAdapter("getSuccessRate")
+        @JvmStatic
+        fun getSuccessRate(view: TextView, data: RocketX){
             val percent = data.successRatePct
             val text = "Success rate $percent%"
             view.text = text

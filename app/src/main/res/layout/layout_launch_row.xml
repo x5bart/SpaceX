@@ -175,7 +175,7 @@
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/l_launch_rocked_imageView"
                     app:layout_constraintTop_toTopOf="@+id/l_launch_rocked_imageView"
-                    app:srcCompat="@drawable/ic_ic_launchpad" />
+                    app:srcCompat="@drawable/ic_launchpad" />
 
                 <TextView
                     android:id="@+id/l_launch_pad_textView"
