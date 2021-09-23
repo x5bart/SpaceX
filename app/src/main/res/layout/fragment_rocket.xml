@@ -5,11 +5,9 @@
 
     <data>
         <variable
-            name="rocket"
-            type="com.x5bartsoft.spacex.model.response.rockets.Rocket" />
-<variable
-    name="detail"
-    type="com.x5bartsoft.spacex.model.response.launchdetail.Doc" />
+            name="detail"
+            type="com.x5bartsoft.spacex.model.response.launchdetail.Doc" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -62,7 +60,7 @@
 
                 <ImageView
                     android:id="@+id/f_rocket_wiki_imageView"
-                    getLink="@{rocket.wikipedia}"
+                    getLink="@{detail.rocket.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

@@ -122,86 +122,44 @@ class DetailActivity : AppCompatActivity() {
 
     private fun applyRequest(): LaunchDetailsRequest {
 
-        //CAPSULES
-        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
-        val populateLaunches =
-            listOf(Populate(Constants.QUERY_LAUNCHES, emptyList(), selectLaunches))
 
-        val selectCapsules = Select(serial = 1, type = 1, id = 1)
-        val capsules = Populate(Constants.QUERY_CAPSULES, populateLaunches, selectCapsules)
 
-        //SHIPS
-        val selectShips =
-            Select(type = 1, roles = 1, image = 1, name = 1, id = 1, link = 1, yearBuilt = 1)
-        val ships = Populate(Constants.QUERY_SHIPS, emptyList(), selectShips)
 
         //CORES
-        val selectLandpad =
-            Select(image = 1, name = 1, id = 1, fullName = 1, locality = 1, region = 1, details = 1)
-        val landpad = Populate(Constants.QUERY_LANDPAD, emptyList(), selectLandpad)
-
-//        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
-//        val populateLaunches =
-//            listOf(Populate(Constants.QUERY_LAUNCHES, emptyList(), selectLaunches))
-
-        val selectCore = Select(serial = 1, id = 1, reuseCount = 1)
-        val core = Populate(Constants.QUERY_CORE, populateLaunches, selectCore)
+        val landpad = PopulateX(Constants.QUERY_LANDPAD)
+        val core = PopulateX(Constants.QUERY_CORE)
 
         val populateCores = listOf(core, landpad)
-        val cores = Populate(Constants.QUERY_CORES, populateCores, Select())
-
-        //PAYLOADS
-        val selectPayloads = Select(name = 1, type = 1, reused = 1, massKg = 1)
-        val payloads = Populate(Constants.QUERY_PAYLOADS, emptyList(), selectPayloads)
-
-        //ROCKET
-        val selectRocket = Select(height = 1,
-            diameter = 1,
-            mass = 1,
-            firstStage = 1,
-            secondStage = 1,
-            thrust = 1,
-            payloads = 1,
-            compositeFairing = 1,
-            option1 = 1,
-            reusable = 1,
-            engines = 1,
-            landingLegs = 1,
-            payloadWeights = 1,
-            flickrImages = 1,
-            name = 1,
-            active = 1,
-            stages = 1,
-            boosters = 1,
-            costPerLaunch = 1,
-            successRatePct = 1,
-            firstFlight = 1,
-            country = 1,
-            company = 2,
-            wikipedia = 1,
-            description = 1,
-            flightNumber = 1)
-        val rocket = Populate(Constants.QUERY_ROCKET, emptyList(), selectRocket)
-
+        val cores = Populate(Constants.QUERY_CORES, populateCores)
 
         //LAUNCHPAD
-        val selectRockets = Select(name = 1)
-        val rockets = Populate(Constants.QUERY_ROCKETS, emptyList(), selectRockets)
-
-//        val selectLaunches = Select(flightNumber = 1, name = 1, dateLocal = 1)
-        val launches = Populate(Constants.QUERY_LAUNCHES, emptyList(), selectLaunches)
+        val rockets = PopulateX(Constants.QUERY_ROCKETS)
+        val launches = PopulateX(Constants.QUERY_LAUNCHES)
 
         val populateLaunchpad = listOf(launches, rockets)
-        val launchpad = Populate(Constants.QUERY_LAUNCHPAD, populateLaunchpad, Select())
+        val launchpad = Populate(Constants.QUERY_LAUNCHPAD, populateLaunchpad)
+
+        //PAYLOADS
+        val payloads = Populate(Constants.QUERY_PAYLOADS, emptyList())
+
+        //CAPSULES
+        val populateLaunchesCapsule = listOf(PopulateX(Constants.QUERY_LAUNCHES))
+        val capsules = Populate(Constants.QUERY_CAPSULES, populateLaunchesCapsule)
+
+        //SHIPS
+        val ships = Populate(Constants.QUERY_SHIPS, emptyList())
+
+        //ROCKET
+        val rocket = Populate(Constants.QUERY_ROCKET, emptyList())
 
         //OPTIONS
         val listPopulate = listOf(
-            launchpad,
             rocket,
-            payloads,
-            cores,
             ships,
-            capsules
+            capsules,
+            payloads,
+            launchpad,
+            cores
         )
 
         val options = Options(listPopulate)

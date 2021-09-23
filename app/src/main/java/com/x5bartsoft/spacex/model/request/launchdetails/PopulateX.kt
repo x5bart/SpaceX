@@ -3,9 +3,9 @@ package com.x5bartsoft.spacex.model.request.launchdetails
 
 import com.google.gson.annotations.SerializedName
 
-data class Options(
-    @SerializedName("populate")
-    val populate: List<Populate>,
+data class PopulateX(
+    @SerializedName("path")
+    val path: String,
     @SerializedName("select")
-    val select: SelectXX =SelectXX()
+    val select: Select = Select()
 )

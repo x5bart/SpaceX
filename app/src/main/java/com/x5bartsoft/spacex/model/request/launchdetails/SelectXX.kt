@@ -3,7 +3,7 @@ package com.x5bartsoft.spacex.model.request.launchdetails
 
 import com.google.gson.annotations.SerializedName
 
-data class SelectLaunch(
+data class SelectXX(
     @SerializedName("date_local")
     val dateLocal: Int = 1,
     @SerializedName("details")

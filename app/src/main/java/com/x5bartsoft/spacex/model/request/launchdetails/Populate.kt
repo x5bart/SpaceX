@@ -7,7 +7,7 @@ data class Populate(
     @SerializedName("path")
     val path: String,
     @SerializedName("populate")
-    val populate: List<Populate>?,
+    val populate: List<PopulateX>,
     @SerializedName("select")
-    val select: Select
+    val select: SelectX = SelectX()
 )
