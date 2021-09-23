@@ -138,7 +138,7 @@
                     android:id="@+id/materialCardView"
                     style="@style/DetailCardView"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="4dp"
@@ -151,18 +151,32 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:id="@+id/f_overview_rocket_title_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/rocket"
+                            android:textColor="@color/darker"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <ImageView
                             android:id="@+id/f_overview_rocket_imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
 
+                            android:layout_marginTop="6dp"
+                            android:layout_marginBottom="8dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/f_overview_capsule_imageView"
                             app:layout_constraintTop_toBottomOf="@+id/f_overview_core_imageView"
                             app:srcCompat="@drawable/ic_rocket" />
 
                         <TextView
-                            android:id="@+id/f_overview_rocket_textView"
+                            android:id="@+id/f_rocket_rocket_textView"
                             style="@style/DetailCardText"
                             getRocketInfo="@{detail.rocket}"
                             android:layout_width="wrap_content"
@@ -178,9 +192,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            app:layout_constraintBottom_toTopOf="@+id/f_overview_core_imageView"
+                            android:layout_marginTop="8dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/f_overview_rocket_title_textView"
                             app:srcCompat="@drawable/ic_capsule" />
 
                         <TextView
@@ -199,7 +213,7 @@
                             android:id="@+id/f_overview_core_imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toTopOf="@+id/f_overview_rocket_imageView"
+                            android:layout_marginTop="6dp"
                             app:layout_constraintEnd_toEndOf="@+id/f_overview_capsule_imageView"
                             app:layout_constraintHorizontal_bias="0.5"
                             app:layout_constraintStart_toStartOf="@+id/f_overview_capsule_imageView"
@@ -228,7 +242,7 @@
                     android:id="@+id/materialCardView3"
                     style="@style/DetailCardView"
                     android:layout_width="0dp"
-                    android:layout_height="120dp"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="4dp"
                     android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -240,14 +254,26 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent">
 
+                        <TextView
+                            android:id="@+id/f_overview_launchpad_title_textView"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:text="@string/launchpads"
+                            android:textColor="@color/darker"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
                         <ImageView
                             android:id="@+id/f_overview_launchpad_imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="8dp"
-                            app:layout_constraintBottom_toTopOf="@+id/f_overview_ship_imageView"
+                            android:layout_marginTop="16dp"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/f_overview_launchpad_title_textView"
                             app:layout_constraintVertical_chainStyle="spread"
                             app:srcCompat="@drawable/ic_ic_launchpad" />
 
@@ -271,6 +297,8 @@
                             android:id="@+id/f_overview_ship_imageView"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="24dp"
+                            android:layout_marginBottom="16dp"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/f_overview_launchpad_imageView"
                             app:layout_constraintTop_toBottomOf="@+id/f_overview_launchpad_imageView"

@@ -7,21 +7,23 @@ data class Select(
     @SerializedName("date_local")
     val dateLocal: Int = 1,
     @SerializedName("details")
-    val details: Int= 1,
+    val details: Int = 1,
     @SerializedName("flight_number")
-    val flightNumber: Int= 1,
+    val flightNumber: Int = 1,
     @SerializedName("full_name")
-    val fullName: Int= 1,
+    val fullName: Int = 1,
     @SerializedName("id")
-    val id: Int= 1,
+    val id: Int = 1,
     @SerializedName("images")
-    val images: Int= 1,
+    val images: Int = 1,
     @SerializedName("locality")
-    val locality: Int= 1,
+    val locality: Int = 1,
     @SerializedName("name")
-    val name: Int= 1,
+    val name: Int = 1,
     @SerializedName("region")
-    val region: Int= 1,
+    val region: Int = 1,
     @SerializedName("serial")
-    val serial: Int= 1
+    val serial: Int = 1,
+    @SerializedName("reuse_count")
+    val reuseCount: Int = 1,
 )

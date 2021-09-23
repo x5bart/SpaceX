@@ -89,11 +89,13 @@ class OverviewFragment : Fragment() {
                 detailBundle!!.links.reddit.campaign)
             bindLinksForImage(binding.fOverviewWikiImageView, detailBundle!!.links.wikipedia)
         }
+
+
     }
 
-    private fun bindLinksForImage(view: ImageView, url: String) {
+    private fun bindLinksForImage(view: ImageView, url: String?) {
         view.setOnClickListener {
-            if (url.isNotEmpty()) {
+            if (url != null) {
                 val intent = Intent(Intent.ACTION_VIEW)
                 intent.data = Uri.parse(url)
                 startActivity(intent)

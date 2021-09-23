@@ -39,4 +39,15 @@
     <string name="mass_image">mass image</string>
     <string name="height_image">height image</string>
     <string name="rocket_photo">rocket photo</string>
+    <string name="first_stage">First stage</string>
+    <string name="rocket">Rocket</string>
+    <string name="engine_image">engine image</string>
+    <string name="capsule_image">capsule image</string>
+    <string name="core_image">core image</string>
+    <string name="thrust_image">thrust image</string>
+    <string name="barrel_image">barrel image</string>
+    <string name="second_stage">Second stage</string>
+    <string name="lending_legs_image">lending legs image</string>
+    <string name="dollar_logo">dollar logo</string>
+    <string name="percent_image">percent image</string>
 </resources>

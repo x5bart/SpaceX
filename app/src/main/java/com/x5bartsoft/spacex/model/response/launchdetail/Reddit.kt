@@ -9,11 +9,11 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class Reddit(
     @SerializedName("campaign")
-    val campaign: String,
+    val campaign: String?,
     @SerializedName("launch")
-    val launch: String,
+    val launch: String?,
     @SerializedName("media")
-    val media:@RawValue String,
+    val media:@RawValue String?,
     @SerializedName("recovery")
-    val recovery: String
+    val recovery: String?
 ) : Parcelable
