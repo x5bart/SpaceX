@@ -50,4 +50,7 @@
     <string name="lending_legs_image">lending legs image</string>
     <string name="dollar_logo">dollar logo</string>
     <string name="percent_image">percent image</string>
+    <string name="name">name:</string>
+    <string name="type">type:</string>
+    <string name="build_year">build year:</string>
 </resources>
