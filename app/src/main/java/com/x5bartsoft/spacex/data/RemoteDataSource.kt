@@ -5,6 +5,7 @@ import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
 import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
+import com.x5bartsoft.spacex.model.response.upcomminglaunch.UpcomingLaunch
 import retrofit2.Response
 import javax.inject.Inject
 
@@ -18,7 +19,9 @@ class RemoteDataSource @Inject constructor(private val spaceXApi: SpaceXApi) {
         return spaceXApi.getLaunchDetails(detailsRequest)
     }
 
-
+    suspend fun getUpcomingLaunch(): Response<UpcomingLaunch> {
+        return spaceXApi.getUpcommingLaunch()
+    }
 
 
 }

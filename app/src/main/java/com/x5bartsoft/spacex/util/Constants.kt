@@ -29,6 +29,7 @@ class Constants {
         const val DATABASE_NAME = "space_x_database"
         const val LAUNCHES_TABLE = "launches_table"
         const val LAUNCHES_FAVORITE_TABLE= "launches_favorite_table"
+        const val UPCOMING_LAUNCH_TABLE = "upcoming_launch_table"
 
         //Query
         const val QUERY_LAUNCHPAD = "launchpad"

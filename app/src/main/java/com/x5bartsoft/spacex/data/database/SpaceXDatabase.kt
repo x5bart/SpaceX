@@ -5,9 +5,10 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
+import com.x5bartsoft.spacex.data.database.etities.UpcomingEntity
 
 @Database(
-    entities = [LaunchesEntity::class,FavoriteEntity::class],
+    entities = [LaunchesEntity::class,FavoriteEntity::class,UpcomingEntity::class],
     version = 1,
     exportSchema = false
 )
