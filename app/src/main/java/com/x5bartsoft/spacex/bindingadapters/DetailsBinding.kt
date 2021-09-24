@@ -10,6 +10,20 @@ class DetailsBinding {
 
 
     companion object {
+
+        @BindingAdapter("getRole")
+        @JvmStatic
+        fun getRole(view: TextView,data: Ship){
+            var text = ""
+            var count = 0
+            for (i in data.roles){
+                count+=1
+                text += i
+                if (count!= data.roles.size) text +=", "
+            }
+            view.text = text
+        }
+
         @BindingAdapter("getSuccessLaunch")
         @JvmStatic
         fun getSuccessLaunch(view: TextView,data: Launchpad){

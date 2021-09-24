@@ -84,6 +84,12 @@
         <item name="android:textColor">@color/tab_text_color</item>
     </style>
 
+    <style name="ShipTextCard" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textColor">@color/darker</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">bold|italic</item>
+    </style>
+
 
 
 </resources>

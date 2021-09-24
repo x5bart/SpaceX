@@ -11,6 +11,21 @@ class ImageBinding {
 
     companion object {
 
+        @BindingAdapter("loadShipImageFromUrl")
+        @JvmStatic
+        fun loadShipImageFromUrl(imageView: ImageView, imageUrl: String?) {
+            Log.d("LaunchesBindingMain", "imageUrl:$imageUrl")
+            if (imageUrl!=null) {
+                imageView.load(imageUrl) {
+                    crossfade(600)
+//                    placeholder(R.drawable.ic_placeholder_error)
+                    error(R.drawable.ic_placeholder_error)
+                }
+            } else {
+                imageView.load(R.drawable.ic_placeholder_error)
+            }
+        }
+
         @BindingAdapter("loadPatchImageFromUrl")
         @JvmStatic
         fun loadPatchImageFromUrl(imageView: ImageView, imageUrl: String?) {

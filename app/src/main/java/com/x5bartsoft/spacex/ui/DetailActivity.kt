@@ -18,6 +18,7 @@ import com.x5bartsoft.spacex.model.request.launchdetails.*
 import com.x5bartsoft.spacex.ui.fragments.LaunchpadFragment
 import com.x5bartsoft.spacex.ui.fragments.OverviewFragment
 import com.x5bartsoft.spacex.ui.fragments.RocketFragment
+import com.x5bartsoft.spacex.ui.fragments.ShipFragment
 import com.x5bartsoft.spacex.util.Constants
 import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_DETAILS_KEY
 import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_LAUNCHES_KEY
@@ -57,11 +58,13 @@ class DetailActivity : AppCompatActivity() {
         fragments.add(OverviewFragment())
         fragments.add(RocketFragment())
         fragments.add(LaunchpadFragment())
+        fragments.add(ShipFragment())
 
         val titles = ArrayList<String>()
         titles.add("Overview")
         titles.add("Rocket")
         titles.add("Launchpad")
+        titles.add("Ships")
 
         val resultBundle = Bundle().apply {
             putParcelable(BUNDLE_LAUNCHES_KEY, args.result)

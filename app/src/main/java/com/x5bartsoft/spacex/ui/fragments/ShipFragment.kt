@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.x5bartsoft.spacex.R
+import com.x5bartsoft.spacex.adapters.LaunchesAdapter
+import com.x5bartsoft.spacex.adapters.ShipAdapter
 import com.x5bartsoft.spacex.databinding.FragmentLaunchpadBinding
 import com.x5bartsoft.spacex.databinding.FragmentShipBinding
 import com.x5bartsoft.spacex.model.response.launchdetail.Doc
@@ -20,6 +23,8 @@ class ShipFragment : Fragment() {
 
     private lateinit var mainViewModel: MainViewModel
     private var detailBundle: Doc? = null
+
+    private val mAdapter by lazy { ShipAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -36,12 +41,20 @@ class ShipFragment : Fragment() {
         val args = arguments
         detailBundle = args?.getParcelable(Constants.BUNDLE_DETAILS_KEY)
 
+        setupRecyclerView()
+
         return binding.root
     }
 
     override fun onDestroy() {
         _binding = null
         super.onDestroy()
+    }
+
+    private fun setupRecyclerView() {
+        mAdapter.setData(detailBundle!!.ships)
+        binding.fShipRecyclerView.adapter = mAdapter
+        binding.fShipRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
 }

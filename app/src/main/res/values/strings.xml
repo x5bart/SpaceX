@@ -53,4 +53,8 @@
     <string name="name">name:</string>
     <string name="type">type:</string>
     <string name="build_year">build year:</string>
+    <string name="role">role:</string>
+    <string name="image_ship">image ship</string>
+    <string name="marinetraffic">Marinetraffic.com</string>
+    <string name="marinetraffic_logo">Marinetraffic logo</string>
 </resources>
