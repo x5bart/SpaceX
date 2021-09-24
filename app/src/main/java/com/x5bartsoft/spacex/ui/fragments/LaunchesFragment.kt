@@ -65,8 +65,11 @@ class LaunchesFragment : Fragment() {
             launchViewModel.backOnline = it
         })
 
+
         binding.fLaunchesFloatingActionButton.setOnClickListener {
-            findNavController().navigate(R.id.action_launchesFragment_to_launchesBottomSheet)
+            if (launchViewModel.networkStatus) {
+                findNavController().navigate(R.id.launchesBottomSheet)
+            } else launchViewModel.showNetworkStatus()
         }
 
         lifecycleScope.launchWhenCreated {
@@ -99,7 +102,6 @@ class LaunchesFragment : Fragment() {
             )
         }
     }
-
 
 
     override fun onDestroy() {
