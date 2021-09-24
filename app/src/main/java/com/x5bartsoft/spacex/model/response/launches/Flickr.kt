@@ -9,5 +9,5 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class Flickr(
     @SerializedName("original")
-    val original: @RawValue List<String>?
+    val original:  List<String>?
 ):Parcelable

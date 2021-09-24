@@ -19,5 +19,5 @@ data class SecondStage(
     @SerializedName("reusable")
     val reusable: Boolean,
     @SerializedName("thrust")
-    val thrust:@RawValue Thrust
+    val thrust: Thrust
 ) : Parcelable

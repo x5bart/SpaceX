@@ -17,7 +17,7 @@ data class FirstStage(
     @SerializedName("reusable")
     val reusable: Boolean,
     @SerializedName("thrust_sea_level")
-    val thrustSeaLevel:@RawValue ThrustSeaLevel,
+    val thrustSeaLevel: ThrustSeaLevel,
     @SerializedName("thrust_vacuum")
-    val thrustVacuum:@RawValue ThrustVacuum
+    val thrustVacuum:ThrustVacuum
 ) : Parcelable

@@ -97,6 +97,7 @@ class DetailActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         _binding = null
+        Log.d("DetailActivityLog","onDestroy")
         super.onDestroy()
     }
 
@@ -121,6 +122,12 @@ class DetailActivity : AppCompatActivity() {
                 is NetworkResult.Loading -> Log.d("DetailActivity", "Loading")
             }
         })
+    }
+
+    override fun onResume() {
+
+        Log.d("DetailActivityLog","onResume")
+        super.onResume()
     }
 
     private fun applyRequest(): LaunchDetailsRequest {

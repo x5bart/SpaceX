@@ -17,11 +17,11 @@ data class Doc(
     @SerializedName("id")
     val id: String,
     @SerializedName("launchpad")
-    val launchpad: @RawValue Launchpad,
+    val launchpad:  Launchpad,
     @SerializedName("links")
-    val links: @RawValue Links,
+    val links: Links,
     @SerializedName("name")
     val name: String,
     @SerializedName("rocket")
-    val rocket: @RawValue Rocket
+    val rocket:  Rocket
 ): Parcelable

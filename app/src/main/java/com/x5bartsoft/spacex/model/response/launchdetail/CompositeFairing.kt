@@ -9,7 +9,7 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class CompositeFairing(
     @SerializedName("diameter")
-    val diameter:@RawValue Diameter,
+    val diameter: Diameter,
     @SerializedName("height")
-    val height:@RawValue Height
+    val height: Height
 ) : Parcelable

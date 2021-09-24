@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         navController = findNavController(R.id.a_main_fragmentContainerView)
         val appBarConfiguration = AppBarConfiguration(
             setOf(
+                R.id.upcomingLaunchFragment,
                 R.id.launchesFragment,
                 R.id.favoriteFragment,
                 R.id.roadsterFragment

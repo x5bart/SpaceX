@@ -9,7 +9,7 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class Core(
     @SerializedName("core")
-    val core:@RawValue CoreX,
+    val core: CoreX,
     @SerializedName("flight")
     val flight: Int,
     @SerializedName("gridfins")
@@ -21,7 +21,7 @@ data class Core(
     @SerializedName("landing_type")
     val landingType: String,
     @SerializedName("landpad")
-    val landpad:@RawValue Landpad,
+    val landpad: Landpad,
     @SerializedName("legs")
     val legs: Boolean,
     @SerializedName("reused")

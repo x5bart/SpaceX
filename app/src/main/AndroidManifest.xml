@@ -8,6 +8,7 @@
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -16,10 +17,12 @@
         <activity
             android:name=".ui.DetailActivity"
             android:exported="true"
+            android:screenOrientation="locked"
             android:label="Details"
-            android:theme="@style/DetailActivityStyle"/>
+            android:theme="@style/DetailActivityStyle" />
         <activity
             android:name=".ui.MainActivity"
+            android:screenOrientation="locked"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

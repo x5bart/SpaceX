@@ -11,5 +11,5 @@ data class Flickr(
     @SerializedName("original")
     val original: List<String>,
     @SerializedName("small")
-    val small:@RawValue List<Any>
+    val small: List<String>?
 ) : Parcelable

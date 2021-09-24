@@ -12,8 +12,10 @@ import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_LAUNCHES_KEY
 import dagger.hilt.android.AndroidEntryPoint
 import android.content.Intent
 import android.net.Uri
+import android.util.Log
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.adapters.GalleryOverviewAdapter
 import com.x5bartsoft.spacex.model.ImageViewPager
 import com.x5bartsoft.spacex.util.ZoomOutPageTransformer
@@ -77,6 +79,7 @@ class OverviewFragment : Fragment() {
 
     override fun onDestroy() {
         _binding = null
+        Log.d("OverviewFragment","onDestroy")
         super.onDestroy()
     }
 
@@ -111,7 +114,10 @@ class OverviewFragment : Fragment() {
         val flightNumber = args.flightNumber
         val date = args.dateLocal
         val success = args.success
-        for (i in detailBundle!!.links.flickr.original) {
+        val listImage = arrayListOf<String>()
+          listImage.addAll(detailBundle!!.links.flickr.original)
+        if (listImage.isEmpty()) listImage.add(R.drawable.ic_placeholder_error.toString())
+        for (i in listImage) {
             galleryItemList.add(ImageViewPager(
                 pathImage = pathImage,
                 name = name,

@@ -9,19 +9,19 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class Links(
     @SerializedName("article")
-    val article:@RawValue String,
+    val article: String,
     @SerializedName("flickr")
     val flickr: Flickr,
     @SerializedName("patch")
-    val patch:@RawValue Patch,
+    val patch: Patch,
     @SerializedName("presskit")
-    val presskit:@RawValue String,
+    val presskit: String,
     @SerializedName("reddit")
-    val reddit:@RawValue Reddit,
+    val reddit: Reddit,
     @SerializedName("webcast")
     val webcast: String,
     @SerializedName("wikipedia")
-    val wikipedia:@RawValue String,
+    val wikipedia: String,
     @SerializedName("youtube_id")
     val youtubeId: String
 ) : Parcelable

@@ -9,9 +9,9 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class Doc(
     @SerializedName("capsules")
-    val capsules: @RawValue List<Capsule>,
+    val capsules:  List<Capsule>,
     @SerializedName("cores")
-    val cores: @RawValue List<Core>,
+    val cores:  List<Core>,
     @SerializedName("date_local")
     val dateLocal: String,
     @SerializedName("details")
@@ -21,17 +21,17 @@ data class Doc(
     @SerializedName("id")
     val id: String,
     @SerializedName("launchpad")
-    val launchpad: @RawValue Launchpad,
+    val launchpad:  Launchpad,
     @SerializedName("links")
-    val links: @RawValue Links,
+    val links:  Links,
     @SerializedName("name")
     val name: String,
     @SerializedName("payloads")
-    val payloads: @RawValue List<Payload>,
+    val payloads:  List<Payload>,
     @SerializedName("rocket")
-    val rocket: @RawValue RocketX,
+    val rocket:  RocketX,
     @SerializedName("ships")
-    val ships: @RawValue List<Ship>,
+    val ships:  List<Ship>,
     @SerializedName("success")
     val success: Boolean
 ) : Parcelable

@@ -9,5 +9,5 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class LaunchDetail(
     @SerializedName("docs")
-    val docs: @RawValue List<Doc>
+    val docs:  List<Doc>
 ) : Parcelable

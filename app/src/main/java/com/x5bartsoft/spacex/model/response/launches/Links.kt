@@ -9,7 +9,7 @@ import kotlinx.parcelize.RawValue
 @Parcelize
 data class Links(
     @SerializedName("flickr")
-    val flickr: @RawValue Flickr?,
+    val flickr:Flickr?,
     @SerializedName("patch")
-    val patch: @RawValue Patch?,
+    val patch:  Patch?,
 ):Parcelable

@@ -51,4 +51,9 @@
             android:name="result"
             app:argType="com.x5bartsoft.spacex.model.response.launches.Doc" />
     </activity>
+    <fragment
+        android:id="@+id/upcomingLaunchFragment"
+        android:name="com.x5bartsoft.spacex.UpcomingLaunchFragment"
+        android:label="fragment_upcoming_launch"
+        tools:layout="@layout/fragment_upcoming_launch" />
 </navigation>

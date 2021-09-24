@@ -33,7 +33,7 @@ data class Launchpad(
     @SerializedName("region")
     val region: String,
     @SerializedName("rockets")
-    val rockets:@RawValue List<Rocket>,
+    val rockets: List<Rocket>,
     @SerializedName("status")
     val status: String,
     @SerializedName("timezone")

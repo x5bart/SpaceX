@@ -11,7 +11,7 @@ data class Engines(
     @SerializedName("engine_loss_max")
     val engineLossMax: Int,
     @SerializedName("isp")
-    val isp:@RawValue Isp,
+    val isp: Isp,
     @SerializedName("layout")
     val layout: String,
     @SerializedName("number")
@@ -21,11 +21,11 @@ data class Engines(
     @SerializedName("propellant_2")
     val propellant2: String,
     @SerializedName("thrust_sea_level")
-    val thrustSeaLevel:@RawValue ThrustSeaLevel,
+    val thrustSeaLevel: ThrustSeaLevel,
     @SerializedName("thrust_to_weight")
     val thrustToWeight: Double,
     @SerializedName("thrust_vacuum")
-    val thrustVacuum:@RawValue ThrustVacuum,
+    val thrustVacuum: ThrustVacuum,
     @SerializedName("type")
     val type: String,
     @SerializedName("version")

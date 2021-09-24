@@ -43,7 +43,7 @@ data class RocketX(
     @SerializedName("payload_weights")
     val payloadWeights: List<PayloadWeight>,
     @SerializedName("second_stage")
-    val secondStage:@RawValue SecondStage,
+    val secondStage:SecondStage,
     @SerializedName("stages")
     val stages: Int,
     @SerializedName("success_rate_pct")
