@@ -4,6 +4,7 @@ import android.app.Application
 import android.util.Log
 import androidx.lifecycle.*
 import com.x5bartsoft.spacex.data.Repository
+import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
 import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
@@ -27,10 +28,27 @@ class MainViewModel @Inject constructor(
     /** ROOM DATABASE */
 
     val readLaunches: LiveData<List<LaunchesEntity>> = repository.local.readLaunches().asLiveData()
+    val readFavoriteLaunch: LiveData<List<FavoriteEntity>> =
+        repository.local.readFavoriteLaunches().asLiveData()
 
     private fun insertLaunches(launchesEntity: LaunchesEntity) =
         viewModelScope.launch(Dispatchers.IO) {
             repository.local.insertLaunches(launchesEntity)
+        }
+
+    fun insertFavoriteLaunch(favoriteEntity: FavoriteEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.insertFavoriteLaunch(favoriteEntity)
+        }
+
+    fun deleteFavoriteLaunch(favoriteEntity: FavoriteEntity) =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteFavoriteLaunch(favoriteEntity)
+        }
+
+    fun deleteAllLauch() =
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.local.deleteAllFavoriteLaunch()
         }
 
     /** RETROFIT */
@@ -44,8 +62,6 @@ class MainViewModel @Inject constructor(
     fun getLaunchesDetails(request: LaunchDetailsRequest) = viewModelScope.launch {
         getSafeLaunchesDetails(request)
     }
-
-
 
 
     private suspend fun getSafeLaunches(request: LaunchesRequest) {
@@ -75,15 +91,13 @@ class MainViewModel @Inject constructor(
                 launchesDetailsResponse.value = handleLaunchDetailsResponse(response)
             } catch (e: Exception) {
                 launchesDetailsResponse.value = NetworkResult.Error("Launch detail not found.")
-                Log.d("MainViewModel"," exception:$e")
+                Log.d("MainViewModel", " exception:$e")
             }
         } else {
             launchesDetailsResponse.value = NetworkResult.Error("No Internet Connection")
         }
 
     }
-
-
 
 
     private fun offLineCache(launches: Launches) {
@@ -98,7 +112,7 @@ class MainViewModel @Inject constructor(
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout")
             }
-            response.body()!!.docs.isNullOrEmpty() -> {
+            response.body()!!.launches.isNullOrEmpty() -> {
                 NetworkResult.Error("No launch found")
             }
             response.isSuccessful -> {
@@ -124,8 +138,6 @@ class MainViewModel @Inject constructor(
             else -> NetworkResult.Error(response.message())
         }
     }
-
-
 
 
 }

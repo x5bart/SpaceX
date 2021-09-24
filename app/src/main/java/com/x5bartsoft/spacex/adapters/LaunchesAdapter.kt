@@ -4,7 +4,6 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.x5bartsoft.spacex.databinding.LayoutLaunchRowBinding
 import com.x5bartsoft.spacex.model.response.launches.Doc
 import com.x5bartsoft.spacex.model.response.launches.Launches
@@ -48,9 +47,9 @@ class LaunchesAdapter : RecyclerView.Adapter<LaunchesAdapter.MyViewHolder>() {
     }
 
     fun setData(newData: Launches) {
-        val launchDiffUtil = LaunchDiffUtil(docs, newData.docs)
+        val launchDiffUtil = LaunchDiffUtil(docs, newData.launches)
         val diffUtilResult = DiffUtil.calculateDiff(launchDiffUtil)
-        docs = newData.docs
+        docs = newData.launches
         diffUtilResult.dispatchUpdatesTo(this)
     }
 

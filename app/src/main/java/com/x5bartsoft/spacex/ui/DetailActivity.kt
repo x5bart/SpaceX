@@ -4,15 +4,18 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
 import android.util.Log
+import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.navArgs
+import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayoutMediator
 import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.adapters.PagerAdapter
+import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.databinding.ActivityDetailBinding
 import com.x5bartsoft.spacex.model.request.launchdetails.*
 import com.x5bartsoft.spacex.ui.fragments.LaunchpadFragment
@@ -25,6 +28,7 @@ import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_LAUNCHES_KEY
 import com.x5bartsoft.spacex.util.NetworkResult
 import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import dagger.hilt.android.AndroidEntryPoint
+import java.lang.Exception
 
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
@@ -35,6 +39,9 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var mainViewModel: MainViewModel
     private var detailBundle: Parcelable? = null
+    private lateinit var menuItem: MenuItem
+    private var launchSaved = false
+    private var savedLaunchId = 0
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,27 +98,40 @@ class DetailActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         if (item.itemId == android.R.id.home) {
             finish()
+        } else if (item.itemId == R.id.save_to_favorite_menu && !launchSaved) {
+            saveToFavorites(item)
+        } else if (item.itemId == R.id.save_to_favorite_menu && launchSaved) {
+            removeFromFavorites(item)
         }
         return super.onOptionsItemSelected(item)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.details_menu, menu)
+        menuItem = menu!!.findItem(R.id.save_to_favorite_menu)
+        checkSavedItem(menuItem)
+        return true
+    }
+
     override fun onDestroy() {
         _binding = null
-        Log.d("DetailActivityLog","onDestroy")
+        changeMenuItemColor(menuItem, R.color.white)
         super.onDestroy()
     }
 
     private fun requestApiData() {
-        Log.d("DetailActivity", "requestApiData called!")
+        Log.d("DetailActivitylog", "requestApiData called!")
         mainViewModel.getLaunchesDetails(applyRequest())
         mainViewModel.launchesDetailsResponse.observe(this, { response ->
             when (response) {
                 is NetworkResult.Success -> {
 
-                    response.data?.let { Log.d("DetailActivity", "result: ${it.docs[0].rocket}") }
+                    response.data?.let {
+                        detailBundle = response.data.docs[0]
+                        setupTab()
+                    }
 
-                    detailBundle = response.data!!.docs[0]
-                    setupTab()
+
                 }
                 is NetworkResult.Error -> {
 
@@ -119,21 +139,69 @@ class DetailActivity : AppCompatActivity() {
                         response.message.toString(),
                         Toast.LENGTH_SHORT).show()
                 }
-                is NetworkResult.Loading -> Log.d("DetailActivity", "Loading")
+                is NetworkResult.Loading -> Log.d("DetailActivitylog", "Loading")
             }
         })
     }
 
-    override fun onResume() {
-
-        Log.d("DetailActivityLog","onResume")
-        super.onResume()
+    private fun checkSavedItem(menuItem: MenuItem) {
+        mainViewModel.readFavoriteLaunch.observe(this, { favoritesEntity ->
+            try {
+                for (savedLaunch in favoritesEntity) {
+                    Log.d("DetailActivitylog",
+                        "saved launch: ${savedLaunch.launch.flightNumber}  args launch: ${args.result.flightNumber}")
+                    if (savedLaunch.launch.flightNumber == args.result.flightNumber) {
+                        changeMenuItemColor(menuItem, R.color.yellow)
+                        savedLaunchId = savedLaunch.id
+                        launchSaved = true
+                    }
+                }
+            } catch (e: Exception) {
+                Log.d("DetailActivitylog", e.message.toString())
+            }
+        })
     }
 
+    private fun saveToFavorites(item: MenuItem) {
+        val favoriteEntity =
+            FavoriteEntity(
+                0,
+                args.result
+            )
+        mainViewModel.insertFavoriteLaunch(favoriteEntity)
+        changeMenuItemColor(item, R.color.yellow)
+        showSnackBar("Recipe saved.")
+        launchSaved = true
+    }
+
+    private fun removeFromFavorites(item: MenuItem) {
+        val favoriteEntity =
+            FavoriteEntity(
+                savedLaunchId,
+                args.result
+            )
+        mainViewModel.deleteFavoriteLaunch(favoriteEntity)
+        changeMenuItemColor(item, R.color.white)
+        showSnackBar("Removed from Favorites.")
+        launchSaved = false
+    }
+
+    private fun changeMenuItemColor(item: MenuItem, color: Int) {
+        item.icon.setTint(ContextCompat.getColor(this, color))
+    }
+
+    private fun showSnackBar(message: String) {
+        Snackbar.make(
+            binding.aDetailLayout,
+            message,
+            Snackbar.LENGTH_SHORT
+        ).setAction("Okay") {}
+            .show()
+
+    }
+
+
     private fun applyRequest(): LaunchDetailsRequest {
-
-
-
 
         //CORES
         val landpad = PopulateX(Constants.QUERY_LANDPAD)
@@ -175,7 +243,6 @@ class DetailActivity : AppCompatActivity() {
         val options = Options(listPopulate)
         val query = Query(args.result.flightNumber)
 
-        Log.d("DetailActivity", "request :${LaunchDetailsRequest(options, query)}")
         return LaunchDetailsRequest(options, query)
     }
 

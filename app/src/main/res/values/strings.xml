@@ -58,4 +58,11 @@
     <string name="marinetraffic">Marinetraffic.com</string>
     <string name="marinetraffic_logo">Marinetraffic logo</string>
     <string name="upcoming">Upcoming</string>
+    <string name="save_to_favorites">save to favorites</string>
+    <string name="flight_number_image">flight number image</string>
+    <string name="calendar_image">calendar image</string>
+    <string name="launchpads_image">launchpads image</string>
+    <string name="no_favorite_launches">No Favorite launches.</string>
+    <string name="delete_all">Delete All</string>
+    <string name="delete_favorite_menu">Delete Favorite Menu</string>
 </resources>

@@ -8,5 +8,5 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 data class Launches(
     @SerializedName("docs")
-    val docs: List<Doc>,
+    val launches: List<Doc>,
 ) : Parcelable

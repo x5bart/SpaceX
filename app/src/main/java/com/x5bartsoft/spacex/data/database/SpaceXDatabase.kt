@@ -3,10 +3,11 @@ package com.x5bartsoft.spacex.data.database
 import androidx.room.Database
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
+import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
 
 @Database(
-    entities = [LaunchesEntity::class],
+    entities = [LaunchesEntity::class,FavoriteEntity::class],
     version = 1,
     exportSchema = false
 )

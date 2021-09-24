@@ -9,13 +9,7 @@ class Constants {
         const val BUNDLE_LAUNCHES_KEY ="launchesBundle"
         const val BUNDLE_DETAILS_KEY ="detailsBundle"
 
-        val ROCKETS_NAME = mapOf<String, String>(
-            "5e9d0d95eda69955f709d1eb" to "Falcon 1",
-            "5e9d0d95eda69973a809d1ec" to "Falcon 9",
-            "5e9d0d95eda69974db09d1ed" to "Falcon Heavy",
-            "5e9d0d96eda699382d09d1ee" to "Starship"
-        )
-        val ROCKETS_ID = mapOf<String, String>(
+        val ROCKETS_ID = mapOf(
             "Falcon 1" to "5e9d0d95eda69955f709d1eb",
             "Falcon 9" to "5e9d0d95eda69973a809d1ec",
             "Falcon Heavy" to "5e9d0d95eda69974db09d1ed",
@@ -34,6 +28,7 @@ class Constants {
         //ROOM Database
         const val DATABASE_NAME = "space_x_database"
         const val LAUNCHES_TABLE = "launches_table"
+        const val LAUNCHES_FAVORITE_TABLE= "launches_favorite_table"
 
         //Query
         const val QUERY_LAUNCHPAD = "launchpad"

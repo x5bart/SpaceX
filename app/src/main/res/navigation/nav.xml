@@ -25,7 +25,11 @@
         android:id="@+id/favoriteFragment"
         android:name="com.x5bartsoft.spacex.ui.fragments.FavoriteFragment"
         android:label="@string/favorite"
-        tools:layout="@layout/fragment_favorite" />
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailActivity"
+            app:destination="@id/detailActivity" />
+    </fragment>
     <fragment
         android:id="@+id/roadsterFragment"
         android:name="com.x5bartsoft.spacex.ui.fragments.RoadsterFragment"
@@ -53,7 +57,7 @@
     </activity>
     <fragment
         android:id="@+id/upcomingLaunchFragment"
-        android:name="com.x5bartsoft.spacex.UpcomingLaunchFragment"
+        android:name="com.x5bartsoft.spacex.ui.fragments.UpcomingLaunchFragment"
         android:label="fragment_upcoming_launch"
         tools:layout="@layout/fragment_upcoming_launch" />
 </navigation>

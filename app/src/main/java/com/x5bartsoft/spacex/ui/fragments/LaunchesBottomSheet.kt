@@ -20,7 +20,6 @@ import androidx.core.view.forEach
 import androidx.navigation.fragment.findNavController
 import com.x5bartsoft.spacex.util.Constants.Companion.LAUNCHPADS_ID
 import com.x5bartsoft.spacex.util.Constants.Companion.ROCKETS_ID
-import com.x5bartsoft.spacex.util.Constants.Companion.ROCKETS_NAME
 
 
 class LaunchesBottomSheet : BottomSheetDialogFragment() {

@@ -2,14 +2,10 @@ package com.x5bartsoft.spacex.bindingadapters
 
 import android.annotation.SuppressLint
 import android.util.Log
-import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.databinding.BindingAdapter
 import androidx.navigation.findNavController
-import coil.load
-import coil.transform.CircleCropTransformation
-import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.model.response.launches.Doc
 import com.x5bartsoft.spacex.ui.fragments.LaunchesFragmentDirections
 import kotlinx.datetime.Instant
