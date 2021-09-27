@@ -4,14 +4,16 @@ package com.x5bartsoft.spacex.model.response.launchdetail
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
+
 
 @Parcelize
 data class Doc(
     @SerializedName("capsules")
-    val capsules:  List<Capsule>,
+    val capsules: List<Capsule>,
     @SerializedName("cores")
-    val cores:  List<Core>,
+    val cores: List<Core>,
+    @SerializedName("crew")
+    val crew: List<Crew>,
     @SerializedName("date_local")
     val dateLocal: String,
     @SerializedName("details")
@@ -21,17 +23,17 @@ data class Doc(
     @SerializedName("id")
     val id: String,
     @SerializedName("launchpad")
-    val launchpad:  Launchpad,
+    val launchpad: Launchpad,
     @SerializedName("links")
-    val links:  Links,
+    val links: Links,
     @SerializedName("name")
     val name: String,
     @SerializedName("payloads")
-    val payloads:  List<Payload>,
+    val payloads: List<Payload>,
     @SerializedName("rocket")
-    val rocket:  RocketX,
+    val rocket: Rocket,
     @SerializedName("ships")
-    val ships:  List<Ship>,
+    val ships: List<Ship>,
     @SerializedName("success")
     val success: Boolean
 ) : Parcelable

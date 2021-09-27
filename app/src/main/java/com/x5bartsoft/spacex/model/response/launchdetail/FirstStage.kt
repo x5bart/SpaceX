@@ -4,7 +4,6 @@ package com.x5bartsoft.spacex.model.response.launchdetail
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class FirstStage(
@@ -13,11 +12,11 @@ data class FirstStage(
     @SerializedName("engines")
     val engines: Int,
     @SerializedName("fuel_amount_tons")
-    val fuelAmountTons: Double,
+    val fuelAmountTons: Int,
     @SerializedName("reusable")
     val reusable: Boolean,
     @SerializedName("thrust_sea_level")
     val thrustSeaLevel: ThrustSeaLevel,
     @SerializedName("thrust_vacuum")
-    val thrustVacuum:ThrustVacuum
+    val thrustVacuum: ThrustVacuum
 ) : Parcelable

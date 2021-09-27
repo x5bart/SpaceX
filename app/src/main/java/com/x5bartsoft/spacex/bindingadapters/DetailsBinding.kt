@@ -35,7 +35,7 @@ class DetailsBinding {
 
         @BindingAdapter("getSuccessRate")
         @JvmStatic
-        fun getSuccessRate(view: TextView, data: RocketX){
+        fun getSuccessRate(view: TextView, data: Rocket){
             val percent = data.successRatePct
             val text = "Success rate $percent%"
             view.text = text
@@ -44,7 +44,7 @@ class DetailsBinding {
 
         @BindingAdapter("getCost")
         @JvmStatic
-        fun getCost(view: TextView, data: RocketX){
+        fun getCost(view: TextView, data: Rocket){
             val cost = data.costPerLaunch
             val text = "Cost per launch:$cost$"
             view.text = text
@@ -63,7 +63,7 @@ class DetailsBinding {
 
         @BindingAdapter("getSecondFuel")
         @JvmStatic
-        fun getSecondFuel(view: TextView, data: RocketX) {
+        fun getSecondFuel(view: TextView, data: Rocket) {
             val tons = data.secondStage.fuelAmountTons
             val propellant1 = data.engines.propellant1
             val propellant2 = data.engines.propellant2
@@ -81,7 +81,7 @@ class DetailsBinding {
 
         @BindingAdapter("getSecondEngines")
         @JvmStatic
-        fun getSecondEngines(view: TextView, data: RocketX) {
+        fun getSecondEngines(view: TextView, data: Rocket) {
             val engineCount = data.secondStage.engines
             val engineText = if (engineCount > 1) "engines" else "engine"
             val engineType = data.type
@@ -92,7 +92,7 @@ class DetailsBinding {
 
         @BindingAdapter("getFirstFuel")
         @JvmStatic
-        fun getFirstFuel(view: TextView, data: RocketX) {
+        fun getFirstFuel(view: TextView, data: Rocket) {
             val tons = data.firstStage.fuelAmountTons
             val propellant1 = data.engines.propellant1
             val propellant2 = data.engines.propellant2
@@ -111,7 +111,7 @@ class DetailsBinding {
 
         @BindingAdapter("getFirstEngines")
         @JvmStatic
-        fun getFirstEngines(view: TextView, data: RocketX) {
+        fun getFirstEngines(view: TextView, data: Rocket) {
             val engineCount = data.firstStage.engines
             val engineText = if (engineCount > 1) "engines" else "engine"
             val engineType = data.type
@@ -146,7 +146,7 @@ class DetailsBinding {
 
         @BindingAdapter("getRocketInfo")
         @JvmStatic
-        fun getRocketInfo(view: TextView, data: RocketX) {
+        fun getRocketInfo(view: TextView, data: Rocket) {
             val name = data.name
             val firstFlight = data.firstFlight
             val text = "$name\n First flight: $firstFlight"
@@ -198,8 +198,8 @@ class DetailsBinding {
                 var count = 0
                 for (i in data) {
                     count += 1
-                    val serial = i.core.serial
-                    val reuseCount = i.core.reuse_count
+                    val serial = i.serial
+                    val reuseCount = i.reuseCount
                     text += "$serial repeated use $reuseCount times"
                     if (count != data.size) text += "\n"
                 }

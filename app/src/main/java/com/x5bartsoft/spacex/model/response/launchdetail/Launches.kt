@@ -6,7 +6,7 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Launche(
+data class Launches(
     @SerializedName("date_local")
     val dateLocal: String,
     @SerializedName("flight_number")

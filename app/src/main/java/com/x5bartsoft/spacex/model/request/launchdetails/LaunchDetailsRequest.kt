@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName
 
 data class LaunchDetailsRequest(
     @SerializedName("options")
-    val options: Options,
+    val options: Options = Options(),
     @SerializedName("query")
     val query: Query
 )

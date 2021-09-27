@@ -15,10 +15,22 @@ data class Landpad(
     val id: String,
     @SerializedName("images")
     val images: Images,
+    @SerializedName("landing_attempts")
+    val landingAttempts: Int,
+    @SerializedName("landing_successes")
+    val landingSuccesses: Int,
+    @SerializedName("launches")
+    val launches: List<Launches>,
     @SerializedName("locality")
     val locality: String,
     @SerializedName("name")
     val name: String,
     @SerializedName("region")
-    val region: String
+    val region: String,
+    @SerializedName("status")
+    val status: String,
+    @SerializedName("type")
+    val type: String,
+    @SerializedName("wikipedia")
+    val wikipedia: String
 ) : Parcelable

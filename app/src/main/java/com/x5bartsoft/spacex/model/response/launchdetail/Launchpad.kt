@@ -4,7 +4,6 @@ package com.x5bartsoft.spacex.model.response.launchdetail
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
 @Parcelize
 data class Launchpad(
@@ -15,27 +14,21 @@ data class Launchpad(
     @SerializedName("id")
     val id: String,
     @SerializedName("images")
-    val images: ImagesLaunchpad,
-    @SerializedName("latitude")
-    val latitude: Double,
+    val images: Images,
     @SerializedName("launch_attempts")
     val launchAttempts: Int,
     @SerializedName("launch_successes")
     val launchSuccesses: Int,
     @SerializedName("launches")
-    val launches: List<Launche>,
+    val launches: List<Launches>,
     @SerializedName("locality")
     val locality: String,
-    @SerializedName("longitude")
-    val longitude: Double,
     @SerializedName("name")
     val name: String,
     @SerializedName("region")
     val region: String,
     @SerializedName("rockets")
-    val rockets: List<Rocket>,
+    val rockets: List<Rockets>,
     @SerializedName("status")
-    val status: String,
-    @SerializedName("timezone")
-    val timezone: String
+    val status: String
 ) : Parcelable

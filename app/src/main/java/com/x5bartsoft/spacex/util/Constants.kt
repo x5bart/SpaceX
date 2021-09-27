@@ -42,6 +42,7 @@ class Constants {
         const val QUERY_LANDPAD = "landpad"
         const val QUERY_SHIPS = "ships"
         const val QUERY_CAPSULES = "capsules"
+        const val QUERY_CREW = "crew"
 
         //Bottom Sheet and Preferences
         val DEFAULT_ROCKETS:MutableSet<String> = mutableSetOf()

@@ -202,48 +202,8 @@ class DetailActivity : AppCompatActivity() {
 
 
     private fun applyRequest(): LaunchDetailsRequest {
-
-        //CORES
-        val landpad = PopulateX(Constants.QUERY_LANDPAD)
-        val core = PopulateX(Constants.QUERY_CORE)
-
-        val populateCores = listOf(core, landpad)
-        val cores = Populate(Constants.QUERY_CORES, populateCores)
-
-        //LAUNCHPAD
-        val rockets = PopulateX(Constants.QUERY_ROCKETS)
-        val launches = PopulateX(Constants.QUERY_LAUNCHES)
-
-        val populateLaunchpad = listOf(launches, rockets)
-        val launchpad = Populate(Constants.QUERY_LAUNCHPAD, populateLaunchpad)
-
-        //PAYLOADS
-        val payloads = Populate(Constants.QUERY_PAYLOADS, emptyList())
-
-        //CAPSULES
-        val populateLaunchesCapsule = listOf(PopulateX(Constants.QUERY_LAUNCHES))
-        val capsules = Populate(Constants.QUERY_CAPSULES, populateLaunchesCapsule)
-
-        //SHIPS
-        val ships = Populate(Constants.QUERY_SHIPS, emptyList())
-
-        //ROCKET
-        val rocket = Populate(Constants.QUERY_ROCKET, emptyList())
-
-        //OPTIONS
-        val listPopulate = listOf(
-            rocket,
-            ships,
-            capsules,
-            payloads,
-            launchpad,
-            cores
-        )
-
-        val options = Options(listPopulate)
         val query = Query(args.result.flightNumber)
-
-        return LaunchDetailsRequest(options, query)
+        return LaunchDetailsRequest(query = query)
     }
 
 

@@ -6,21 +6,19 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class Capsule(
+data class Crew(
+    @SerializedName("agency")
+    val agency: String,
     @SerializedName("id")
     val id: String,
-    @SerializedName("last_update")
-    val lastUpdate: String,
+    @SerializedName("image")
+    val image: String,
     @SerializedName("launches")
     val launches: List<Launches>,
-    @SerializedName("reuse_count")
-    val reuseCount: Int,
-    @SerializedName("serial")
-    val serial: String,
+    @SerializedName("name")
+    val name: String,
     @SerializedName("status")
     val status: String,
-    @SerializedName("type")
-    val type: String,
-    @SerializedName("water_landings")
-    val waterLandings: Int
+    @SerializedName("wikipedia")
+    val wikipedia: String
 ) : Parcelable

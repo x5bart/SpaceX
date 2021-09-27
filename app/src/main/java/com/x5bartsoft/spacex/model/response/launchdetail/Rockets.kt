@@ -6,11 +6,9 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
-data class CoreX(
+data class Rockets(
     @SerializedName("id")
     val id: String,
-    @SerializedName("serial")
-    val serial: String,
-    @SerializedName("reuse_count")
-    val reuse_count: String,
+    @SerializedName("name")
+    val name: String
 ) : Parcelable

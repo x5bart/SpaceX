@@ -103,8 +103,9 @@ class MainViewModel @Inject constructor(
                 val response = repository.remote.getLaunchesDetail(request)
                 launchesDetailsResponse.value = handleLaunchDetailsResponse(response)
             } catch (e: Exception) {
+                val response = repository.remote.getLaunchesDetail(request)
                 launchesDetailsResponse.value = NetworkResult.Error("Launch detail not found.")
-                Log.d("MainViewModel", " exception:$e")
+                Log.d("MainViewModel", " exception:$e ${response}")
             }
         } else {
             launchesDetailsResponse.value = NetworkResult.Error("No Internet Connection")
