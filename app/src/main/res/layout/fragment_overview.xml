@@ -17,7 +17,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightMediumGray"
+        android:background="@color/white"
         tools:context=".ui.fragments.OverviewFragment">
 
 
@@ -38,12 +38,11 @@
 
                 <androidx.viewpager2.widget.ViewPager2
                     android:id="@+id/f_overview_gallery_viewPager"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
 
 
                 <com.tbuonomo.viewpagerdotsindicator.WormDotsIndicator
@@ -62,14 +61,129 @@
                     app:layout_constraintTop_toBottomOf="@+id/f_overview_gallery_viewPager" />
 
 
-
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_overview_worm_dots_indicator" />
 
                 <ImageView
-                    android:id="@+id/f_overview_press_kit_imageView"
-                    getLink="@{detail.links.presskit}"
+                    android:id="@+id/f_overview_patch_imageView"
+                    loadPatchImageFromUrlVP="@{detail.links.patch.large}"
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:contentDescription="@string/mission_patch"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider"
+                    tools:srcCompat="@tools:sample/avatars" />
+
+                <TextView
+                    android:id="@+id/f_overview_flight_number_textView"
+                    style="@style/OverviewText"
+                    getFlightNumberOv="@{detail.flightNumber}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    app:layout_constraintStart_toEndOf="@+id/f_overview_patch_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/f_overview_patch_imageView"
+                    tools:text="Flight 133" />
+
+                <TextView
+                    android:id="@+id/f_rocket_rocket_textView"
+                    style="@style/OverviewText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{detail.rocket.name}"
+                    app:layout_constraintEnd_toEndOf="@+id/f_overview_mission_name_textView"
+                    app:layout_constraintTop_toTopOf="@+id/f_overview_flight_number_textView"
+                    tools:text="Falcon 9" />
+
+                <TextView
+                    android:id="@+id/f_overview_mission_name_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:maxLines="2"
+                    android:text="@{detail.name}"
+                    android:textColor="@color/darker"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@+id/f_overview_flight_number_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_overview_flight_number_textView"
+                    tools:text="FalconSat" />
+
+                <TextView
+                    android:id="@+id/f_overview_static_fire_textView"
+                    style="@style/OverviewText"
+                    getDateOv="@{detail.staticFire}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/f_overview_mission_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_overview_mission_name_textView"
+                    tools:text="Static fire: 06 jan 21 07:26 GMT+03:00" />
+
+                <TextView
+                    android:id="@+id/f_overview_loval_date_textView"
+                    style="@style/OverviewText"
+                    getDateOv="@{detail.dateLocal}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/f_overview_mission_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_overview_static_fire_textView"
+                    tools:text="Local date: 06 jan 21 07:26 GMT+03:00" />
+
+                <TextView
+                    android:id="@+id/f_overview_detail_textView"
+                    getDetails="@{detail.details}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:textColor="@color/darker"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2"
+                    tools:text="The launch was Boeing's first-ever conjoined launch of a lighter-weight dual-commsat stack that was specifically designed to take advantage of the lower-cost SpaceX Falcon 9 launch vehicle. Per satellite, launch costs were less than $30 million. The ABS satellite reached its final destination ahead of schedule and started operations on September 10." />
+
+                <ImageButton
+                    android:id="@+id/f_overview_article_imageView"
+                    getLink="@{detail.links.article}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="0.2"
+                    android:background="@drawable/shape_image_button"
+                    android:contentDescription="@string/article_logo"
+                    android:elevation="5dp"
+                    android:outlineProvider="background"
+                    android:src="@drawable/ic_article"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/f_overview_youtube_imageView"
+                    app:layout_constraintHorizontal_bias="0.5"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+                <ImageButton
+                    android:id="@+id/f_overview_press_kit_imageView"
+                    android:outlineProvider="background"
+                    android:background="@drawable/shape_image_button"
+                    android:elevation="5dp"
+                    getLink="@{detail.links.presskit}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:alpha="0.2"
                     android:contentDescription="@string/press_kit_logo"
@@ -78,50 +192,13 @@
                     app:layout_constraintEnd_toStartOf="@+id/f_overview_reddit_imageView"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/f_overview_youtube_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+                    app:layout_constraintTop_toTopOf="@+id/f_overview_article_imageView" />
 
-                <ImageView
-                    android:id="@+id/f_overview_reddit_imageView"
-                    getLinkReddit="@{detail.links.reddit}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.2"
-                    android:contentDescription="@string/reddit_logo"
-                    android:src="@drawable/ic_reddit"
-                    app:layout_constraintEnd_toStartOf="@+id/f_overview_wiki_imageView"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/f_overview_press_kit_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/f_overview_press_kit_imageView" />
-
-                <ImageView
-                    android:id="@+id/f_overview_article_imageView"
-                    getLink="@{detail.links.article}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.2"
-                    android:contentDescription="@string/article_logo"
-                    android:src="@drawable/ic_article"
-                    app:layout_constraintEnd_toStartOf="@+id/f_overview_youtube_imageView"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/f_overview_press_kit_imageView" />
-
-                <ImageView
-                    android:id="@+id/f_overview_youtube_imageView"
-                    getLink="@{detail.links.webcast}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:alpha="0.2"
-                    android:contentDescription="@string/youtube_logo"
-                    android:src="@drawable/ic_youtube"
-                    app:layout_constraintEnd_toStartOf="@+id/f_overview_press_kit_imageView"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/f_overview_article_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/f_overview_press_kit_imageView" />
-
-
-                <ImageView
+                <ImageButton
                     android:id="@+id/f_overview_wiki_imageView"
+                    android:outlineProvider="background"
+                    android:background="@drawable/shape_image_button"
+                    android:elevation="5dp"
                     getLink="@{detail.links.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -131,230 +208,63 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toEndOf="@+id/f_overview_reddit_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/f_overview_press_kit_imageView" />
+                    app:layout_constraintTop_toTopOf="@+id/f_overview_article_imageView" />
 
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView"
-                    style="@style/DetailCardView"
-                    android:layout_width="0dp"
+                <ImageButton
+                    android:id="@+id/f_overview_youtube_imageView"
+                    android:outlineProvider="background"
+                    android:background="@drawable/shape_image_button"
+                    android:elevation="5dp"
+                    getLink="@{detail.links.webcast}"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="4dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView3"
+                    android:alpha="0.2"
+                    android:contentDescription="@string/youtube_logo"
+                    android:src="@drawable/ic_youtube"
+                    app:layout_constraintEnd_toStartOf="@+id/f_overview_press_kit_imageView"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/f_overview_worm_dots_indicator">
+                    app:layout_constraintStart_toEndOf="@+id/f_overview_article_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/f_overview_article_imageView" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/f_overview_rocket_title_textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/rocket"
-                            android:textColor="@color/darker"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/f_overview_rocket_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/f_overview_capsule_imageView"
-                            app:layout_constraintTop_toBottomOf="@+id/f_overview_core_imageView"
-                            app:srcCompat="@drawable/ic_rocket" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_rocket_textView"
-                            style="@style/DetailCardText"
-                            getRocketInfo="@{detail.rocket}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_overview_rocket_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_overview_rocket_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_overview_rocket_imageView"
-                            tools:text="Falcon 9" />
-
-                        <ImageView
-                            android:id="@+id/f_overview_capsule_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_overview_rocket_title_textView"
-                            app:srcCompat="@drawable/ic_capsule" />
-
-                        <TextView
-                            android:id="@+id/f_overview_capsule_textView"
-                            style="@style/DetailCardText"
-                            getCapsulesName="@{detail.capsules}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_overview_capsule_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_overview_capsule_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_overview_capsule_imageView"
-                            tools:text="none" />
-
-                        <ImageView
-                            android:id="@+id/f_overview_core_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            app:layout_constraintEnd_toEndOf="@+id/f_overview_capsule_imageView"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="@+id/f_overview_capsule_imageView"
-                            app:layout_constraintTop_toBottomOf="@+id/f_overview_capsule_imageView"
-                            app:srcCompat="@drawable/ic_core" />
-
-                        <TextView
-                            android:id="@+id/f_overview_core_textView"
-                            style="@style/DetailCardText"
-                            getCore="@{detail.cores}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_overview_core_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_overview_core_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_overview_core_imageView"
-                            tools:text="1" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView3"
-                    style="@style/DetailCardView"
-                    android:layout_width="0dp"
+                <ImageButton
+                    android:id="@+id/f_overview_reddit_imageView"
+                    android:outlineProvider="background"
+                    android:background="@drawable/shape_image_button"
+                    android:elevation="5dp"
+                    getLinkReddit="@{detail.links.reddit}"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:alpha="0.2"
+                    android:contentDescription="@string/reddit_logo"
+                    android:src="@drawable/ic_reddit"
+                    app:layout_constraintEnd_toStartOf="@+id/f_overview_wiki_imageView"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView"
-                    app:layout_constraintTop_toTopOf="@+id/materialCardView">
+                    app:layout_constraintStart_toEndOf="@+id/f_overview_press_kit_imageView"
+                    app:layout_constraintTop_toTopOf="@+id/f_overview_article_imageView" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/f_overview_launchpad_title_textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/launchpads"
-                            android:textColor="@color/darker"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/f_overview_launchpad_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="16dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_overview_launchpad_title_textView"
-                            app:layout_constraintVertical_chainStyle="spread"
-                            app:srcCompat="@drawable/ic_launchpad" />
-
-                        <TextView
-                            android:id="@+id/f_overview_launchpad_textView"
-                            style="@style/DetailCardText"
-                            getLaunchpad="@{detail.launchpad}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_overview_launchpad_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintHorizontal_bias="0.347"
-                            app:layout_constraintStart_toEndOf="@+id/f_overview_launchpad_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_overview_launchpad_imageView"
-                            tools:text="VAFB SLC 3W" />
-
-
-                        <ImageView
-                            android:id="@+id/f_overview_ship_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="24dp"
-                            android:layout_marginBottom="16dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/f_overview_launchpad_imageView"
-                            app:layout_constraintTop_toBottomOf="@+id/f_overview_launchpad_imageView"
-                            app:srcCompat="@drawable/ic_ship" />
-
-                        <TextView
-                            android:id="@+id/f_overview_ship_textView"
-                            style="@style/DetailCardText"
-                            getShipsName="@{detail.ships}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_overview_ship_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_overview_ship_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_overview_ship_imageView"
-                            tools:text="Cargo - HOS Briarwood\n Tug - Finn Falgout\n Barge - Just Read The Instructions 2\n" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="7dp"
+                    android:background="?android:attr/listDivider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+                    app:layout_constraintTop_toBottomOf="@+id/f_overview_patch_imageView" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/f_overview_detail_textView"
-                            getDetails="@{detail.details}"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:textColor="@color/darker"
-                            android:textSize="18sp"
-                            android:textStyle="italic"
-                            tools:text="The launch was Boeing's first-ever conjoined launch of a lighter-weight dual-commsat stack that was specifically designed to take advantage of the lower-cost SpaceX Falcon 9 launch vehicle. Per satellite, launch costs were less than $30 million. The ABS satellite reached its final destination ahead of schedule and started operations on September 10." />
-
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_overview_detail_textView" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

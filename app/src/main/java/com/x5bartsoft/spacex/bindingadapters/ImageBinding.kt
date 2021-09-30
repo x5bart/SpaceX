@@ -38,6 +38,17 @@ class ImageBinding {
             }
         }
 
+        @BindingAdapter("loadPatchImageFromUrlVP")
+        @JvmStatic
+        fun loadPatchImageFromUrlVP(imageView: ImageView, imageUrl: String?) {
+            Log.d("LaunchesBindingPatch", "imageUrl:$imageUrl")
+            if (imageUrl != null) {
+                imageView.load(imageUrl) {
+                    crossfade(600)
+                }
+            }
+        }
+
         @BindingAdapter("loadMainImageFromUrl")
         @JvmStatic
         fun loadMainImageFromUrl(imageView: ImageView, imageUrl: List<String>?) {

@@ -18,11 +18,8 @@ import com.x5bartsoft.spacex.adapters.PagerAdapter
 import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.databinding.ActivityDetailBinding
 import com.x5bartsoft.spacex.model.request.launchdetails.*
-import com.x5bartsoft.spacex.ui.fragments.LaunchpadFragment
-import com.x5bartsoft.spacex.ui.fragments.OverviewFragment
-import com.x5bartsoft.spacex.ui.fragments.RocketFragment
-import com.x5bartsoft.spacex.ui.fragments.ShipFragment
-import com.x5bartsoft.spacex.util.Constants
+import com.x5bartsoft.spacex.model.response.launchdetail.Doc
+import com.x5bartsoft.spacex.ui.fragments.*
 import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_DETAILS_KEY
 import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_LAUNCHES_KEY
 import com.x5bartsoft.spacex.util.NetworkResult
@@ -42,6 +39,10 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var menuItem: MenuItem
     private var launchSaved = false
     private var savedLaunchId = 0
+    private var fragments = ArrayList<Fragment>()
+    private var titles = ArrayList<String>()
+    private var icons = ArrayList<Int>()
+    private lateinit var responseDoc: Doc
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -61,17 +62,15 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun setupTab() {
-        val fragments = ArrayList<Fragment>()
-        fragments.add(OverviewFragment())
-        fragments.add(RocketFragment())
-        fragments.add(LaunchpadFragment())
-        fragments.add(ShipFragment())
 
-        val titles = ArrayList<String>()
-        titles.add("Overview")
-        titles.add("Rocket")
-        titles.add("Launchpad")
-        titles.add("Ships")
+        addFragmentToTab(OverviewFragment(), "Overview")
+        addFragmentToTab(RocketFragment(), "rocket")
+        addFragmentToTab(CoresFragment(), "Core")
+        if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(), "Capsule")
+        if (responseDoc.crew.isNotEmpty()) addFragmentToTab(CrewFragment(), "Crew")
+        addFragmentToTab(PayloadsFragment(), "Payloads")
+        addFragmentToTab(LaunchpadFragment(), "Launchpad")
+        addFragmentToTab(ShipFragment(), "Ship")
 
         val resultBundle = Bundle().apply {
             putParcelable(BUNDLE_LAUNCHES_KEY, args.result)
@@ -91,7 +90,14 @@ class DetailActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.aDetailsTabLayout, binding.aDetailViewPager) { tab, position ->
             tab.text = titles[position]
+            tab.icon =
         }.attach()
+    }
+
+    private fun addFragmentToTab(fragment: Fragment, title: String,icon:Int) {
+        fragments.add(fragment)
+        titles.add(title)
+        icons.add()
     }
 
 
@@ -128,10 +134,9 @@ class DetailActivity : AppCompatActivity() {
 
                     response.data?.let {
                         detailBundle = response.data.docs[0]
+                        responseDoc = response.data.docs[0]
                         setupTab()
                     }
-
-
                 }
                 is NetworkResult.Error -> {
 

@@ -90,6 +90,9 @@
         <item name="android:textStyle">bold|italic</item>
     </style>
 
+    <style name="OverviewText" parent="Widget.MaterialComponents.TextView">
+        <item name="android:textSize">10sp</item>
+    </style>
 
 
 </resources>

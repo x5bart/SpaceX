@@ -35,5 +35,11 @@ data class Doc(
     @SerializedName("ships")
     val ships: List<Ship>,
     @SerializedName("success")
-    val success: Boolean
+    val success: Boolean,
+    @SerializedName("static_fire_date_utc")
+    val staticFire: String,
+    @SerializedName("static_fire_date_unix")
+    val staticFireDateUnix: Long,
+    @SerializedName("date_unix")
+    val dateUnix: Long
 ) : Parcelable

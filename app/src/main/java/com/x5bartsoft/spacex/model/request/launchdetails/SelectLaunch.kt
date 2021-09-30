@@ -16,6 +16,12 @@ data class SelectLaunch(
     val links: Int = 1,
     @SerializedName("name")
     val name: Int = 1,
+    @SerializedName("static_fire_date_utc")
+    val staticFire: Int = 1,
     @SerializedName("success")
-    val success: Int = 1
+    val success: Int = 1,
+    @SerializedName("static_fire_date_unix")
+    val staticFireDateUnix: Long = 1,
+    @SerializedName("date_unix")
+    val dateUnix: Long = 1
 )

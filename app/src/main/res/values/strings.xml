@@ -65,4 +65,6 @@
     <string name="no_favorite_launches">No Favorite launches.</string>
     <string name="delete_all">Delete All</string>
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
+    <string name="count_image">Count image</string>
+    <string name="mission_patch">Mission Patch</string>
 </resources>

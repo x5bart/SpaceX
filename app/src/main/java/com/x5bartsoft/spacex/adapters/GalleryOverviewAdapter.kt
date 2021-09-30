@@ -1,13 +1,19 @@
 package com.x5bartsoft.spacex.adapters
 
+import android.annotation.SuppressLint
+import android.graphics.Color
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.databinding.LayoutOverviewGalleryItemBinding
 import com.x5bartsoft.spacex.model.ImageViewPager
 import com.x5bartsoft.spacex.util.LaunchDiffUtil
+import kotlin.coroutines.coroutineContext
 
 class GalleryOverviewAdapter : RecyclerView.Adapter<GalleryOverviewAdapter.MyViewHolder>() {
 

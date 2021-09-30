@@ -21,6 +21,7 @@
         <entry key="app/src/main/res/drawable/ic_presskit.xml" value="0.3807291666666667" />
         <entry key="app/src/main/res/drawable/image_background.xml" value="0.4640625" />
         <entry key="app/src/main/res/drawable/selected_dot.xml" value="0.4640625" />
+        <entry key="app/src/main/res/drawable/shape_image_button.xml" value="0.4640625" />
         <entry key="app/src/main/res/drawable/tab_selector.xml" value="0.4640625" />
         <entry key="app/src/main/res/drawable/tam.xml" value="0.26197916666666665" />
         <entry key="app/src/main/res/layout/activity_detail.xml" value="0.25" />
@@ -43,7 +44,7 @@
         <entry key="app/src/main/res/layout/layout_launch_favorites_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_launch_row.xml" value="0.375" />
         <entry key="app/src/main/res/layout/layout_launch_row_placeholder.xml" value="0.375" />
-        <entry key="app/src/main/res/layout/layout_overview_gallery_item.xml" value="0.4479166666666667" />
+        <entry key="app/src/main/res/layout/layout_overview_gallery_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_rocket_gallery_item.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_ship_row.xml" value="0.625" />
         <entry key="app/src/main/res/menu-v26/bottom_menu.xml" value="0.4479166666666667" />
