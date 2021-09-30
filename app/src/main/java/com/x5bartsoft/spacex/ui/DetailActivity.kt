@@ -1,5 +1,6 @@
 package com.x5bartsoft.spacex.ui
 
+import android.graphics.drawable.Drawable
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Parcelable
@@ -41,7 +42,7 @@ class DetailActivity : AppCompatActivity() {
     private var savedLaunchId = 0
     private var fragments = ArrayList<Fragment>()
     private var titles = ArrayList<String>()
-    private var icons = ArrayList<Int>()
+    private var icons = ArrayList<Drawable?>()
     private lateinit var responseDoc: Doc
 
 
@@ -63,14 +64,19 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupTab() {
 
-        addFragmentToTab(OverviewFragment(), "Overview")
-        addFragmentToTab(RocketFragment(), "rocket")
-        addFragmentToTab(CoresFragment(), "Core")
-        if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(), "Capsule")
-        if (responseDoc.crew.isNotEmpty()) addFragmentToTab(CrewFragment(), "Crew")
-        addFragmentToTab(PayloadsFragment(), "Payloads")
-        addFragmentToTab(LaunchpadFragment(), "Launchpad")
-        addFragmentToTab(ShipFragment(), "Ship")
+        addFragmentToTab(
+            OverviewFragment(),
+            "Overview",
+            ContextCompat.getDrawable(this, R.drawable.ic_success)
+        )
+
+        addFragmentToTab(RocketFragment(), "rocket",ContextCompat.getDrawable(this, R.drawable.ic_rocket))
+        addFragmentToTab(CoresFragment(), "Core",ContextCompat.getDrawable(this, R.drawable.ic_core))
+        if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(), "Capsule",ContextCompat.getDrawable(this, R.drawable.ic_capsule))
+        if (responseDoc.crew.isNotEmpty()) addFragmentToTab(CrewFragment(), "Crew",ContextCompat.getDrawable(this, R.drawable.ic_crew))
+        addFragmentToTab(PayloadsFragment(), "Payloads",ContextCompat.getDrawable(this, R.drawable.ic_weight))
+        addFragmentToTab(LaunchpadFragment(), "Launchpad",ContextCompat.getDrawable(this, R.drawable.ic_launchpad))
+        addFragmentToTab(ShipFragment(), "Ship",ContextCompat.getDrawable(this, R.drawable.ic_ship))
 
         val resultBundle = Bundle().apply {
             putParcelable(BUNDLE_LAUNCHES_KEY, args.result)
@@ -90,14 +96,14 @@ class DetailActivity : AppCompatActivity() {
 
         TabLayoutMediator(binding.aDetailsTabLayout, binding.aDetailViewPager) { tab, position ->
             tab.text = titles[position]
-            tab.icon =
+            tab.icon = icons[position]
         }.attach()
     }
 
-    private fun addFragmentToTab(fragment: Fragment, title: String,icon:Int) {
+    private fun addFragmentToTab(fragment: Fragment, title: String, icon: Drawable?) {
         fragments.add(fragment)
         titles.add(title)
-        icons.add()
+        icons.add(icon)
     }
 
 

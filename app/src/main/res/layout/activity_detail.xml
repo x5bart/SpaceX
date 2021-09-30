@@ -28,6 +28,7 @@
         style="@style/CustomTabLayoutStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:tabIconTint="@color/tab_text_color"
         app:tabMode="scrollable"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
