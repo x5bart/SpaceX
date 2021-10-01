@@ -570,15 +570,6 @@
                     app:layout_constraintStart_toStartOf="@+id/divider2"
                     app:layout_constraintTop_toBottomOf="@+id/f_rocket_fuel_amount_tons_second_title_textView" />
 
-                <TextView
-                    android:id="@+id/f_rocket_burn_time_second_textView"
-                    getRocketBurnTime="@{rocket.secondStage.burnTimeSec}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    app:layout_constraintEnd_toEndOf="@+id/divider2"
-                    app:layout_constraintTop_toTopOf="@+id/f_rocket_burn_time_second_title_textView"
-                    tools:text="385 sec" />
-
                 <View
                     android:id="@+id/divider5"
                     android:layout_width="0dp"
@@ -592,6 +583,18 @@
                     app:layout_constraintTop_toBottomOf="@+id/f_rocket_burn_time_second_title_textView" />
 
                 <TextView
+                    android:id="@+id/f_rocket_mass_to_orbit_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/mass_to_orbit"
+                    android:textColor="@color/darker"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/divider3"
+                    app:layout_constraintTop_toBottomOf="@+id/divider5" />
+
+
+                <TextView
                     android:id="@+id/f_rocket_details_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -600,7 +603,29 @@
                     android:textColor="@color/darker"
                     android:textStyle="bold"
                     app:layout_constraintStart_toStartOf="@+id/divider3"
-                    app:layout_constraintTop_toBottomOf="@+id/divider5" />
+                    app:layout_constraintTop_toBottomOf="@+id/divider6" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/f_rocket_mass_to_orbit_recyclerView"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_mass_to_orbit_textView"
+                    tools:listitem="@layout/layout_mass_to_orbit_row" />
+
+                <View
+                    android:id="@+id/divider6"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_mass_to_orbit_recyclerView" />
+
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

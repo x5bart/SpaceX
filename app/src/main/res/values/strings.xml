@@ -86,4 +86,5 @@
     <string name="burn_time">Burn time</string>
     <string name="thrust">Thrust</string>
     <string name="details">Details</string>
+    <string name="mass_to_orbit">Mass to Orbit</string>
 </resources>

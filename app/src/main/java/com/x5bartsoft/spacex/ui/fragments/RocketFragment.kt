@@ -7,8 +7,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.x5bartsoft.spacex.adapters.GalleryRocketAdapter
+import com.x5bartsoft.spacex.adapters.LaunchesAdapter
+import com.x5bartsoft.spacex.adapters.MassToOrbitAdapter
 import com.x5bartsoft.spacex.databinding.FragmentRocketBinding
 import com.x5bartsoft.spacex.model.ImageViewPager
 import com.x5bartsoft.spacex.util.Constants
@@ -27,6 +30,7 @@ class RocketFragment : Fragment() {
 
     private lateinit var galleryItemList: ArrayList<ImageViewPager>
     private val galleryAdapter by lazy { GalleryRocketAdapter() }
+    private val mAdapter by lazy { MassToOrbitAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
@@ -45,6 +49,7 @@ class RocketFragment : Fragment() {
         binding.rocket = detailBundle!!.rocket
 
         setupViewPager()
+        setupRecyclerView()
 
         return binding.root
 
@@ -88,6 +93,12 @@ class RocketFragment : Fragment() {
         }
         binding.fRocketWormDotsIndicator.setViewPager2(viewPager)
         galleryAdapter.setData(galleryItemList, viewPager)
+    }
+
+    private fun setupRecyclerView() {
+        mAdapter.setData(detailBundle!!.rocket.payloadWeights)
+        binding.fRocketMassToOrbitRecyclerView.adapter = mAdapter
+        binding.fRocketMassToOrbitRecyclerView.layoutManager = LinearLayoutManager(requireContext())
     }
 
 
