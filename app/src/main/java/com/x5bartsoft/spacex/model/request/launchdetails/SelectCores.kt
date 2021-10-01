@@ -18,6 +18,8 @@ data class SelectCores(
     val locality: Int = 1,
     @SerializedName("name")
     val name: Int = 1,
+    @SerializedName("reused")
+    val reused:Int=1,
     @SerializedName("region")
     val region: Int = 1,
     @SerializedName("status")

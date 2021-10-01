@@ -38,6 +38,7 @@
         <entry key="app/src/main/res/layout/fragment_ship.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_upcoming_launch.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/gallery_item.xml" value="0.3645833333333333" />
+        <entry key="app/src/main/res/layout/layout_core_row.xml" value="0.375" />
         <entry key="app/src/main/res/layout/layout_favorites_launch_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_gallery_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_image_row.xml" value="0.3645833333333333" />
@@ -45,6 +46,7 @@
         <entry key="app/src/main/res/layout/layout_launch_favorites_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_launch_row.xml" value="0.375" />
         <entry key="app/src/main/res/layout/layout_launch_row_placeholder.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/layout_launches_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_mass_to_orbit_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_overview_gallery_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_rocket_gallery_item.xml" value="0.4479166666666667" />

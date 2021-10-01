@@ -11,7 +11,7 @@ data class Doc(
     @SerializedName("capsules")
     val capsules: List<Capsule>,
     @SerializedName("cores")
-    val cores: List<Core>,
+    val cores: List<Cores>,
     @SerializedName("crew")
     val crew: List<Crew>,
     @SerializedName("date_local")

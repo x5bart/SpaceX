@@ -19,7 +19,10 @@ class LaunchesRowBinding {
 
         @BindingAdapter("onRecipeClickListener")
         @JvmStatic
-        fun onRecipeClickListener(recipeRowLayout: ConstraintLayout, result: Doc) {
+        fun onRecipeClickListener(
+            recipeRowLayout: ConstraintLayout,
+            result: Doc
+        ) {
             Log.d("onLaunchClickListener", "Called")
             recipeRowLayout.setOnClickListener {
                 try {

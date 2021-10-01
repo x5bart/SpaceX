@@ -60,4 +60,13 @@
         android:name="com.x5bartsoft.spacex.ui.fragments.UpcomingLaunchFragment"
         android:label="fragment_upcoming_launch"
         tools:layout="@layout/fragment_upcoming_launch" />
+    <fragment
+        android:id="@+id/coresFragment"
+        android:name="com.x5bartsoft.spacex.ui.fragments.CoresFragment"
+        android:label="fragment_cores"
+        tools:layout="@layout/fragment_cores" >
+        <action
+            android:id="@+id/action_coresFragment_to_detailActivity2"
+            app:destination="@id/detailActivity" />
+    </fragment>
 </navigation>

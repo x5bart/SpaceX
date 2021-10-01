@@ -21,6 +21,8 @@ data class Core(
     val launches: List<Launches>,
     @SerializedName("reuse_count")
     val reuseCount: Int,
+    @SerializedName("reused")
+    val reused: Boolean,
     @SerializedName("rtls_attempts")
     val rtlsAttempts: Int,
     @SerializedName("rtls_landings")
@@ -28,5 +30,6 @@ data class Core(
     @SerializedName("serial")
     val serial: String,
     @SerializedName("status")
-    val status: String
+    val status: String,
+
 ) : Parcelable

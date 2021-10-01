@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="launch"
+            type="com.x5bartsoft.spacex.model.response.launchdetail.Launches" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/l_launches_row_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/l_launches_row_name_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{launch.name}"
+            tools:text="STP-2"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/l_launches_row_flight_date_textView"
+            android:layout_width="wrap_content"
+            style="@style/OverviewText"
+            getLaunchesFlightDate="@{launch.dateLocal}"
+            android:layout_height="wrap_content"
+            tools:text="Flight date 12.09.2012"
+            app:layout_constraintStart_toStartOf="@+id/l_launches_row_name_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_launches_row_name_textView" />
+
+        <TextView
+            android:id="@+id/l_launches_row_flight_number_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            getLaunchesFlightNumber="@{launch.flightNumber}"
+            tools:text="Flight number 133"
+            app:layout_constraintBottom_toBottomOf="@+id/l_launches_row_flight_date_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/l_launches_row_name_textView" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
