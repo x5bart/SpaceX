@@ -290,7 +290,7 @@
                     android:id="@+id/l_core_row_type_textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{cores.landpad.status}"
+                    android:text="@{cores.landpad.type}"
                     app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
                     app:layout_constraintTop_toTopOf="@+id/l_core_row_type_title_textView"
                     tools:text="RTLS" />
