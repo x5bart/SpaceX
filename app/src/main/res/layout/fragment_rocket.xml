@@ -5,15 +5,16 @@
 
     <data>
         <variable
-            name="detail"
-            type="com.x5bartsoft.spacex.model.response.launchdetail.Doc" />
+            name="rocket"
+            type="com.x5bartsoft.spacex.model.response.launchdetail.Rocket" />
+
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/lightMediumGray"
+        android:background="@color/white"
         tools:context=".ui.fragments.RocketFragment">
 
 
@@ -55,469 +56,551 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/f_rocket_gallery_viewPager" />
-                <!---->
 
-
-                <ImageView
+                <ImageButton
                     android:id="@+id/f_rocket_wiki_imageView"
-                    getLink="@{detail.rocket.wikipedia}"
+                    getLink="@{rocket.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
                     android:alpha="0.2"
+                    android:background="@drawable/shape_image_button"
                     android:contentDescription="@string/wikipedia_logo"
+                    android:elevation="5dp"
+                    android:outlineProvider="background"
                     android:src="@drawable/ic_wikipedia"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView2" />
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_detail_textView" />
 
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView"
-                    style="@style/DetailCardView"
+                <TextView
+                    android:id="@+id/f_rocket_detail_textView"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
+                    android:text="@{rocket.description}"
+                    android:textColor="@color/darker"
+                    android:textSize="18sp"
+                    android:textStyle="italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_worm_dots_indicator">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <ImageView
-                            android:id="@+id/f_rocket_rocket_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-
-                            android:layout_marginTop="6dp"
-                            android:layout_marginBottom="8dp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_capsule_imageView"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_core_imageView"
-                            app:srcCompat="@drawable/ic_rocket"
-                            android:contentDescription="@string/rocket_image" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_rocket_textView"
-                            style="@style/DetailCardText"
-                            getRocketInfo="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_rocket_imageView"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_core_textView"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_core_textView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_rocket_imageView"
-                            tools:text="Falcon 9" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_capsule_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/capsule_image"
-                            app:layout_constraintBottom_toTopOf="@+id/f_rocket_core_imageView"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_rocket_title_textView"
-                            app:srcCompat="@drawable/ic_capsule" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_capsule_textView"
-                            style="@style/DetailCardText"
-                            getCapsulesName="@{detail.capsules}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_capsule_imageView"
-                            app:layout_constraintEnd_toStartOf="@+id/guideline3"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_capsule_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_capsule_imageView"
-                            tools:text="none" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_core_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="6dp"
-                            android:contentDescription="@string/core_image"
-                            app:layout_constraintBottom_toTopOf="@+id/f_rocket_rocket_imageView"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_capsule_imageView"
-                            app:layout_constraintHorizontal_bias="0.5"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_capsule_imageView"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_capsule_imageView"
-                            app:srcCompat="@drawable/ic_core" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_core_textView"
-                            style="@style/DetailCardText"
-                            getCore="@{detail.cores}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_core_imageView"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_capsule_textView"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_capsule_textView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_core_imageView"
-                            tools:text="1" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_rocket_title_textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/rocket"
-                            android:textColor="@color/darker"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_details_textView"
+                    tools:text="The launch was Boeing's first-ever conjoined launch of a lighter-weight dual-commsat stack that was specifically designed to take advantage of the lower-cost SpaceX Falcon 9 launch vehicle. Per satellite, launch costs were less than $30 million. The ABS satellite reached its final destination ahead of schedule and started operations on September 10." />
 
 
-                        <ImageView
-                            android:id="@+id/f_rocket_lending_legs_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/lending_legs_image"
-                            app:layout_constraintStart_toStartOf="@+id/guideline3"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_rocket_title_textView"
-                            app:srcCompat="@drawable/ic_lending_legs" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_lending_legs_textView"
-                            style="@style/DetailCardText"
-                            android:layout_width="0dp"
-                            getLendingLegs="@{detail.rocket.landingLegs}"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_lending_legs_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_lending_legs_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_lending_legs_imageView"
-                            tools:text="12 carbon fiber landing legs" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_cost_per_launch_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/dollar_logo"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_lending_legs_imageView"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_lending_legs_imageView"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_lending_legs_imageView"
-                            app:srcCompat="@drawable/ic_cost" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_cost_per_launch_textView"
-                            style="@style/DetailCardText"
-                            getCost="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_cost_per_launch_imageView"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_lending_legs_textView"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_lending_legs_textView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_cost_per_launch_imageView"
-                            tools:text="Cost per launch: 90000000$" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_cost_percent_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:contentDescription="@string/percent_image"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_rocket_imageView"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_lending_legs_imageView"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_lending_legs_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_rocket_imageView"
-                            app:srcCompat="@drawable/ic_percent" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_cost_percent_textView"
-                            style="@style/DetailCardText"
-                            getSuccessRate="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_cost_percent_imageView"
-                            app:layout_constraintEnd_toEndOf="@+id/f_rocket_lending_legs_textView"
-                            app:layout_constraintStart_toStartOf="@+id/f_rocket_lending_legs_textView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_cost_percent_imageView"
-                            tools:text="Success rate 100%" />
-
-                        <androidx.constraintlayout.widget.Guideline
-                            android:id="@+id/guideline3"
-                            android:layout_width="wrap_content"
-                            android:layout_height="0dp"
-                            android:layout_marginStart="172dp"
-                            android:layout_marginEnd="172dp"
-                            android:orientation="vertical"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintGuide_percent="0.5"
-                            app:layout_constraintStart_toStartOf="parent" />
-
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView3"
-                    style="@style/DetailCardView"
+                <View
+                    android:id="@+id/divider"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="4dp"
-                    app:layout_constraintEnd_toStartOf="@+id/materialCardView4"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/f_rocket_first_stage_title_textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/first_stage"
-                            android:textColor="@color/darker"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_engine_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/engine_image"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_first_stage_title_textView"
-                            app:srcCompat="@drawable/ic_engine" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_engine_textView"
-                            style="@style/DetailCardText"
-                            getFirstEngines="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_engine_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_engine_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_engine_imageView"
-                            tools:text="9 engines merlin" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_thrust_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/thrust_image"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_engine_imageView"
-                            app:srcCompat="@drawable/ic_thrust" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_thrust_textView"
-                            style="@style/DetailCardText"
-                            getFirstThrust="@{detail.rocket.firstStage}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_thrust_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_thrust_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_thrust_imageView"
-                            tools:text="Thrust sea level - 7697 kN \nThrust vacuum - 8227 kN" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_fuel_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:contentDescription="@string/barrel_image"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_thrust_imageView"
-                            app:srcCompat="@drawable/ic_fuel" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_fuel_textView"
-                            style="@style/DetailCardText"
-                            getFirstFuel="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_fuel_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_fuel_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_fuel_imageView"
-                            tools:text="Fuel amount - 385 tons \nliquid oxygen + RP-1 kerosene" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView4"
-                    style="@style/DetailCardView"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/materialCardView3"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/f_rocket_second_stage_title_textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="@string/second_stage"
-                            android:textColor="@color/darker"
-                            android:textStyle="bold"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_second_engine_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/engine_image"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_second_stage_title_textView"
-                            app:srcCompat="@drawable/ic_engine" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_second_engine_textView"
-                            style="@style/DetailCardText"
-                            getSecondEngines="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_second_engine_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_second_engine_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_second_engine_imageView"
-                            tools:text="9 engines merlin" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_second_thrust_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:contentDescription="@string/thrust_image"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_second_engine_imageView"
-                            app:srcCompat="@drawable/ic_thrust" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_second_thrust_textView"
-                            style="@style/DetailCardText"
-                            getSecondThrust="@{detail.rocket.secondStage}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_second_thrust_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_second_thrust_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_second_thrust_imageView"
-                            tools:text="Thrust sea level - 7697 kN \nThrust vacuum - 8227 kN" />
-
-                        <ImageView
-                            android:id="@+id/f_rocket_second_fuel_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:contentDescription="@string/barrel_image"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_rocket_second_thrust_imageView"
-                            app:srcCompat="@drawable/ic_fuel" />
-
-                        <TextView
-                            android:id="@+id/f_rocket_second_fuel_textView"
-                            style="@style/DetailCardText"
-                            getSecondFuel="@{detail.rocket}"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="8dp"
-                            app:layout_constraintBottom_toBottomOf="@+id/f_rocket_second_fuel_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/f_rocket_second_fuel_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/f_rocket_second_fuel_imageView"
-                            tools:text="Fuel amount - 385 tons \nliquid oxygen + RP-1 kerosene" />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="1dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="7dp"
+                    android:background="?android:attr/listDivider"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView4">
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_worm_dots_indicator" />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
+                <TextView
+                    android:id="@+id/f_rocket_name_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@{rocket.name}"
+                    android:textColor="@color/darker"
+                    style="@style/OverviewText"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"
+                    android:layout_marginTop="8dp"
+                    tools:text="Falcon 9"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/divider" />
 
-                        <TextView
-                            android:id="@+id/f_overview_detail_textView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:text="@{detail.rocket.description}"
-                            android:textColor="@color/darker"
-                            android:textSize="18sp"
-                            android:textStyle="italic"
-                            tools:text="The launch was Boeing's first-ever conjoined launch of a lighter-weight dual-commsat stack that was specifically designed to take advantage of the lower-cost SpaceX Falcon 9 launch vehicle. Per satellite, launch costs were less than $30 million. The ABS satellite reached its final destination ahead of schedule and started operations on September 10." />
+                <TextView
+                    android:id="@+id/f_rocket_first_flight_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:text="@string/first_flight"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_name_textView" />
 
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
+                <TextView
+                    android:id="@+id/f_rocket_first_flight_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{rocket.firstFlight}"
+                    android:layout_marginEnd="8dp"
+                    tools:text="2010.09.28"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_first_flight_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_stages_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/stages"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_first_flight_title_textView" />
+
+
+                <TextView
+                    android:id="@+id/f_rocket_stages_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{String.valueOf(rocket.stages)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_stages_title_textView"
+                    tools:text="2" />
+
+                <TextView
+                    android:id="@+id/f_rocket_success_rate_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/launch_success_rate"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_stages_title_textView" />
+
+
+                <TextView
+                    android:id="@+id/f_rocket_success_rate_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    getRocketLaunchSuccessRate="@{rocket}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_success_rate_title_textView"
+                    tools:text="100%" />
+
+                <TextView
+                    android:id="@+id/f_rocket_country_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/country"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_success_rate_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_country_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{rocket.country}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_country_title_textView"
+                    tools:text="United States" />
+
+                <TextView
+                    android:id="@+id/f_rocket_company_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/company"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_country_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_company_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{rocket.company}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_company_title_textView"
+                    tools:text="SpaceX" />
+
+                <TextView
+                    android:id="@+id/f_rocket_cost_per_launch_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/cost_per_launch"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_company_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_cost_per_launch_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{String.valueOf(rocket.costPerLaunch)}"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_cost_per_launch_title_textView"
+                    tools:text="5 000 000 $" />
+
+                <ImageView
+                    android:id="@+id/f_rocket_active_imageView"
+                    getActive="@{rocket.active}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/success_image"
+                    app:layout_constraintBottom_toBottomOf="@+id/f_rocket_active_textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_active_textView"
+                    app:srcCompat="@drawable/ic_active"
+                    app:tint="@color/lightGreen" />
+
+                <TextView
+                    android:id="@+id/f_rocket_active_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/active"
+                    app:layout_constraintStart_toStartOf="@+id/f_rocket_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_name_textView" />
+
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_cost_per_launch_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_height_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/height"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+                <TextView
+                    android:id="@+id/f_rocket_height_textView"
+                    android:layout_width="wrap_content"
+                    getRocketHeight="@{rocket}"
+                    android:layout_height="wrap_content"
+                    tools:text="70m / 229.6ft"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_height_title_textView" />
+
+
+                <TextView
+                    android:id="@+id/f_rocket_diameter_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/diameter"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_height_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_diameter_textView"
+                    getRocketDiameter="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_diameter_title_textView"
+                    tools:text="70m / 229.6ft" />
+
+                <TextView
+                    android:id="@+id/f_rocket_mass_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/mass"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_diameter_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_mass_textView"
+                    getRocketMass="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_mass_title_textView"
+                    tools:text="549 054 kg / 1 207 920 lbs" />
+
+                <View
+                    android:id="@+id/divider3"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_mass_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_first_stage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/first_stage"
+                    android:textColor="@color/darker"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/divider3"
+                    app:layout_constraintTop_toBottomOf="@+id/divider3" />
+
+                <TextView
+                    android:id="@+id/f_rocket_first_reusable_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/reusable"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_first_stage_textView" />
+
+                <ImageView
+                    android:id="@+id/f_rocket_first_reusable_imageView"
+                    getActive="@{rocket.firstStage.reusable}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/success_image"
+                    app:layout_constraintBottom_toBottomOf="@+id/f_rocket_first_reusable_title_textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_first_reusable_title_textView"
+                    app:srcCompat="@drawable/ic_active"
+                    app:tint="@color/lightGreen" />
+
+                <TextView
+                    android:id="@+id/f_rocket_engines_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/engines"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_first_reusable_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_engines_textView"
+                    getRocketEngines="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_engines_title_textView"
+                    tools:text="9, merlin 1D+" />
+
+                <TextView
+                    android:id="@+id/f_rocket_thrust_sea_level_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/trust_sea_level"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_engines_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_thrust_sea_level_textView"
+                    getRocketTrustSeaLevel="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_thrust_sea_level_title_textView"
+                    tools:text="7607 kN / 1710000 lbf" />
+
+                <TextView
+                    android:id="@+id/f_rocket_thrust_vacuum_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/thrust_vacuum"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_thrust_sea_level_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_thrust_vacuum_textView"
+                    getRocketTrustVacuum="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_thrust_vacuum_title_textView"
+                    tools:text="7607 kN / 1710000 lbf" />
+
+                <TextView
+                    android:id="@+id/f_rocket_fuel_amount_tons_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/fuel_amount_tons"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_thrust_vacuum_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_fuel_amount_tons_textView"
+                    getRocketTons="@{rocket.firstStage.fuelAmountTons}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_fuel_amount_tons_title_textView"
+                    tools:text="385 tons" />
+
+                <TextView
+                    android:id="@+id/f_rocket_burn_time_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/burn_time"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_fuel_amount_tons_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_burn_time_textView"
+                    getRocketBurnTime="@{rocket.firstStage.burnTimeSec}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_burn_time_title_textView"
+                    tools:text="385 sec" />
+
+                <View
+                    android:id="@+id/divider4"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_burn_time_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_second_stage_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/second_stage"
+                    android:textColor="@color/darker"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/divider3"
+                    app:layout_constraintTop_toBottomOf="@+id/divider4" />
+
+                <TextView
+                    android:id="@+id/f_rocket_second_reusable_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/reusable"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_second_stage_textView" />
+
+                <ImageView
+                    android:id="@+id/f_rocket_second_reusable_imageView"
+                    getActive="@{rocket.secondStage.reusable}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/success_image"
+                    app:layout_constraintBottom_toBottomOf="@+id/f_rocket_second_reusable_title_textView"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_second_reusable_title_textView"
+                    app:srcCompat="@drawable/ic_active"
+                    app:tint="@color/lightGreen" />
+
+                <TextView
+                    android:id="@+id/f_rocket_engines_second_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/engines"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_second_reusable_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_engines_second_textView"
+                    getRocketEnginesSecond="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_engines_second_title_textView"
+                    tools:text="9, merlin 1D+" />
+
+                <TextView
+                    android:id="@+id/f_rocket_thrust_second_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/thrust"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_engines_second_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_thrust_second_textView"
+                    getRocketTrust="@{rocket}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_thrust_second_title_textView"
+                    tools:text="7607 kN / 1710000 lbf" />
+
+                <TextView
+                    android:id="@+id/f_rocket_fuel_amount_tons_second_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/fuel_amount_tons"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_thrust_second_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_fuel_amount_tons_second_textView"
+                    getRocketTons="@{rocket.secondStage.fuelAmountTons}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_fuel_amount_tons_second_title_textView"
+                    tools:text="385 tons" />
+
+                <TextView
+                    android:id="@+id/f_rocket_burn_time_second_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/burn_time"
+                    app:layout_constraintStart_toStartOf="@+id/divider2"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_fuel_amount_tons_second_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_burn_time_second_textView"
+                    getRocketBurnTime="@{rocket.secondStage.burnTimeSec}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/f_rocket_burn_time_second_title_textView"
+                    tools:text="385 sec" />
+
+                <View
+                    android:id="@+id/divider5"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/f_rocket_burn_time_second_title_textView" />
+
+                <TextView
+                    android:id="@+id/f_rocket_details_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/details"
+                    android:textColor="@color/darker"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="@+id/divider3"
+                    app:layout_constraintTop_toBottomOf="@+id/divider5" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </ScrollView>

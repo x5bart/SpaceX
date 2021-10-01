@@ -19,8 +19,10 @@
     <color name="dark">#313C44</color>
     <color name="darker">#151B20</color>
     <color name="red">#FF4646</color>
+    <color name="pink">#EF6C6C</color>
     <color name="yellow">#FFC114</color>
     <color name="green">#00C980</color>
+    <color name="lightGreen">#51CC9F</color>
     <color name="placeholder">#929292</color>
 
     // My Chip Style

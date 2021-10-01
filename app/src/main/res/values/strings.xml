@@ -67,4 +67,23 @@
     <string name="delete_favorite_menu">Delete Favorite Menu</string>
     <string name="count_image">Count image</string>
     <string name="mission_patch">Mission Patch</string>
+    <string name="active">Active</string>
+    <string name="height">Height</string>
+    <string name="diameter">Diameter</string>
+    <string name="weight">Weight</string>
+    <string name="mass">Mass</string>
+    <string name="first_flight">First flight</string>
+    <string name="country">Country</string>
+    <string name="company">Company</string>
+    <string name="cost_per_launch">Cost per launch</string>
+    <string name="launch_success_rate">Launch success rate</string>
+    <string name="stages">Stages</string>
+    <string name="engines">Engines</string>
+    <string name="reusable">Reusable</string>
+    <string name="trust_sea_level">Trust sea level</string>
+    <string name="thrust_vacuum">Thrust vacuum</string>
+    <string name="fuel_amount_tons">Fuel amount</string>
+    <string name="burn_time">Burn time</string>
+    <string name="thrust">Thrust</string>
+    <string name="details">Details</string>
 </resources>

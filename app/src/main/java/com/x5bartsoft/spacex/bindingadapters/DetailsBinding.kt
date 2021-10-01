@@ -144,14 +144,7 @@ class DetailsBinding {
             view.text = text
         }
 
-        @BindingAdapter("getRocketInfo")
-        @JvmStatic
-        fun getRocketInfo(view: TextView, data: Rocket) {
-            val name = data.name
-            val firstFlight = data.firstFlight
-            val text = "$name\n First flight: $firstFlight"
-            view.text = text
-        }
+
 
         @BindingAdapter("getCapsulesName")
         @JvmStatic

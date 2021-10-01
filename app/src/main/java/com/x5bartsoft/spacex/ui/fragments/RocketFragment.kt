@@ -42,7 +42,7 @@ class RocketFragment : Fragment() {
 
         val args = arguments
         detailBundle = args?.getParcelable(Constants.BUNDLE_DETAILS_KEY)
-        binding.detail = detailBundle
+        binding.rocket = detailBundle!!.rocket
 
         setupViewPager()
 
