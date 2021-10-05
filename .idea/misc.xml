@@ -28,6 +28,7 @@
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.43385416666666665" />
         <entry key="app/src/main/res/layout/bottom_sheet_launches.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/chip_item.xml" value="1.0" />
+        <entry key="app/src/main/res/layout/fragment_capsules.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/fragment_cores.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/fragment_crew.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2598958333333333" />
@@ -40,6 +41,7 @@
         <entry key="app/src/main/res/layout/fragment_ship.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_upcoming_launch.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/gallery_item.xml" value="0.3645833333333333" />
+        <entry key="app/src/main/res/layout/layout_capsule_row.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_core_row.xml" value="0.375" />
         <entry key="app/src/main/res/layout/layout_favorites_launch_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_gallery_item.xml" value="0.25" />

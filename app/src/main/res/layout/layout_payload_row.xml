@@ -43,7 +43,7 @@
             tools:text="ArabSat 6A" />
 
         <TextView
-            android:id="@+id/l_payload_row_manufactured_textView"
+            android:id="@+id/l_payload_row_manufacturers_textView"
             getPayloadsListString="@{payload.manufacturers}"
             style="@style/OverviewText"
             android:layout_width="wrap_content"
@@ -58,8 +58,8 @@
             style="@style/OverviewText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView"
-            app:layout_constraintTop_toBottomOf="@+id/l_payload_row_manufactured_textView"
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_payload_row_manufacturers_textView"
             tools:text="Saudi Arabia" />
 
         <TextView
@@ -68,7 +68,7 @@
             getPayloadsListString="@{payload.customers}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView"
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView"
             app:layout_constraintTop_toBottomOf="@+id/l_payload_row_nationalities_textView"
             tools:text="Arabsat" />
 
@@ -82,7 +82,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/orbit"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_lifespan_years_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView"
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView"
             app:layout_constraintTop_toBottomOf="@+id/l_payload_row_customers_textView" />
 
         <TextView
@@ -104,7 +104,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/lifespan_years"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_reference_system_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_lifespan_years_textView"
@@ -123,7 +123,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/reference_system"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_regime_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_reference_system_textView"
@@ -143,7 +143,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/regime"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_mass_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_regime_textView"
@@ -163,7 +163,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/mass"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_semi_major_axis_km_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_mass_textView"
@@ -182,7 +182,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/semi_major_axis_km"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_eccentricity_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_semi_major_axis_km_textView"
@@ -202,7 +202,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/eccentricity"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_periapsis_km_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_eccentricity_km_textView"
@@ -222,7 +222,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/periapsis_km"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_apoapsis_km_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_periapsis_km_textView"
@@ -242,7 +242,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/apoapsis_km"
             app:layout_constraintBottom_toTopOf="@+id/l_payload_row_period_min_title_textView"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_apoapsis_km_textView"
@@ -262,7 +262,7 @@
             android:layout_marginBottom="8dp"
             android:text="@string/period_min"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufactured_textView" />
+            app:layout_constraintStart_toStartOf="@+id/l_payload_row_manufacturers_textView" />
 
         <TextView
             android:id="@+id/l_payload_row_period_min_textView"

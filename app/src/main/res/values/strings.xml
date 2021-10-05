@@ -105,4 +105,5 @@
     <string name="periapsis_km">Periapsis (km)</string>
     <string name="apoapsis_km">Apoapsis (km)</string>
     <string name="period_min">Period (min)</string>
+    <string name="water_landings">Water landings</string>
 </resources>
