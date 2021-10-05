@@ -10,12 +10,7 @@ import com.x5bartsoft.spacex.model.response.launchdetail.Rocket
 class RocketBinding {
 
     companion object {
-        @BindingAdapter("getRocketFirstFlight")
-        @JvmStatic
-        fun getRocketFirstFlight(view: TextView, data: String) {
-            val text = "First flight: $data"
-            view.text = text
-        }
+
 
         @BindingAdapter("getActive")
         @JvmStatic

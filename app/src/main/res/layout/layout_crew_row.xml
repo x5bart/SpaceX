@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="crew"
+            type="com.x5bartsoft.spacex.model.response.launchdetail.Crew" />
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="3dp"
+            app:cardElevation="5dp"
+            android:layout_margin="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/l_crew_main_imageView"
+                    loadOneImageFromUrl="@{crew.image}"
+                    android:layout_width="200dp"
+                    android:layout_height="250dp"
+                    android:contentDescription="@string/image_ship"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+                <TextView
+                    android:id="@+id/l_crew_name_title_textView"
+                    android:text="@{crew.name}"
+                    android:textColor="@color/darker"
+                    android:textSize="18sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginTop="2dp"
+                    tools:text="Jared Isaacman"
+                    app:layout_constraintStart_toStartOf="@+id/l_crew_main_imageView"
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_main_imageView" />
+
+                <TextView
+                    android:id="@+id/l_crew_type_title_textView"
+                    android:text="@{crew.agency}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    tools:text="SpaceX"
+                    app:layout_constraintStart_toStartOf="@+id/l_crew_name_title_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_name_title_textView" />
+
+                <ImageButton
+                    android:id="@+id/f_crew_wiki_imageView"
+                    getLink="@{crew.wikipedia}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:alpha="0.2"
+                    android:background="@drawable/shape_image_button"
+                    android:contentDescription="@string/wikipedia_logo"
+                    android:elevation="5dp"
+                    android:outlineProvider="background"
+                    android:src="@drawable/ic_wikipedia"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_type_title_textView" />
+
+                <ImageView
+                    android:id="@+id/f_crew_active_imageView"
+                    getCrewActive="@{crew.status}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:contentDescription="@string/success_image"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_main_imageView"
+                    app:srcCompat="@drawable/ic_not_active"
+                    app:tint="@color/pink" />
+
+
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

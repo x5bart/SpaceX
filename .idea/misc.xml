@@ -43,6 +43,7 @@
         <entry key="app/src/main/res/layout/gallery_item.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/layout_capsule_row.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_core_row.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/layout_crew_row.xml" value="0.425" />
         <entry key="app/src/main/res/layout/layout_favorites_launch_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_gallery_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/layout_image_row.xml" value="0.3645833333333333" />
@@ -55,7 +56,7 @@
         <entry key="app/src/main/res/layout/layout_overview_gallery_item.xml" value="0.5" />
         <entry key="app/src/main/res/layout/layout_payload_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_rocket_gallery_item.xml" value="0.4479166666666667" />
-        <entry key="app/src/main/res/layout/layout_ship_row.xml" value="0.625" />
+        <entry key="app/src/main/res/layout/layout_ship_row.xml" value="0.5" />
         <entry key="app/src/main/res/menu-v26/bottom_menu.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/menu-v26/favorite_contextual_menu.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/menu/bottom_menu.xml" value="0.4479166666666667" />

@@ -11,9 +11,9 @@ class ImageBinding {
 
     companion object {
 
-        @BindingAdapter("loadShipImageFromUrl")
+        @BindingAdapter("loadOneImageFromUrl")
         @JvmStatic
-        fun loadShipImageFromUrl(imageView: ImageView, imageUrl: String?) {
+        fun loadOneImageFromUrl(imageView: ImageView, imageUrl: String?) {
             Log.d("LaunchesBindingMain", "imageUrl:$imageUrl")
             if (imageUrl!=null) {
                 imageView.load(imageUrl) {

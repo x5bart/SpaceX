@@ -12,7 +12,7 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <View
             android:id="@+id/divider"
@@ -86,7 +86,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/water_landings"
+            app:layout_constraintBottom_toTopOf="@+id/l_capsule_row_last_update_textView"
             app:layout_constraintStart_toStartOf="@+id/l_capsule_row_type_textView"
             app:layout_constraintTop_toBottomOf="@+id/l_capsule_row_reuse_count_title_textView" />
 
@@ -103,13 +105,13 @@
             android:id="@+id/l_capsule_row_last_update_textView"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@{capsule.lastUpdate}"
             android:textColor="@color/darker"
             android:textSize="18sp"
-            android:layout_marginTop="8dp"
-            android:text="@{capsule.lastUpdate}"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/l_capsule_row_status_textView"
             app:layout_constraintStart_toStartOf="@+id/l_capsule_row_water_landings_title_textView"
-            app:layout_constraintTop_toBottomOf="@+id/l_capsule_row_water_landings_title_textView"
             tools:text="Docked to pressurized mating adapter PMA-2 on the Harmony module of the ISS on 24 Apr 2021" />
 
 

@@ -32,7 +32,7 @@
 
                 <ImageView
                     android:id="@+id/l_ship_main_imageView"
-                    loadShipImageFromUrl="@{ship.image}"
+                    loadOneImageFromUrl="@{ship.image}"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:contentDescription="@string/image_ship"
