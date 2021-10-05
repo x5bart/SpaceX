@@ -64,12 +64,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupTab() {
 
-        addFragmentToTab(
-            OverviewFragment(),
-            "Overview",
-            ContextCompat.getDrawable(this, R.drawable.ic_success)
-        )
-
+        addFragmentToTab(OverviewFragment(), "Overview", ContextCompat.getDrawable(this, R.drawable.ic_success))
         addFragmentToTab(RocketFragment(), "rocket",ContextCompat.getDrawable(this, R.drawable.ic_rocket))
         addFragmentToTab(CoresFragment(), "Core",ContextCompat.getDrawable(this, R.drawable.ic_core))
         if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(), "Capsule",ContextCompat.getDrawable(this, R.drawable.ic_capsule))
@@ -77,6 +72,7 @@ class DetailActivity : AppCompatActivity() {
         addFragmentToTab(PayloadsFragment(), "Payloads",ContextCompat.getDrawable(this, R.drawable.ic_weight))
         addFragmentToTab(LaunchpadFragment(), "Launchpad",ContextCompat.getDrawable(this, R.drawable.ic_launchpad))
         addFragmentToTab(ShipFragment(), "Ship",ContextCompat.getDrawable(this, R.drawable.ic_ship))
+
 
         val resultBundle = Bundle().apply {
             putParcelable(BUNDLE_LAUNCHES_KEY, args.result)
@@ -98,6 +94,8 @@ class DetailActivity : AppCompatActivity() {
             tab.text = titles[position]
             tab.icon = icons[position]
         }.attach()
+
+
     }
 
     private fun addFragmentToTab(fragment: Fragment, title: String, icon: Drawable?) {

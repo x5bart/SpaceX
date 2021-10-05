@@ -68,66 +68,6 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/l_launchpad_name_imageView"
-                            android:layout_width="45dp"
-                            android:layout_height="45dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:alpha="0.7"
-                            android:contentDescription="@string/launch_image"
-                            android:padding="5dp"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ic_launchpad"
-                            app:tint="@color/white" />
-
-                        <TextView
-                            android:id="@+id/l_launchpad_name_textView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginEnd="16dp"
-                            android:alpha="0.7"
-                            android:fontFamily="sans-serif-condensed"
-                            android:gravity="start"
-                            android:text="@{detail.launchpad.name}"
-                            android:textColor="@color/white"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic"
-                            app:layout_constraintBottom_toBottomOf="@+id/l_launchpad_name_imageView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toEndOf="@+id/l_launchpad_name_imageView"
-                            app:layout_constraintTop_toTopOf="@+id/l_launchpad_name_imageView"
-                            tools:text="KSC LC 39A" />
-
-                        <TextView
-                            android:id="@+id/l_launchpad_success_textView"
-                            style="@style/IconTextStyle"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            getSuccessLaunch="@{detail.launchpad}"
-                            android:layout_marginBottom="8dp"
-                            android:alpha="0.7"
-                            android:textColor="@color/white"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/l_launchpad_success_imageView"
-                            app:layout_constraintStart_toStartOf="@+id/l_launchpad_success_imageView"
-                            tools:text="30146" />
-
-                        <ImageView
-                            android:id="@+id/l_launchpad_success_imageView"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="40dp"
-                            android:alpha="0.7"
-                            android:contentDescription="@string/rocket_image"
-                            app:layout_constraintBottom_toTopOf="@+id/l_launchpad_success_textView"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:srcCompat="@drawable/ic_success"
-                            app:tint="@color/white" />
-
-
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 

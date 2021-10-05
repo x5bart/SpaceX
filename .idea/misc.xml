@@ -29,10 +29,12 @@
         <entry key="app/src/main/res/layout/bottom_sheet_launches.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/chip_item.xml" value="1.0" />
         <entry key="app/src/main/res/layout/fragment_cores.xml" value="0.4479166666666667" />
+        <entry key="app/src/main/res/layout/fragment_crew.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_favorite.xml" value="0.2598958333333333" />
         <entry key="app/src/main/res/layout/fragment_launches.xml" value="0.375" />
         <entry key="app/src/main/res/layout/fragment_launchpad.xml" value="0.45" />
         <entry key="app/src/main/res/layout/fragment_overview.xml" value="0.4305555555555556" />
+        <entry key="app/src/main/res/layout/fragment_payloads.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/fragment_roadster.xml" value="0.3645833333333333" />
         <entry key="app/src/main/res/layout/fragment_rocket.xml" value="0.5" />
         <entry key="app/src/main/res/layout/fragment_ship.xml" value="0.3645833333333333" />
@@ -49,6 +51,7 @@
         <entry key="app/src/main/res/layout/layout_launches_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_mass_to_orbit_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_overview_gallery_item.xml" value="0.5" />
+        <entry key="app/src/main/res/layout/layout_payload_row.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_rocket_gallery_item.xml" value="0.4479166666666667" />
         <entry key="app/src/main/res/layout/layout_ship_row.xml" value="0.625" />
         <entry key="app/src/main/res/menu-v26/bottom_menu.xml" value="0.4479166666666667" />

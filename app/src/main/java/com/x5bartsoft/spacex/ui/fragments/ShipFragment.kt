@@ -21,15 +21,11 @@ class ShipFragment : Fragment() {
     private var _binding: FragmentShipBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var mainViewModel: MainViewModel
     private var detailBundle: Doc? = null
 
     private val mAdapter by lazy { ShipAdapter() }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        mainViewModel = ViewModelProvider(requireActivity()).get(MainViewModel::class.java)
-        super.onCreate(savedInstanceState)
-    }
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
