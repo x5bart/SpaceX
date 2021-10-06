@@ -66,12 +66,12 @@ class DetailActivity : AppCompatActivity() {
 
         addFragmentToTab(OverviewFragment(), "Overview", ContextCompat.getDrawable(this, R.drawable.ic_success))
         addFragmentToTab(RocketFragment(), "rocket",ContextCompat.getDrawable(this, R.drawable.ic_rocket))
-        addFragmentToTab(CoresFragment(), "Core",ContextCompat.getDrawable(this, R.drawable.ic_core))
+        if (responseDoc.cores.isNotEmpty())addFragmentToTab(CoresFragment(), "Core",ContextCompat.getDrawable(this, R.drawable.ic_core))
         if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(), "Capsule",ContextCompat.getDrawable(this, R.drawable.ic_capsule))
         if (responseDoc.crew.isNotEmpty()) addFragmentToTab(CrewFragment(), "Crew",ContextCompat.getDrawable(this, R.drawable.ic_crew))
-        addFragmentToTab(PayloadsFragment(), "Payloads",ContextCompat.getDrawable(this, R.drawable.ic_weight))
+        if (responseDoc.payloads.isNotEmpty())addFragmentToTab(PayloadsFragment(), "Payloads",ContextCompat.getDrawable(this, R.drawable.ic_weight))
         addFragmentToTab(LaunchpadFragment(), "Launchpad",ContextCompat.getDrawable(this, R.drawable.ic_launchpad))
-        addFragmentToTab(ShipFragment(), "Ship",ContextCompat.getDrawable(this, R.drawable.ic_ship))
+        if (responseDoc.ships.isNotEmpty()) addFragmentToTab(ShipFragment(), "Ship",ContextCompat.getDrawable(this, R.drawable.ic_ship))
 
 
         val resultBundle = Bundle().apply {
