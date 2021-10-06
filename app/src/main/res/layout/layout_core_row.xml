@@ -11,378 +11,389 @@
     </data>
 
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/l_core_row_layout"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/l_core_row_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/l_core_row_name_textView"
+            style="@style/OverviewText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:text="@{cores.core.serial}"
+            android:textColor="@color/darker"
+            android:textSize="24sp"
+            android:textStyle="bold|italic"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider9"
+            tools:text="B1026" />
+
+        <TextView
+            android:id="@+id/l_core_row_block_textView"
+            getCoreBlock="@{cores.core.block}"
+            setCoreVisibleInt="@{cores.core.block}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_name_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_name_textView"
+            tools:text="Block 5" />
+
+        <TextView
+            android:id="@+id/l_core_row_status_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{cores.core.status}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="lost" />
+
+        <TextView
+            android:id="@+id/l_core_row_reused_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/reused"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/divider7" />
+
+        <TextView
+            android:id="@+id/l_core_row_reuse_count_title_textView"
+            setCoreVisibleInt="@{cores.core.reuseCount}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/reuse_count"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_reused_textView" />
+
+        <ImageView
+            android:id="@+id/f_rocket_active_imageView"
+            getActive="@{cores.reused}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:contentDescription="@string/success_image"
+            app:layout_constraintBottom_toBottomOf="@+id/l_core_row_reused_textView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/l_core_row_reused_textView"
+            app:srcCompat="@drawable/ic_active"
+            app:tint="@color/lightGreen" />
+
+        <View
+            android:id="@+id/divider7"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_last_update_textView" />
+
+        <TextView
+            android:id="@+id/l_core_row_last_update_textView"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@{cores.core.lastUpdate}"
+            android:textColor="@color/darker"
+            android:textSize="18sp"
+            app:layout_constraintEnd_toEndOf="@+id/l_core_row_status_textView"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_block_textView"
+            tools:text="Toppled by rough seas and broken in two after safely landing aboard OCISLY" />
+
+        <TextView
+            android:id="@+id/l_core_row_reuse_count_textView"
+            setCoreVisibleInt="@{cores.core.reuseCount}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(cores.core.reuseCount)}"
+            app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
+            app:layout_constraintTop_toTopOf="@+id/l_core_row_reuse_count_title_textView"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/l_core_row_rtls_attempts_title_textView"
+            setCoreVisibleInt="@{cores.core.rtlsAttempts}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/rtls_attempts"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_reuse_count_title_textView" />
+
+        <TextView
+            android:id="@+id/l_core_row_rtls_attempts_textView"
+            setCoreVisibleInt="@{cores.core.rtlsAttempts}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(cores.core.rtlsAttempts)}"
+            app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
+            app:layout_constraintTop_toTopOf="@+id/l_core_row_rtls_attempts_title_textView"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/l_core_row_rtls_landings_title_textView"
+            setCoreVisibleInt="@{cores.core.rtlsLandings}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/rtls_landings"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_rtls_attempts_title_textView" />
+
+        <TextView
+            android:id="@+id/l_core_row_rtls_landings_textView"
+            setCoreVisibleInt="@{cores.core.rtlsLandings}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(cores.core.rtlsLandings)}"
+            app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
+            app:layout_constraintTop_toTopOf="@+id/l_core_row_rtls_landings_title_textView"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/l_core_row_asds_attempts_title_textView"
+            setCoreVisibleInt="@{cores.core.asdsAttempts}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/asds_attempts"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_rtls_landings_title_textView" />
+
+        <TextView
+            android:id="@+id/l_core_row_asds_attempts_textView"
+            setCoreVisibleInt="@{cores.core.asdsAttempts}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(cores.core.asdsAttempts)}"
+            app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
+            app:layout_constraintTop_toTopOf="@+id/l_core_row_asds_attempts_title_textView"
+            tools:text="1" />
+
+        <TextView
+            android:id="@+id/l_core_row_asds_landings_title_textView"
+            setCoreVisibleInt="@{cores.core.asdsAttempts}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/asds_attempts"
+            app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_asds_attempts_title_textView" />
+
+        <TextView
+            android:id="@+id/l_core_row_asds_landings_textView"
+            setCoreVisibleInt="@{cores.core.asdsAttempts}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{String.valueOf(cores.core.asdsLandings)}"
+            app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
+            app:layout_constraintTop_toTopOf="@+id/l_core_row_asds_landings_title_textView"
+            tools:text="1" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            setCoreVisible="@{cores.landpad}"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/l_core_row_asds_landings_title_textView">
+
+            <View
+                android:id="@+id/divider8"
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="?android:attr/listDivider"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/landpad"
+                android:textColor="@color/darker"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="@+id/divider8"
+                app:layout_constraintTop_toBottomOf="@+id/divider8" />
+
+            <TextView
+                android:id="@+id/l_core_row_landpad_name_textView"
+                style="@style/OverviewText"
+                getCoreString="@{cores.landpad.fullName}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/darker"
+                android:textSize="24sp"
+                android:textStyle="bold|italic"
+                app:layout_constraintStart_toStartOf="@+id/textView"
+                app:layout_constraintTop_toBottomOf="@+id/textView"
+                tools:text="Landing Zone 2" />
+
+            <TextView
+                android:id="@+id/l_core_row_locality_title_textView"
+                style="@style/OverviewText"
+                getCoreLandpadLocality="@{cores.landpad}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="@+id/l_core_row_landpad_name_textView"
+                app:layout_constraintTop_toBottomOf="@+id/l_core_row_landpad_name_textView"
+                tools:text="Cape Canaveral, Florida" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/materialCardView4"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/l_core_row_name_textView"
-                    style="@style/OverviewText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:text="@{cores.core.serial}"
-                    android:textColor="@color/darker"
-                    android:textSize="24sp"
-                    android:textStyle="bold|italic"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/divider9"
-                    tools:text="B1026" />
-
-                <TextView
-                    android:id="@+id/l_core_row_block_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    tools:text="Block 5"
-                    getCoreBlock="@{cores.core.block}"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_name_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_name_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_status_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    tools:text="lost"
-                    android:text="@{cores.core.status}"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/l_core_row_reused_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/reused"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/divider7" />
-
-                <TextView
-                    android:id="@+id/l_core_row_reuse_count_title_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/reuse_count"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_reused_textView" />
-
-                <ImageView
-                    android:id="@+id/f_rocket_active_imageView"
-                    getActive="@{cores.reused}"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:contentDescription="@string/success_image"
-                    app:layout_constraintBottom_toBottomOf="@+id/l_core_row_reused_textView"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="@+id/l_core_row_reused_textView"
-                    app:srcCompat="@drawable/ic_active"
-                    app:tint="@color/lightGreen" />
-
-                <View
-                    android:id="@+id/divider7"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="?android:attr/listDivider"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_last_update_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_last_update_textView"
-                    android:layout_width="0dp"
-                    android:textColor="@color/darker"
-                    android:textSize="18sp"
-                    android:text="@{cores.core.lastUpdate}"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    tools:text="Toppled by rough seas and broken in two after safely landing aboard OCISLY"
-                    app:layout_constraintEnd_toEndOf="@+id/l_core_row_status_textView"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_block_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_reuse_count_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(cores.core.reuseCount)}"
-                    tools:text="1"
-                    app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_core_row_reuse_count_title_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_rtls_attempts_title_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/rtls_attempts"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_reuse_count_title_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_rtls_attempts_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(cores.core.rtlsAttempts)}"
-                    app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_core_row_rtls_attempts_title_textView"
-                    tools:text="1" />
-
-                <TextView
-                    android:id="@+id/l_core_row_rtls_landings_title_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/rtls_landings"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_rtls_attempts_title_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_rtls_landings_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(cores.core.rtlsLandings)}"
-                    app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_core_row_rtls_landings_title_textView"
-                    tools:text="1" />
-
-                <TextView
-                    android:id="@+id/l_core_row_asds_attempts_title_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/asds_attempts"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_rtls_landings_title_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_asds_attempts_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(cores.core.asdsAttempts)}"
-                    app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_core_row_asds_attempts_title_textView"
-                    tools:text="1" />
-
-                <TextView
-                    android:id="@+id/l_core_row_asds_landings_title_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@string/asds_attempts"
-                    app:layout_constraintStart_toStartOf="@+id/l_core_row_block_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_asds_attempts_title_textView" />
-
-                <TextView
-                    android:id="@+id/l_core_row_asds_landings_textView"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{String.valueOf(cores.core.asdsLandings)}"
-                    app:layout_constraintEnd_toEndOf="@+id/f_rocket_active_imageView"
-                    app:layout_constraintTop_toTopOf="@+id/l_core_row_asds_landings_title_textView"
-                    tools:text="1" />
+                android:layout_height="250dp"
+                android:layout_margin="8dp"
+                app:cardCornerRadius="7dp"
+                app:cardElevation="5dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/l_core_row_locality_title_textView">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    setCoreVisible="@{cores.landpad}"
-                    android:layout_marginTop="8dp"
-                    app:layout_constraintTop_toBottomOf="@+id/l_core_row_asds_landings_title_textView">
+                    android:layout_height="match_parent">
+
+
+                    <ImageView
+                        android:id="@+id/l_gallery_item_gallery_imageView"
+                        loadCoreOneImageFromUrl="@{cores.landpad}"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:contentDescription="@string/launch_image"
+                        android:scaleType="centerCrop"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
                     <View
-                        android:id="@+id/divider8"
+                        android:id="@+id/l_gallery_item_main_gradient"
                         android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginEnd="8dp"
-                        android:background="?android:attr/listDivider"
+                        android:layout_height="250dp"
+                        android:background="@drawable/gradient_main_owerview"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/landpad"
-                        android:textColor="@color/darker"
-                        android:textStyle="bold"
-                        app:layout_constraintStart_toStartOf="@+id/divider8"
-                        app:layout_constraintTop_toBottomOf="@+id/divider8" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_landpad_name_textView"
-                        style="@style/OverviewText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        getCoreString="@{cores.landpad.fullName}"
-                        android:textColor="@color/darker"
-                        android:textSize="24sp"
-                        android:textStyle="bold|italic"
-                        app:layout_constraintStart_toStartOf="@+id/textView"
-                        app:layout_constraintTop_toBottomOf="@+id/textView"
-                        tools:text="Landing Zone 2" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_locality_title_textView"
-                        style="@style/OverviewText"
-                        android:layout_width="wrap_content"
-                        getCoreLandpadLocality="@{cores.landpad}"
-                        android:layout_height="wrap_content"
-                        app:layout_constraintStart_toStartOf="@+id/l_core_row_landpad_name_textView"
-                        app:layout_constraintTop_toBottomOf="@+id/l_core_row_landpad_name_textView"
-                        tools:text="Cape Canaveral, Florida" />
-
-                    <com.google.android.material.card.MaterialCardView
-                        android:id="@+id/materialCardView4"
-                        android:layout_width="match_parent"
-                        android:layout_height="250dp"
-                        android:layout_margin="8dp"
-                        app:cardCornerRadius="7dp"
-                        app:cardElevation="5dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/l_core_row_locality_title_textView">
-
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent">
-
-
-                            <ImageView
-                                android:id="@+id/l_gallery_item_gallery_imageView"
-                                loadCoreOneImageFromUrl="@{cores.landpad}"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:contentDescription="@string/launch_image"
-                                android:scaleType="centerCrop"
-                                app:layout_constraintBottom_toBottomOf="parent"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent"
-                                tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-                            <View
-                                android:id="@+id/l_gallery_item_main_gradient"
-                                android:layout_width="0dp"
-                                android:layout_height="250dp"
-                                android:background="@drawable/gradient_main_owerview"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-
-
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    </com.google.android.material.card.MaterialCardView>
-
-                    <TextView
-                        android:id="@+id/l_core_row_type_title_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/type"
-                        app:layout_constraintStart_toStartOf="@+id/l_core_row_locality_title_textView"
-                        app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_type_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        getCoreString="@{cores.landpad.type}"
-                        app:layout_constraintEnd_toEndOf="@+id/materialCardView4"
-                        app:layout_constraintTop_toTopOf="@+id/l_core_row_type_title_textView"
-                        tools:text="RTLS" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_landing_attempts_title_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/landing_attempts"
-                        app:layout_constraintStart_toStartOf="@+id/l_core_row_locality_title_textView"
-                        app:layout_constraintTop_toBottomOf="@+id/l_core_row_type_title_textView" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_landing_attempts_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        getCoreInt="@{cores.landpad.landingAttempts}"
-                        app:layout_constraintEnd_toEndOf="@+id/l_core_row_type_textView"
-                        app:layout_constraintTop_toTopOf="@+id/l_core_row_landing_attempts_title_textView"
-                        tools:text="18" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_landing_successes_title_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:text="@string/landing_successes"
-                        app:layout_constraintStart_toStartOf="@+id/l_core_row_locality_title_textView"
-                        app:layout_constraintTop_toBottomOf="@+id/l_core_row_landing_attempts_title_textView" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_landing_successes_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        getCoreInt="@{cores.landpad.landingSuccesses}"
-                        app:layout_constraintEnd_toEndOf="@+id/l_core_row_landing_attempts_textView"
-                        app:layout_constraintTop_toTopOf="@+id/l_core_row_landing_successes_title_textView"
-                        tools:text="18" />
-
-                    <TextView
-                        android:id="@+id/l_core_row_landpad_status_textView"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="8dp"
-                        getCoreString="@{cores.landpad.status}"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView"
-                        tools:text="active" />
-
-                    <ImageButton
-                        android:id="@+id/l_core_row__wiki_imageView"
-                        getLink="@{cores.landpad.wikipedia}"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:layout_marginBottom="32dp"
-                        android:alpha="0.2"
-                        android:background="@drawable/shape_image_button"
-                        android:contentDescription="@string/wikipedia_logo"
-                        android:elevation="5dp"
-                        android:outlineProvider="background"
-                        android:src="@drawable/ic_wikipedia"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/l_core_row_landing_successes_title_textView" />
-
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
+            </com.google.android.material.card.MaterialCardView>
 
-                <View
-                    android:id="@+id/divider9"
-                    android:layout_width="0dp"
-                    android:layout_height="1dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="?android:attr/listDivider"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/l_core_row_type_title_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/type"
+                app:layout_constraintStart_toStartOf="@+id/l_core_row_locality_title_textView"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+
+            <TextView
+                android:id="@+id/l_core_row_type_textView"
+                getCoreString="@{cores.landpad.type}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/materialCardView4"
+                app:layout_constraintTop_toTopOf="@+id/l_core_row_type_title_textView"
+                tools:text="RTLS" />
+
+            <TextView
+                android:id="@+id/l_core_row_landing_attempts_title_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/landing_attempts"
+                app:layout_constraintStart_toStartOf="@+id/l_core_row_locality_title_textView"
+                app:layout_constraintTop_toBottomOf="@+id/l_core_row_type_title_textView" />
+
+            <TextView
+                android:id="@+id/l_core_row_landing_attempts_textView"
+                getCoreInt="@{cores.landpad.landingAttempts}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/l_core_row_type_textView"
+                app:layout_constraintTop_toTopOf="@+id/l_core_row_landing_attempts_title_textView"
+                tools:text="18" />
+
+            <TextView
+                android:id="@+id/l_core_row_landing_successes_title_textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="@string/landing_successes"
+                app:layout_constraintStart_toStartOf="@+id/l_core_row_locality_title_textView"
+                app:layout_constraintTop_toBottomOf="@+id/l_core_row_landing_attempts_title_textView" />
+
+            <TextView
+                android:id="@+id/l_core_row_landing_successes_textView"
+                getCoreInt="@{cores.landpad.landingSuccesses}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintEnd_toEndOf="@+id/l_core_row_landing_attempts_textView"
+                app:layout_constraintTop_toTopOf="@+id/l_core_row_landing_successes_title_textView"
+                tools:text="18" />
+
+            <TextView
+                android:id="@+id/l_core_row_landpad_status_textView"
+                getCoreString="@{cores.landpad.status}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/textView"
+                tools:text="active" />
+
+            <ImageButton
+                android:id="@+id/l_core_row__wiki_imageView"
+                getLink="@{cores.landpad.wikipedia}"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:alpha="0.2"
+                android:background="@drawable/shape_image_button"
+                android:contentDescription="@string/wikipedia_logo"
+                android:elevation="5dp"
+                android:outlineProvider="background"
+                android:src="@drawable/ic_wikipedia"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/l_core_row_landing_successes_title_textView" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/divider9"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 
 </layout>

@@ -28,6 +28,13 @@ class CoreBinding {
             if (data == null) view.visibility = View.GONE
         }
 
+        @BindingAdapter("setCoreVisibleInt")
+        @JvmStatic
+        fun setCoreVisibleInt(view: TextView, data: Int?) {
+            if (data == null) view.visibility = View.GONE
+        }
+
+
         @BindingAdapter("getCoreString")
         @JvmStatic
         fun getCoreString(view: TextView, data: String?){
