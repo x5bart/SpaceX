@@ -6,12 +6,12 @@ import androidx.lifecycle.*
 import com.x5bartsoft.spacex.data.Repository
 import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
-import com.x5bartsoft.spacex.data.database.etities.UpcomingEntity
+import com.x5bartsoft.spacex.data.database.etities.NextLaunchEntity
 import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.nextlaunch.NextLaunchRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
 import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
-import com.x5bartsoft.spacex.model.response.upcomminglaunch.UpcomingLaunch
 import com.x5bartsoft.spacex.util.InternetConnection
 import com.x5bartsoft.spacex.util.NetworkResult
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -32,7 +32,7 @@ class MainViewModel @Inject constructor(
     val readLaunches: LiveData<List<LaunchesEntity>> = repository.local.readLaunches().asLiveData()
     val readFavoriteLaunch: LiveData<List<FavoriteEntity>> =
         repository.local.readFavoriteLaunches().asLiveData()
-    val readUpcomingLaunch: LiveData<List<UpcomingEntity>> = repository.local.readUpcomingLaunch().asLiveData()
+    val readNextLaunchLaunch: LiveData<List<NextLaunchEntity>> = repository.local.readUpcomingLaunch().asLiveData()
 
     private fun insertLaunches(launchesEntity: LaunchesEntity) =
         viewModelScope.launch(Dispatchers.IO) {
@@ -44,9 +44,9 @@ class MainViewModel @Inject constructor(
             repository.local.insertFavoriteLaunch(favoriteEntity)
         }
 
-    private fun insertUpcomingLaunch(upcomingLaunch: UpcomingEntity) =
+    private fun insertUpcomingLaunch(nextLaunchLaunch: NextLaunchEntity) =
         viewModelScope.launch(Dispatchers.IO){
-            repository.local.insertUpcomingLaunch(upcomingLaunch)
+            repository.local.insertUpcomingLaunch(nextLaunchLaunch)
         }
 
     fun deleteFavoriteLaunch(favoriteEntity: FavoriteEntity) =
@@ -62,7 +62,7 @@ class MainViewModel @Inject constructor(
     /** RETROFIT */
     var launchesResponse: MutableLiveData<NetworkResult<Launches>> = MutableLiveData()
     var launchesDetailsResponse: MutableLiveData<NetworkResult<LaunchDetail>> = MutableLiveData()
-    var upcomingLaunch: MutableLiveData<NetworkResult<UpcomingLaunch>> = MutableLiveData()
+    var nextLaunch: MutableLiveData<NetworkResult<LaunchDetail>> = MutableLiveData()
 
     fun getLaunches(request: LaunchesRequest) = viewModelScope.launch {
         getSafeLaunches(request)
@@ -72,8 +72,8 @@ class MainViewModel @Inject constructor(
         getSafeLaunchesDetails(request)
     }
 
-    fun getUpcomingLaunch() = viewModelScope.launch {
-        getSafeUpcomingLaunch()
+    fun getNextLaunch(request: NextLaunchRequest) = viewModelScope.launch {
+        getSafeNextLaunch(request)
     }
 
 
@@ -113,22 +113,22 @@ class MainViewModel @Inject constructor(
 
     }
 
-    private suspend fun getSafeUpcomingLaunch() {
-        upcomingLaunch.value = NetworkResult.Loading()
+    private suspend fun getSafeNextLaunch(request: NextLaunchRequest) {
+        nextLaunch.value = NetworkResult.Loading()
         val internetConnection = InternetConnection(getApplication())
         if (internetConnection.hasInternetConnection()) {
             try {
-                val response = repository.remote.getUpcomingLaunch()
-                upcomingLaunch.value = handleUpcomingLaunch(response)
+                val response = repository.remote.getNextLaunch(request)
+                nextLaunch.value = handleNextLaunch(response)
 
-                val launches = upcomingLaunch.value!!.data
+                val launches = nextLaunch.value!!.data
                 if (launches != null) offLineCacheUpcoming(launches)
             } catch (e: Exception) {
                 launchesDetailsResponse.value = NetworkResult.Error("Upcoming launch not found.")
                 Log.d("MainViewModel", " exception:$e")
             }
         } else {
-            upcomingLaunch.value = NetworkResult.Error("No Internet Connection")
+            nextLaunch.value = NetworkResult.Error("No Internet Connection")
         }
     }
 
@@ -139,8 +139,8 @@ class MainViewModel @Inject constructor(
 
     }
 
-    private fun offLineCacheUpcoming(launches: UpcomingLaunch) {
-        val upcomingEntity = UpcomingEntity(launches)
+    private fun offLineCacheUpcoming(launches: LaunchDetail) {
+        val upcomingEntity = NextLaunchEntity(launches)
         insertUpcomingLaunch(upcomingEntity)
 
     }
@@ -178,7 +178,7 @@ class MainViewModel @Inject constructor(
         }
     }
 
-    private fun handleUpcomingLaunch(response: Response<UpcomingLaunch>): NetworkResult<UpcomingLaunch>? {
+    private fun handleNextLaunch(response: Response<LaunchDetail>): NetworkResult<LaunchDetail>? {
         return when {
             response.message().toString().contains("timeout") -> {
                 NetworkResult.Error("Timeout")
@@ -187,8 +187,8 @@ class MainViewModel @Inject constructor(
                 NetworkResult.Error("No upcoming launch found")
             }
             response.isSuccessful -> {
-                val upcomingLaunch = response.body()
-                NetworkResult.Success(upcomingLaunch!!)
+                val nextLaunch = response.body()
+                NetworkResult.Success(nextLaunch!!)
             }
             else -> NetworkResult.Error(response.message())
         }

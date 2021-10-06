@@ -18,7 +18,8 @@ import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.adapters.PagerAdapter
 import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.databinding.ActivityDetailBinding
-import com.x5bartsoft.spacex.model.request.launchdetails.*
+import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.launchdetails.Query
 import com.x5bartsoft.spacex.model.response.launchdetail.Doc
 import com.x5bartsoft.spacex.ui.fragments.*
 import com.x5bartsoft.spacex.util.Constants.Companion.BUNDLE_DETAILS_KEY
@@ -64,14 +65,30 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupTab() {
 
-        addFragmentToTab(OverviewFragment(), "Overview", ContextCompat.getDrawable(this, R.drawable.ic_success))
-        addFragmentToTab(RocketFragment(), "rocket",ContextCompat.getDrawable(this, R.drawable.ic_rocket))
-        if (responseDoc.cores.isNotEmpty())addFragmentToTab(CoresFragment(), "Core",ContextCompat.getDrawable(this, R.drawable.ic_core))
-        if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(), "Capsule",ContextCompat.getDrawable(this, R.drawable.ic_capsule))
-        if (responseDoc.crew.isNotEmpty()) addFragmentToTab(CrewFragment(), "Crew",ContextCompat.getDrawable(this, R.drawable.ic_crew))
-        if (responseDoc.payloads.isNotEmpty())addFragmentToTab(PayloadsFragment(), "Payloads",ContextCompat.getDrawable(this, R.drawable.ic_weight))
-        addFragmentToTab(LaunchpadFragment(), "Launchpad",ContextCompat.getDrawable(this, R.drawable.ic_launchpad))
-        if (responseDoc.ships.isNotEmpty()) addFragmentToTab(ShipFragment(), "Ship",ContextCompat.getDrawable(this, R.drawable.ic_ship))
+        addFragmentToTab(OverviewFragment(),
+            "Overview",
+            ContextCompat.getDrawable(this, R.drawable.ic_success))
+        addFragmentToTab(RocketFragment(),
+            "rocket",
+            ContextCompat.getDrawable(this, R.drawable.ic_rocket))
+        if (responseDoc.cores.isNotEmpty()) addFragmentToTab(CoresFragment(),
+            "Core",
+            ContextCompat.getDrawable(this, R.drawable.ic_core))
+        if (responseDoc.capsules.isNotEmpty()) addFragmentToTab(CapsulesFragment(),
+            "Capsule",
+            ContextCompat.getDrawable(this, R.drawable.ic_capsule))
+        if (responseDoc.crew.isNotEmpty()) addFragmentToTab(CrewFragment(),
+            "Crew",
+            ContextCompat.getDrawable(this, R.drawable.ic_crew))
+        if (responseDoc.payloads.isNotEmpty()) addFragmentToTab(PayloadsFragment(),
+            "Payloads",
+            ContextCompat.getDrawable(this, R.drawable.ic_weight))
+        addFragmentToTab(LaunchpadFragment(),
+            "Launchpad",
+            ContextCompat.getDrawable(this, R.drawable.ic_launchpad))
+        if (responseDoc.ships.isNotEmpty()) addFragmentToTab(ShipFragment(),
+            "Ship",
+            ContextCompat.getDrawable(this, R.drawable.ic_ship))
 
 
         val resultBundle = Bundle().apply {
@@ -93,6 +110,12 @@ class DetailActivity : AppCompatActivity() {
         TabLayoutMediator(binding.aDetailsTabLayout, binding.aDetailViewPager) { tab, position ->
             tab.text = titles[position]
             tab.icon = icons[position]
+
+//            val icon = findViewById<ImageView>(R.id.icon)
+//            icon.setImageDrawable(icons[position])
+//            val text = findViewById<TextView>(R.id.text)
+//            text.setText(titles[position])
+//            tab.setCustomView(R.layout.view_home_tabs)
         }.attach()
 
 

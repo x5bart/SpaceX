@@ -9,12 +9,10 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
-import com.x5bartsoft.spacex.R
-import com.x5bartsoft.spacex.databinding.FragmentLaunchesBinding
 import com.x5bartsoft.spacex.databinding.FragmentUpcomingLaunchBinding
+import com.x5bartsoft.spacex.model.request.nextlaunch.NextLaunchRequest
 import com.x5bartsoft.spacex.util.NetworkResult
 import com.x5bartsoft.spacex.util.observeOnce
-import com.x5bartsoft.spacex.viewmodels.LaunchesViewModel
 import com.x5bartsoft.spacex.viewmodels.MainViewModel
 import kotlinx.coroutines.launch
 
@@ -51,7 +49,7 @@ class UpcomingLaunchFragment : Fragment() {
 
     private fun readDatabase() {
         lifecycleScope.launch {
-            mainViewModel.readUpcomingLaunch.observeOnce(viewLifecycleOwner, { database ->
+            mainViewModel.readNextLaunchLaunch.observeOnce(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
                     Log.d("UpcomingLaunchFragment", "readDatabase called!")
 //                    mAdapter.setData(database[0])
@@ -67,8 +65,8 @@ class UpcomingLaunchFragment : Fragment() {
 
     private fun requestApiData() {
         Log.d("UpcomingLaunchFragment", "requestApiData called!")
-        mainViewModel.getUpcomingLaunch()
-        mainViewModel.upcomingLaunch.observe(viewLifecycleOwner, { response ->
+        mainViewModel.getNextLaunch(NextLaunchRequest())
+        mainViewModel.nextLaunch.observe(viewLifecycleOwner, { response ->
             when (response) {
                 is NetworkResult.Success -> {
 //                    hideShimmerEffect()
@@ -93,7 +91,7 @@ class UpcomingLaunchFragment : Fragment() {
 
     private fun loadDataFromCache() {
         lifecycleScope.launch {
-            mainViewModel.readUpcomingLaunch.observe(viewLifecycleOwner, { database ->
+            mainViewModel.readNextLaunchLaunch.observe(viewLifecycleOwner, { database ->
                 if (database.isNotEmpty()) {
 //                    mAdapter.setData(database[0])
                     Log.d("UpcomingLaunchFragment", "network error read database: ${database[0]}")

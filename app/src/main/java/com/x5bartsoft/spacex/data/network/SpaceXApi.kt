@@ -1,6 +1,7 @@
 package com.x5bartsoft.spacex.data.network
 
 import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.nextlaunch.NextLaunchRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
 import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
@@ -17,6 +18,6 @@ interface SpaceXApi {
     @POST("/v4/launches/query")
     suspend fun getLaunchDetails(@Body detailsRequest: LaunchDetailsRequest?): Response<LaunchDetail>
 
-    @GET("/v4/launches/next")
-    suspend fun getUpcommingLaunch(): Response<UpcomingLaunch>
+    @POST("/v4/launches/query")
+    suspend fun getNextLaunch(@Body nextLaunch:NextLaunchRequest?): Response<LaunchDetail>
 }

@@ -2,6 +2,7 @@ package com.x5bartsoft.spacex.data
 
 import com.x5bartsoft.spacex.data.network.SpaceXApi
 import com.x5bartsoft.spacex.model.request.launchdetails.LaunchDetailsRequest
+import com.x5bartsoft.spacex.model.request.nextlaunch.NextLaunchRequest
 import com.x5bartsoft.spacex.model.request.querylaunches.LaunchesRequest
 import com.x5bartsoft.spacex.model.response.launchdetail.LaunchDetail
 import com.x5bartsoft.spacex.model.response.launches.Launches
@@ -19,8 +20,8 @@ class RemoteDataSource @Inject constructor(private val spaceXApi: SpaceXApi) {
         return spaceXApi.getLaunchDetails(detailsRequest)
     }
 
-    suspend fun getUpcomingLaunch(): Response<UpcomingLaunch> {
-        return spaceXApi.getUpcommingLaunch()
+    suspend fun getNextLaunch(nextLaunch:NextLaunchRequest): Response<LaunchDetail> {
+        return spaceXApi.getNextLaunch(nextLaunch)
     }
 
 

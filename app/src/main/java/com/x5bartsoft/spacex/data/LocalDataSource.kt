@@ -3,7 +3,7 @@ package com.x5bartsoft.spacex.data
 import com.x5bartsoft.spacex.data.database.SpaceXDao
 import com.x5bartsoft.spacex.data.database.etities.FavoriteEntity
 import com.x5bartsoft.spacex.data.database.etities.LaunchesEntity
-import com.x5bartsoft.spacex.data.database.etities.UpcomingEntity
+import com.x5bartsoft.spacex.data.database.etities.NextLaunchEntity
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
@@ -19,8 +19,8 @@ class LocalDataSource @Inject constructor(
         return spaceXDao.readFavoriteLaunch()
     }
 
-    fun readUpcomingLaunch(): Flow<List<UpcomingEntity>> {
-        return spaceXDao.readUpcomingLaunch()
+    fun readUpcomingLaunch(): Flow<List<NextLaunchEntity>> {
+        return spaceXDao.readNextLaunch()
     }
 
     suspend fun insertLaunches(launchesEntity: LaunchesEntity) {
@@ -31,8 +31,8 @@ class LocalDataSource @Inject constructor(
         spaceXDao.insertFavoriteLaunch(favoriteEntity)
     }
 
-    suspend fun insertUpcomingLaunch(upcomingEntity: UpcomingEntity) {
-        spaceXDao.isertUpcomingLaunch(upcomingEntity)
+    suspend fun insertUpcomingLaunch(nextLaunchEntity: NextLaunchEntity) {
+        spaceXDao.insertNextLaunch(nextLaunchEntity)
     }
 
     suspend fun deleteFavoriteLaunch(favoriteEntity: FavoriteEntity) {
