@@ -29,5 +29,7 @@ data class SelectShips(
     @SerializedName("type")
     val type: Int = 1,
     @SerializedName("year_built")
-    val yearBuilt: Int = 1
+    val yearBuilt: Int = 1,
+    @SerializedName("home_port")
+    val homePort: Int = 1
 )

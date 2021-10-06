@@ -1,5 +1,6 @@
 package com.x5bartsoft.spacex.bindingadapters
 
+import android.graphics.drawable.Drawable
 import android.util.Log
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
@@ -15,7 +16,7 @@ class ImageBinding {
         @JvmStatic
         fun loadOneImageFromUrl(imageView: ImageView, imageUrl: String?) {
             Log.d("LaunchesBindingMain", "imageUrl:$imageUrl")
-            if (imageUrl!=null) {
+            if (imageUrl != null) {
                 imageView.load(imageUrl) {
                     crossfade(600)
 //                    placeholder(R.drawable.ic_placeholder_error)
@@ -76,6 +77,14 @@ class ImageBinding {
                 }
             } else {
                 imageView.load(R.drawable.ic_placeholder_error)
+            }
+        }
+
+        @BindingAdapter("loadImageForImageButton")
+        @JvmStatic
+        fun loadImageForImageButton(imageView: ImageView, data: String) {
+            imageView.load(R.drawable.ic_marrine) {
+                transformations(CircleCropTransformation())
             }
         }
 

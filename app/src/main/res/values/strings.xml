@@ -50,10 +50,9 @@
     <string name="lending_legs_image">lending legs image</string>
     <string name="dollar_logo">dollar logo</string>
     <string name="percent_image">percent image</string>
-    <string name="name">name:</string>
     <string name="type">Type</string>
-    <string name="build_year">build year:</string>
-    <string name="role">role:</string>
+    <string name="build_year">Build year</string>
+    <string name="role">Role</string>
     <string name="image_ship">image ship</string>
     <string name="marinetraffic">Marinetraffic.com</string>
     <string name="marinetraffic_logo">Marinetraffic logo</string>
@@ -108,4 +107,8 @@
     <string name="water_landings">Water landings</string>
     <string name="launch_attempts">Launch attempts</string>
     <string name="launch_successes">Launch successes</string>
+    <string name="imo">IMO</string>
+    <string name="mmsi">MMSI</string>
+    <string name="abs">ABS</string>
+    <string name="home_port">Home port</string>
 </resources>
