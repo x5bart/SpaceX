@@ -69,7 +69,7 @@
 
                 <ImageButton
                     android:id="@+id/f_crew_wiki_imageView"
-                    getLink="@{crew.wikipedia}"
+                    getCrewLink="@{crew.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="78dp"

@@ -1,6 +1,9 @@
 package com.x5bartsoft.spacex.bindingadapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.x5bartsoft.spacex.R
@@ -41,6 +44,19 @@ class OverviewBinding {
 
             view.text = text
 
+        }
+
+        @BindingAdapter("getOverviewLink")
+        @JvmStatic
+        fun getOverviewLink(view: ImageView, date: String?) {
+            if (date != null) {
+                view.alpha = 1.0F
+                view.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(date)
+                    view.context.startActivity(intent)
+                }
+            }
         }
     }
 }

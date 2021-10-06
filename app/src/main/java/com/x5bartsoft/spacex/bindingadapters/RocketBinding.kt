@@ -1,5 +1,7 @@
 package com.x5bartsoft.spacex.bindingadapters
 
+import android.content.Intent
+import android.net.Uri
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
@@ -127,6 +129,19 @@ class RocketBinding {
             val text = "$data sec"
             view.text = text
 
+        }
+
+        @BindingAdapter("getRocketLink")
+        @JvmStatic
+        fun getRocketLink(view: ImageView, date: String?) {
+            if (date != null) {
+                view.alpha = 1.0F
+                view.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(date)
+                    view.context.startActivity(intent)
+                }
+            }
         }
 
 

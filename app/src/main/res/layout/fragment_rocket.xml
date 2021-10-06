@@ -59,7 +59,7 @@
 
                 <ImageButton
                     android:id="@+id/f_rocket_wiki_imageView"
-                    getLink="@{rocket.wikipedia}"
+                    getRocketLink="@{rocket.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"

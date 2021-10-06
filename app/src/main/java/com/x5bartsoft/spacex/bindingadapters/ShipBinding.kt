@@ -1,5 +1,7 @@
 package com.x5bartsoft.spacex.bindingadapters
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -49,18 +51,23 @@ class ShipBinding {
 
         }
 
-        @BindingAdapter("getShipLink")
-        @JvmStatic
-        fun getShipLink(view: ImageButton, date: String?) {
-            if (date != null) {
-                view.alpha = 1.0F
-            }
-        }
-
         @BindingAdapter("setShipVisibleInt")
         @JvmStatic
         fun setShipVisibleInt(view: TextView, data: Int?) {
             if (data == 0) view.visibility = View.GONE
+        }
+
+        @BindingAdapter("getShipLink")
+        @JvmStatic
+        fun getShipLink(view: ImageView, date: String?) {
+            if (date != null) {
+                view.alpha = 1.0F
+                view.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(date)
+                    view.context.startActivity(intent)
+                }
+            }
         }
 
 

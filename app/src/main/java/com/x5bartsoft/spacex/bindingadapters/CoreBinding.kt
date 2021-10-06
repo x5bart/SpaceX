@@ -1,15 +1,19 @@
 package com.x5bartsoft.spacex.bindingadapters
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import coil.load
 import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.model.response.launchdetail.Landpad
-import com.x5bartsoft.spacex.model.response.launchdetail.Rocket
+import java.lang.Exception
 
 class CoreBinding {
     companion object {
@@ -37,24 +41,24 @@ class CoreBinding {
 
         @BindingAdapter("getCoreString")
         @JvmStatic
-        fun getCoreString(view: TextView, data: String?){
-            if (data!=null) {
+        fun getCoreString(view: TextView, data: String?) {
+            if (data != null) {
                 view.text = data
             }
         }
 
         @BindingAdapter("getCoreInt")
         @JvmStatic
-        fun getCoreInt(view: TextView, data: Int?){
-            if (data!=null) {
+        fun getCoreInt(view: TextView, data: Int?) {
+            if (data != null) {
                 view.text = data.toString()
             }
         }
 
         @BindingAdapter("getCoreLandpadLocality")
         @JvmStatic
-        fun getCoreLandpadLocality(view: TextView, data: Landpad?){
-            if (data!=null) {
+        fun getCoreLandpadLocality(view: TextView, data: Landpad?) {
+            if (data != null) {
                 val locality = data.locality
                 val region = data.region
                 val text = "$locality, $region"
@@ -65,7 +69,7 @@ class CoreBinding {
         @BindingAdapter("loadCoreOneImageFromUrl")
         @JvmStatic
         fun loadCoreOneImageFromUrl(imageView: ImageView, data: Landpad?) {
-            if (data!=null) {
+            if (data != null) {
                 imageView.load(data.images.large[0]) {
                     crossfade(600)
 //                    placeholder(R.drawable.ic_placeholder_error)
@@ -75,6 +79,20 @@ class CoreBinding {
                 imageView.load(R.drawable.ic_placeholder_error)
             }
         }
+
+        @BindingAdapter("getCoreLink")
+        @JvmStatic
+        fun getCoreLink(view: ImageView, date: String?) {
+            if (date != null) {
+                view.alpha = 1.0F
+                view.setOnClickListener {
+                    val intent = Intent(Intent.ACTION_VIEW)
+                    intent.data = Uri.parse(date)
+                    view.context.startActivity(intent)
+                }
+            }
+        }
+
 
     }
 }

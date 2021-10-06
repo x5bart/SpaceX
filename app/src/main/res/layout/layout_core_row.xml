@@ -361,7 +361,7 @@
 
             <ImageButton
                 android:id="@+id/l_core_row__wiki_imageView"
-                getLink="@{cores.landpad.wikipedia}"
+                getCoreLink="@{cores.landpad.wikipedia}"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
