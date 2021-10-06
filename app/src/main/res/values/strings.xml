@@ -106,4 +106,6 @@
     <string name="apoapsis_km">Apoapsis (km)</string>
     <string name="period_min">Period (min)</string>
     <string name="water_landings">Water landings</string>
+    <string name="launch_attempts">Launch attempts</string>
+    <string name="launch_successes">Launch successes</string>
 </resources>

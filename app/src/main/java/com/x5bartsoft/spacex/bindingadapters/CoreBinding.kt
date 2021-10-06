@@ -58,7 +58,7 @@ class CoreBinding {
                 val locality = data.locality
                 val region = data.region
                 val text = "$locality, $region"
-                view.text = data.toString()
+                view.text = text
             }
         }
 

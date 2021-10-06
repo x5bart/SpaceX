@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
         <variable
             name="detail"
             type="com.x5bartsoft.spacex.model.response.launchdetail.Doc" />
@@ -12,8 +13,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:background="@color/lightMediumGray"
         android:layout_height="match_parent"
+        android:background="@color/white"
         tools:context=".ui.fragments.LaunchpadFragment">
 
         <ScrollView
@@ -34,10 +35,9 @@
                     android:id="@+id/materialCardView4"
                     android:layout_width="match_parent"
                     android:layout_height="250dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="10dp"
+                    android:layout_margin="8dp"
+                    app:cardCornerRadius="7dp"
+                    app:cardElevation="5dp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -73,81 +73,131 @@
 
                 </com.google.android.material.card.MaterialCardView>
 
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="7dp"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/materialCardView4" />
+
+
+                <TextView
+                    android:id="@+id/f_launchpad_full_name_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{detail.launchpad.fullName}"
+                    android:textColor="@color/darker"
+                    android:textSize="24sp"
+                    android:textStyle="bold|italic"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView4">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
-
-                        <TextView
-                            android:id="@+id/f_launchpad_full_name_textView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:text="@{detail.launchpad.fullName}"
-                            android:textColor="@color/darker"
-                            android:textSize="24sp"
-                            android:textStyle="bold|italic"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:text="Kennedy Space Center Historic Launch Complex 39A. \nCape Canaveral. Florida" />
+                    app:layout_constraintTop_toBottomOf="@+id/divider"
+                    tools:text="Kennedy Space Center Historic Launch Complex 39A. \nCape Canaveral. Florida" />
 
 
-                        <TextView
-                            android:id="@+id/f_overview_detail_textView"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_margin="8dp"
-                            android:layout_marginStart="8dp"
-                            android:layout_marginTop="8dp"
-                            android:layout_marginEnd="8dp"
-                            android:layout_marginBottom="8dp"
-                            android:text="@{detail.launchpad.details}"
-                            android:textColor="@color/darker"
-                            android:textSize="18sp"
-                            android:textStyle="italic"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@+id/f_launchpad_full_name_textView"
-                            tools:text="NASA's historic pad that launched most of the Saturn V and Space Shuttle missions, including Apollo 11. SpaceX initially leased solely for Falcon Heavy and Crew Dragon launches, but the company has also used it for others as well following the damage to SLC-40 in the AMOS-6 explosion. After completing the necessary modifications, the first launch SpaceX performed on the pad was CRS-10 in February 2017. After SLC-40 was back online, 39A was upgraded to support Falcon Heavy and complete the removal of the shuttle-era Rotating Service Structure. More recently, a crew access arm and other safety equipment has been installed in order to launch commercial crew missions. 39A also occasionally launches other Falcon 9 missions between Falcon Heavy and Crew Dragon launches, depending on pad scheduling. The pad may also potentially be upgraded in the future for use with the BFR." />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <com.google.android.material.card.MaterialCardView
-                    android:id="@+id/materialCardView2"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/f_launchpad_locality_textView"
+                    style="@style/OverviewText"
+                    getLaunchpadLocality="@{detail.launchpad}"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    app:layout_constraintStart_toStartOf="@+id/f_launchpad_full_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_launchpad_full_name_textView"
+                    tools:text="Omelek Island, Marshall Islands" />
+
+                <TextView
+                    android:id="@+id/l_launchpad_rockets_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/rockets"
+                    app:layout_constraintStart_toStartOf="@+id/f_launchpad_locality_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_launchpad_locality_textView" />
+
+                <TextView
+                    android:id="@+id/l_launchpad_rockets_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    getLaunchpadRockets="@{detail.launchpad}"
+                    tools:text="Falcon 1"
+                    app:layout_constraintEnd_toEndOf="@+id/f_launchpad_full_name_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/f_launchpad_locality_textView" />
+
+                <View
+                    android:id="@+id/divider2"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="8dp"
                     android:layout_marginEnd="8dp"
-                    app:cardCornerRadius="7dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:background="?android:attr/listDivider"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/l_launchpad_rockets_title_textView" />
+
+                <TextView
+                    android:id="@+id/l_launchpad_launch_attempts_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/launch_attempts"
+                    app:layout_constraintStart_toStartOf="@+id/f_launchpad_locality_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/divider2" />
+
+                <TextView
+                    android:id="@+id/l_launchpad_launch_attempts_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(detail.launchpad.launchAttempts)}"
+                    tools:text="5"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/l_launchpad_launch_attempts_title_textView" />
+
+                <TextView
+                    android:id="@+id/l_launchpad_launch_successes_title_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/launch_successes"
+                    app:layout_constraintStart_toStartOf="@+id/f_launchpad_locality_textView"
+                    app:layout_constraintTop_toBottomOf="@+id/l_launchpad_launch_attempts_title_textView" />
+
+                <TextView
+                    android:id="@+id/l_launchpad_launch_successes_textView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@{String.valueOf(detail.launchpad.launchSuccesses)}"
+                    app:layout_constraintEnd_toEndOf="@+id/divider2"
+                    app:layout_constraintTop_toTopOf="@+id/l_launchpad_launch_successes_title_textView"
+                    tools:text="5" />
+
+                <TextView
+                    android:id="@+id/f_overview_detail_textView"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:layout_marginStart="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:text="@{detail.launchpad.details}"
+                    android:textColor="@color/darker"
+                    android:textSize="18sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/materialCardView3">
+                    app:layout_constraintTop_toBottomOf="@+id/l_launchpad_launch_successes_title_textView"
+                    tools:text="NASA's historic pad that launched most of the Saturn V and Space Shuttle missions, including Apollo 11. SpaceX initially leased solely for Falcon Heavy and Crew Dragon launches, but the company has also used it for others as well following the damage to SLC-40 in the AMOS-6 explosion. After completing the necessary modifications, the first launch SpaceX performed on the pad was CRS-10 in February 2017. After SLC-40 was back online, 39A was upgraded to support Falcon Heavy and complete the removal of the shuttle-era Rotating Service Structure. More recently, a crew access arm and other safety equipment has been installed in order to launch commercial crew missions. 39A also occasionally launches other Falcon 9 missions between Falcon Heavy and Crew Dragon launches, depending on pad scheduling. The pad may also potentially be upgraded in the future for use with the BFR." />
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent">
 
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
 
 
             </androidx.constraintlayout.widget.ConstraintLayout>
