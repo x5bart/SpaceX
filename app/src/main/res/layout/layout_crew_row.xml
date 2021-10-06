@@ -15,14 +15,13 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.card.MaterialCardView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             app:cardCornerRadius="3dp"
             app:cardElevation="5dp"
-            android:layout_margin="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -33,7 +32,7 @@
                 <ImageView
                     android:id="@+id/l_crew_main_imageView"
                     loadOneImageFromUrl="@{crew.image}"
-                    android:layout_width="200dp"
+                    android:layout_width="match_parent"
                     android:layout_height="250dp"
                     android:contentDescription="@string/image_ship"
                     android:scaleType="centerCrop"
@@ -45,32 +44,35 @@
 
                 <TextView
                     android:id="@+id/l_crew_name_title_textView"
-                    android:text="@{crew.name}"
-                    android:textColor="@color/darker"
-                    android:textSize="18sp"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_marginTop="2dp"
-                    tools:text="Jared Isaacman"
+                    android:maxLines="2"
+                    android:text="@{crew.name}"
+                    android:textColor="@color/darker"
+                    android:textSize="18sp"
+                    app:layout_constraintEnd_toStartOf="@+id/f_crew_active_imageView"
                     app:layout_constraintStart_toStartOf="@+id/l_crew_main_imageView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_crew_main_imageView" />
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_main_imageView"
+                    tools:text="Jared Isaacman" />
 
                 <TextView
                     android:id="@+id/l_crew_type_title_textView"
-                    android:text="@{crew.agency}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    tools:text="SpaceX"
+                    android:text="@{crew.agency}"
                     app:layout_constraintStart_toStartOf="@+id/l_crew_name_title_textView"
-                    app:layout_constraintTop_toBottomOf="@+id/l_crew_name_title_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_name_title_textView"
+                    tools:text="SpaceX" />
 
                 <ImageButton
                     android:id="@+id/f_crew_wiki_imageView"
                     getLink="@{crew.wikipedia}"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="78dp"
                     android:layout_marginBottom="8dp"
                     android:alpha="0.2"
                     android:background="@drawable/shape_image_button"
@@ -81,7 +83,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/l_crew_type_title_textView" />
+                    app:layout_constraintTop_toBottomOf="@+id/l_crew_main_imageView" />
 
                 <ImageView
                     android:id="@+id/f_crew_active_imageView"
@@ -97,9 +99,8 @@
                     app:tint="@color/pink" />
 
 
-
-
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

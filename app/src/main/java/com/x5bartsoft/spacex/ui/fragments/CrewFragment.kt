@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TableLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.x5bartsoft.spacex.R
 import com.x5bartsoft.spacex.adapters.CapsulesAdapter
@@ -46,7 +47,7 @@ class CrewFragment : Fragment() {
     private fun setupRecyclerView() {
         mAdapter.setData(detailBundle!!.crew)
         binding.fCrewRecyclerView.adapter = mAdapter
-        binding.fCrewRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        binding.fCrewRecyclerView.layoutManager = GridLayoutManager(requireContext(),2)
     }
 
 
